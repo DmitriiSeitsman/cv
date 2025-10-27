@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎬 MovieQuiz — Дмитрий Сейцман</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .project-page {
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .project-page h2 {
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .project-page p {
+      color: #ddd;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #ff6b6b;
+      text-decoration: none;
+      border: 1px solid #ff6b6b;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: #ff6b6b;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 💡 Header подгружается динамически -->
+  
+  <main>
+    <section class="project-page">
+      <h2 id="project-title">🎬 MovieQuiz</h2>
+      <p id="project-desc">
+        UIKit + MVC — викторина по фильмам, созданная в рамках учебного проекта.  
+        Простое, но стильное приложение с прогресс-баром, изображениями и логикой подсчёта очков.
+      </p>
+
+      <a class="back-link" href="portfolio.html" id="back-link">← Назад в портфолио</a>
+    </section>
+  </main>
+
+  <footer id="footer">
+    © 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    // 🌐 Переводы для страницы MovieQuiz
+    const pageLang = {
+      ru: {
+        title: "🎬 MovieQuiz — Дмитрий Сейцман",
+        projectTitle: "🎬 MovieQuiz",
+        projectDesc: "UIKit + MVC — викторина по фильмам, созданная в рамках учебного проекта. Простое, но стильное приложение с прогресс-баром, изображениями и логикой подсчёта очков.",
+        backLink: "← Назад в портфолио",
+        footer: "© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)"
+      },
+      en: {
+        title: "🎬 MovieQuiz — Dmitrii Seitsman",
+        projectTitle: "🎬 MovieQuiz",
+        projectDesc: "UIKit + MVC — a movie quiz app built as a learning project. A simple yet polished app with progress tracking, movie posters, and score logic.",
+        backLink: "← Back to portfolio",
+        footer: "© 2025 Dmitrii Seitsman. Built with pure HTML, JS, and a pinch of AI. :)"
+      }
+    };
+
+    function applyPageLang(lang) {
+      const t = pageLang[lang];
+      document.title = t.title;
+      document.getElementById("project-title").innerHTML = t.projectTitle;
+      document.getElementById("project-desc").innerHTML = t.projectDesc;
+      document.getElementById("back-link").innerHTML = t.backLink;
+      document.getElementById("footer").innerHTML = t.footer;
+    }
+
+    // Применяем язык при загрузке и слушаем переключения
+    document.addEventListener("DOMContentLoaded", () => {
+      const lang = localStorage.getItem("lang") || "ru";
+      applyPageLang(lang);
+      document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+    });
+  </script>
+</body>
+</html>

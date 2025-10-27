@@ -6,12 +6,57 @@
   <title>Портфолио — Дмитрий Сейцман</title>
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ✨ Анимация появления карточек */
+    .project-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInCard 0.6s ease forwards;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .project-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeInCard {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🎬 Кликабельное название */
+    .project-card strong a {
+      color: #ff6b6b;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-card strong a:hover {
+      color: #ffa6a6;
+      transform: scale(1.05);
+    }
+
+    .project-card span.desc {
+      display: block;
+      margin: 10px 0 15px;
+      color: #ddd;
+    }
+
+    .project-card a.github-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: #ff6b6b;
+    }
+
+    .project-card a.github-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
   <!-- 💡 header.html загружается динамически через scripts.js -->
 
-  <!-- 📂 Основной контент -->
   <main>
     <section id="portfolio">
       <h2 id="portfolio-title">Портфолио</h2>
@@ -20,46 +65,43 @@
       </p>
 
       <div class="project-card" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — Movie quiz app">
-        <strong>🎬 MovieQuiz</strong><br>
-        <span class="desc">UIKit + MVC — викторина по фильмам</span><br>
-        <a href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank">Посмотреть на GitHub</a>
+        <strong><a href="MovieQuiz.html">🎬 MovieQuiz</a></strong>
+        <span class="desc">UIKit + MVC — викторина по фильмам</span>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
-        <strong>📸 ImageFeed</strong><br>
-        <span class="desc">MVP + Kingfisher — фото-лента в стиле Unsplash</span><br>
-        <a href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank">Посмотреть на GitHub</a>
+        <strong><a href="ImageFeed.html">📸 ImageFeed</a></strong>
+        <span class="desc">MVP + Kingfisher — фото-лента в стиле Unsplash</span>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="SwiftUI + Core Data — трекер привычек" data-en-desc="SwiftUI + Core Data — habit tracker app">
-        <strong>📆 Tracker</strong><br>
-        <span class="desc">SwiftUI + Core Data — трекер привычек</span><br>
-        <a href="https://github.com/DmitriiSeitsman/Tracker" target="_blank">Посмотреть на GitHub</a>
+        <strong><a href="Tracker.html">📆 Tracker</a></strong>
+        <span class="desc">SwiftUI + Core Data — трекер привычек</span>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
-        <strong>✈️ TravelSchedule</strong><br>
-        <span class="desc">SwiftUI + Combine + Yandex API — расписания путешествий</span><br>
-        <a href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
+        <strong><a href="TravelSchedule.html">✈️ TravelSchedule</a></strong>
+        <span class="desc">SwiftUI + Combine + Yandex API — расписания путешествий</span>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
-        <strong>🛒 ShoppingList</strong><br>
-        <span class="desc">SwiftData + MVVM + SwiftUI — список покупок</span><br>
-        <a href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
+        <strong><a href="ShoppingList.html">🛒 ShoppingList</a></strong>
+        <span class="desc">SwiftData + MVVM + SwiftUI — список покупок</span>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
       </div>
     </section>
   </main>
 
-  <!-- ⚓ Футер -->
   <footer id="footer">
-    © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
+    © 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)
   </footer>
 
-  <!-- 📜 Скрипты -->
   <script src="scripts.js"></script>
   <script>
-    // 🌐 Переводы только для контента этой страницы
     const pageLang = {
       ru: {
         title: "Портфолио — Дмитрий Сейцман",
@@ -80,16 +122,13 @@
       document.title = t.title;
       document.getElementById("portfolio-title").innerHTML = t.portfolioTitle;
       document.getElementById("portfolio-tagline").innerHTML = t.portfolioTagline;
-
-      // обновляем описания и ссылки
       document.querySelectorAll(".project-card").forEach((card) => {
         const desc = card.querySelector(".desc");
         desc.textContent = card.getAttribute(`data-${lang}-desc`);
-        card.querySelector("a").textContent = t.githubLink;
+        card.querySelector(".github-link").textContent = t.githubLink;
       });
     }
 
-    // применяем язык при загрузке и слушаем переключения
     const initial = localStorage.getItem("lang") || "ru";
     applyPageLang(initial);
     document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
