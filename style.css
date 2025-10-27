@@ -19,12 +19,14 @@ header.site-header {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 header h1 {
   color: #ff6b6b;
   font-size: 1.8rem;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 /* 🔗 Навигация */
@@ -183,8 +185,10 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px 20px;
     text-align: center;
+    padding: max(env(safe-area-inset-top), 12px) 4vw 12px; /* адаптив + safe area */
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .header-controls {
@@ -193,6 +197,12 @@ footer {
     align-items: center;
     width: 100%;
     max-width: 600px;
+    padding: 0 4vw;
+    box-sizing: border-box;
+  }
+
+  .lang-buttons {
+    flex-shrink: 0;
   }
 
   .menu-toggle {
@@ -203,6 +213,13 @@ footer {
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 1001;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    margin: 10px 0;
+    font-size: 1.6rem;
+    text-align: center;
   }
 
   /* === Оверлей === */
@@ -236,6 +253,7 @@ footer {
     transform: translateY(100%);
     transition: transform 0.3s ease-out;
     z-index: 1002;
+    box-sizing: border-box;
   }
 
   .main-nav.open {
