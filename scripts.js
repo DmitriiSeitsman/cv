@@ -109,7 +109,7 @@ async function ensureHeaderLoaded() {
   document.body.insertBefore(host, document.body.firstChild);
 
   try {
-    const res = await fetch("header.html", { cache: "no-store" });
+    const res = await fetch("/header.html", { cache: "no-store" });
     if (!res.ok) throw new Error("Failed to fetch header.html");
     host.innerHTML = await res.text();
   } catch (err) {
