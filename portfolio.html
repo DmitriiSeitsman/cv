@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Портфолио — Дмитрий Сейцман</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="lang-buttons">
+      <button class="lang-btn" id="btn-ru">RU</button>
+      <button class="lang-btn" id="btn-en">EN</button>
+    </div>
+
+    <h1 id="name">Дмитрий Сейцман</h1>
+
+    <nav class="main-nav">
+      <a href="index.html">Обо мне</a>
+      <a href="portfolio.html" class="active">Портфолио</a>
+      <a href="services.html">Услуги и цены</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="portfolio">
+      <h2 id="portfolio-title">Портфолио</h2>
+      <p class="tagline" id="portfolio-tagline">
+        Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
+      </p>
+
+      <div class="project-card">
+        <strong>🎬 MovieQuiz</strong><br>
+        UIKit + MVC — викторина по фильмам<br>
+        <a href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank">Посмотреть на GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <strong>📸 ImageFeed</strong><br>
+        MVP + Kingfisher — фото-лента в стиле Unsplash<br>
+        <a href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank">Посмотреть на GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <strong>📆 Tracker</strong><br>
+        SwiftUI + Core Data — трекер привычек<br>
+        <a href="https://github.com/DmitriiSeitsman/Tracker" target="_blank">Посмотреть на GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <strong>✈️ TravelSchedule</strong><br>
+        SwiftUI + Combine + Yandex API — расписания путешествий<br>
+        <a href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <strong>🛒 ShoppingList</strong><br>
+        SwiftData + MVVM + SwiftUI — список покупок<br>
+        <a href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
+  </footer>
+
+  <script>
+    const langData = {
+      ru: {
+        title: "Портфолио — Дмитрий Сейцман",
+        name: "Дмитрий Сейцман",
+        portfolioTitle: "Портфолио",
+        portfolioTagline: "Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.",
+        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕",
+        links: "Посмотреть на GitHub"
+      },
+      en: {
+        title: "Portfolio — Dmitrii Seitsman",
+        name: "Dmitrii Seitsman",
+        portfolioTitle: "Portfolio",
+        portfolioTagline: "My iOS projects — from learning apps to advanced pet-projects with architecture and backend.",
+        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕",
+        links: "View on GitHub"
+      }
+    };
+
+    const elements = {
+      name: document.getElementById('name'),
+      portfolioTitle: document.getElementById('portfolio-title'),
+      portfolioTagline: document.getElementById('portfolio-tagline'),
+      footer: document.getElementById('footer'),
+    };
+
+    const btnEn = document.getElementById('btn-en');
+    const btnRu = document.getElementById('btn-ru');
+    const links = document.querySelectorAll('.project-card a');
+
+    function setLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      const t = langData[lang];
+      document.title = t.title;
+      for (const key in t) {
+        if (elements[key]) elements[key].innerHTML = t[key];
+      }
+      links.forEach(link => (link.textContent = t.links));
+      btnEn.classList.toggle('active', lang === 'en');
+      btnRu.classList.toggle('active', lang === 'ru');
+      document.documentElement.lang = lang;
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    btnEn.addEventListener('click', () => setLanguage('en'));
+    btnRu.addEventListener('click', () => setLanguage('ru'));
+  </script>
+
+</body>
+</html>
