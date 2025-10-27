@@ -18,7 +18,10 @@
 
     <h1 id="name">Дмитрий Сейцман</h1>
 
-    <nav class="main-nav">
+    <!-- Кнопка гамбургера -->
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <nav class="main-nav" id="main-nav">
       <a href="index.html" class="active">Обо мне</a>
       <a href="portfolio.html">Портфолио</a>
       <a href="services.html">Услуги и цены</a>
@@ -48,6 +51,7 @@
   </footer>
 
   <script>
+    // === 🌐 Переключение языков ===
     const langData = {
       ru: {
         title: "Дмитрий Сейцман — iOS Разработчик",
@@ -58,7 +62,7 @@
         Я специализируюсь на разработке под iOS с использованием SwiftUI и UIKit, проектирую архитектуру по MVVM и MVP, работаю с Core Data, SwiftData, Combine, async/await, а также интегрирую REST API. Люблю, когда интерфейс не просто работает, а выглядит элегантно и откликается естественно.<br><br>
         Я постоянно совершенствуюсь, изучаю новые фреймворки и подходы Apple, уделяю внимание дизайну и UX. В работе ценю чистый код, надёжность и ощущение, что каждая строка написана не зря.<br><br>
         Сейчас я ищу возможности для роста и сотрудничества — будь то интересный проект, продуктовая команда или заказ на разработку под ключ.`,
-        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
+        footer: "© 2025 Дмитрий Сейцман — сайт создан с помощью chat GPT :)"
       },
       en: {
         title: "Dmitrii Seitsman — iOS Developer",
@@ -69,7 +73,7 @@
         I specialize in SwiftUI and UIKit development, design architecture with MVVM and MVP, work with Core Data, SwiftData, Combine, async/await, and integrate REST APIs. I care about crafting clean code and delightful UI/UX that feels natural to use.<br><br>
         I keep learning new frameworks and Apple technologies, exploring ways to make code elegant, readable, and maintainable.<br><br>
         I’m open to collaboration, new opportunities, and projects that combine creativity, technology, and thoughtful design.`,
-        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
+        footer: "© 2025 Dmitrii Seitsman — web site created with chat GPT :)"
       }
     };
 
@@ -100,6 +104,13 @@
 
     btnEn.addEventListener('click', () => setLanguage('en'));
     btnRu.addEventListener('click', () => setLanguage('ru'));
+
+    // === 🍔 Гамбургер меню ===
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('open');
+    });
   </script>
 
 </body>

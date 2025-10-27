@@ -171,3 +171,76 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: auto;
 }
+
+/* --- 📱 Адаптив для мобильных устройств --- */
+@media (max-width: 768px) {
+  header.site-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  header h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Гамбургер */
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+
+  /* Навигация — скрываем по умолчанию */
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px 0;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .lang-buttons {
+    order: 3;
+    margin-top: 10px;
+  }
+
+  main {
+    padding: 40px 15px;
+  }
+
+  section {
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+  }
+}
+
+/* --- 💻 На больших экранах гамбургер скрыт --- */
+.menu-toggle {
+  display: none;
+}
