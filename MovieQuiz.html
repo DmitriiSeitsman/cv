@@ -4,10 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🎬 MovieQuiz — Дмитрий Сейцман</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- ✅ favicon убран -->
+  <link rel="stylesheet" href="/style.css" />
+
   <style>
     /* === Project Page Specific === */
+    body {
+      background: #0b1e33;
+      color: #ccc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: calc(100vh - 120px);
+      padding-top: 120px; /* чтобы контент не залез под header */
+    }
+
     .project-container {
       text-align: center;
       animation: fadeIn 0.8s ease;
@@ -134,9 +152,9 @@
 
       <!-- 🖼️ Коллаж скриншотов -->
       <div class="screenshot-grid">
-        <img src="images/moviequiz_1.png" alt="MovieQuiz Screenshot 1" />
-        <img src="images/moviequiz_2.png" alt="MovieQuiz Screenshot 2" />
-        <img src="images/moviequiz_3.png" alt="MovieQuiz Screenshot 3" />
+        <img src="/images/moviequiz_1.png" alt="MovieQuiz Screenshot 1" />
+        <img src="/images/moviequiz_2.png" alt="MovieQuiz Screenshot 2" />
+        <img src="/images/moviequiz_3.png" alt="MovieQuiz Screenshot 3" />
       </div>
 
       <a
@@ -156,7 +174,7 @@
   </footer>
 
   <!-- 📜 Скрипты -->
-<script src="scripts.js"></script>
+  <script src="/scripts.js"></script>
   <script>
     // === Переводы для страницы ===
     const pageLang = {
@@ -184,27 +202,29 @@
 
     // === Лайтбокс ===
     const gridImages = document.querySelectorAll(".screenshot-grid img");
-    const lightbox = document.createElement("div");
-    lightbox.className = "lightbox";
-    const closeBtn = document.createElement("div");
-    closeBtn.className = "lightbox-close";
-    closeBtn.innerHTML = "&times;";
-    const lightboxImg = document.createElement("img");
-    lightbox.appendChild(lightboxImg);
-    lightbox.appendChild(closeBtn);
-    document.body.appendChild(lightbox);
+    if (gridImages.length > 0) {
+      const lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+      const closeBtn = document.createElement("div");
+      closeBtn.className = "lightbox-close";
+      closeBtn.innerHTML = "&times;";
+      const lightboxImg = document.createElement("img");
+      lightbox.appendChild(lightboxImg);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
 
-    gridImages.forEach((img) => {
-      img.addEventListener("click", () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add("active");
+      gridImages.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add("active");
+        });
       });
-    });
 
-    closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) lightbox.classList.remove("active");
-    });
+      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("active");
+      });
+    }
   </script>
 </body>
 </html>
