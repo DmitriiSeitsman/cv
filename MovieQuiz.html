@@ -7,94 +7,203 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .project-page {
+    /* === Project Page Specific === */
+    .project-container {
       text-align: center;
       animation: fadeIn 0.8s ease;
+      padding: 40px 20px;
     }
 
-    .project-page h2 {
+    .project-title {
       color: #ff6b6b;
-      margin-bottom: 20px;
       font-size: 2rem;
+      margin-bottom: 10px;
     }
 
-    .project-page p {
-      color: #ddd;
+    .tech-stack {
+      color: #ccc;
       font-size: 1.1rem;
       margin-bottom: 30px;
+      line-height: 1.5;
     }
 
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
+    /* 🎨 Коллаж */
+    .screenshot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 0 auto 30px;
+      max-width: 800px;
+    }
+
+    .screenshot-grid img {
+      width: 240px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .screenshot-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 🖼️ Полноэкранный просмотр */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
       color: #ff6b6b;
-      text-decoration: none;
-      border: 1px solid #ff6b6b;
-      padding: 10px 20px;
-      border-radius: 8px;
-      transition: all 0.2s ease;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease;
     }
 
-    .back-link:hover {
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    /* 🔗 GitHub */
+    .github-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 24px;
+      border: 1px solid #ff6b6b;
+      border-radius: 8px;
+      color: #ff6b6b;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .github-button:hover {
       background: #ff6b6b;
       color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* 📱 Адаптив */
+    @media (max-width: 768px) {
+      .screenshot-grid img {
+        width: 90%;
+      }
     }
   </style>
 </head>
-<body>
 
-  <!-- 💡 Header подгружается динамически -->
-  
+<body>
+  <!-- 💡 header.html подгружается автоматически -->
   <main>
-    <section class="project-page">
-      <h2 id="project-title">🎬 MovieQuiz</h2>
-      <p id="project-desc">
-        UIKit + MVC — викторина по фильмам, созданная в рамках учебного проекта.  
-        Простое, но стильное приложение с прогресс-баром, изображениями и логикой подсчёта очков.
+    <section class="project-container">
+      <h2 class="project-title" id="project-title">🎬 MovieQuiz</h2>
+      <p class="tech-stack" id="tech-stack">
+        MovieQuiz — интерактивная викторина по фильмам с оценкой и результатами.<br>
+        <strong>Стек:</strong> UIKit, MVC, JSON, анимации, работа с сетевыми данными.
       </p>
 
-      <a class="back-link" href="portfolio.html" id="back-link">← Назад в портфолио</a>
+      <!-- 🖼️ Коллаж скриншотов -->
+      <div class="screenshot-grid">
+        <img src="images/moviequiz_1.png" alt="MovieQuiz Screenshot 1" />
+        <img src="images/moviequiz_2.png" alt="MovieQuiz Screenshot 2" />
+        <img src="images/moviequiz_3.png" alt="MovieQuiz Screenshot 3" />
+      </div>
+
+      <a
+        href="https://github.com/DmitriiSeitsman/MovieQuiz"
+        target="_blank"
+        class="github-button"
+        id="github-button"
+      >
+        Посмотреть на GitHub
+      </a>
     </section>
   </main>
 
+  <!-- ⚓ Футер -->
   <footer id="footer">
     © 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)
   </footer>
 
+  <!-- 📜 Скрипты -->
   <script src="scripts.js"></script>
   <script>
-    // 🌐 Переводы для страницы MovieQuiz
+    // === Переводы для страницы ===
     const pageLang = {
       ru: {
         title: "🎬 MovieQuiz — Дмитрий Сейцман",
-        projectTitle: "🎬 MovieQuiz",
-        projectDesc: "UIKit + MVC — викторина по фильмам, созданная в рамках учебного проекта. Простое, но стильное приложение с прогресс-баром, изображениями и логикой подсчёта очков.",
-        backLink: "← Назад в портфолио",
-        footer: "© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)"
+        tech: "MovieQuiz — интерактивная викторина по фильмам с оценкой и результатами.<br><strong>Стек:</strong> UIKit, MVC, JSON, анимации, работа с сетевыми данными.",
+        github: "Посмотреть на GitHub"
       },
       en: {
         title: "🎬 MovieQuiz — Dmitrii Seitsman",
-        projectTitle: "🎬 MovieQuiz",
-        projectDesc: "UIKit + MVC — a movie quiz app built as a learning project. A simple yet polished app with progress tracking, movie posters, and score logic.",
-        backLink: "← Back to portfolio",
-        footer: "© 2025 Dmitrii Seitsman. Built with pure HTML, JS, and a pinch of AI. :)"
+        tech: "MovieQuiz — an interactive movie quiz app with scoring and results.<br><strong>Stack:</strong> UIKit, MVC, JSON, animations, networking.",
+        github: "View on GitHub"
       }
     };
 
     function applyPageLang(lang) {
-      const t = pageLang[lang];
-      document.title = t.title;
-      document.getElementById("project-title").innerHTML = t.projectTitle;
-      document.getElementById("project-desc").innerHTML = t.projectDesc;
-      document.getElementById("back-link").innerHTML = t.backLink;
-      document.getElementById("footer").innerHTML = t.footer;
+      document.title = pageLang[lang].title;
+      document.getElementById("tech-stack").innerHTML = pageLang[lang].tech;
+      document.getElementById("github-button").innerText = pageLang[lang].github;
     }
 
-    // Применяем язык при загрузке и слушаем переключения
-    document.addEventListener("DOMContentLoaded", () => {
-      const lang = localStorage.getItem("lang") || "ru";
-      applyPageLang(lang);
-      document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+    const lang = localStorage.getItem("lang") || "ru";
+    applyPageLang(lang);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+
+    // === Лайтбокс ===
+    const gridImages = document.querySelectorAll(".screenshot-grid img");
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    const closeBtn = document.createElement("div");
+    closeBtn.className = "lightbox-close";
+    closeBtn.innerHTML = "&times;";
+    const lightboxImg = document.createElement("img");
+    lightbox.appendChild(lightboxImg);
+    lightbox.appendChild(closeBtn);
+    document.body.appendChild(lightbox);
+
+    gridImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
+    });
+
+    closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.classList.remove("active");
     });
   </script>
 </body>
