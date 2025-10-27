@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — Дмитрий Сейцман</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="lang-buttons">
+      <button class="lang-btn" id="btn-ru">RU</button>
+      <button class="lang-btn" id="btn-en">EN</button>
+    </div>
+
+    <h1 id="name">Дмитрий Сейцман</h1>
+
+    <nav class="main-nav">
+      <a href="index.html">Обо мне</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="services.html">Услуги и цены</a>
+      <a href="contacts.html" class="active">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <h2 id="contact-title">Связаться со мной</h2>
+      <p id="email-label">📬 Почта: <a href="mailto:dmitriiseitsman@gmail.com" target="_blank">dmitriiseitsman@gmail.com</a></p>
+      <p id="telegram-label">💬 Телеграм: <a href="https://t.me/dseitsman" target="_blank">@dseitsman</a></p>
+      <p id="github-label">💻 Гит: <a href="https://github.com/dmitriiseitsman" target="_blank">github.com/dmitriiseitsman</a></p>
+    </section>
+  </main>
+
+  <footer id="footer">
+    © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
+  </footer>
+
+  <script>
+    const langData = {
+      ru: {
+        title: "Контакты — Дмитрий Сейцман",
+        name: "Дмитрий Сейцман",
+        contactTitle: "Связаться со мной",
+        emailLabel: "📬 Почта:",
+        telegramLabel: "💬 Телеграм:",
+        githubLabel: "💻 Гит:",
+        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
+      },
+      en: {
+        title: "Contact — Dmitrii Seitsman",
+        name: "Dmitrii Seitsman",
+        contactTitle: "Get in touch",
+        emailLabel: "📬 Email:",
+        telegramLabel: "💬 Telegram:",
+        githubLabel: "💻 GitHub:",
+        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
+      }
+    };
+
+    const elements = {
+      name: document.getElementById('name'),
+      contactTitle: document.getElementById('contact-title'),
+      emailLabel: document.getElementById('email-label'),
+      telegramLabel: document.getElementById('telegram-label'),
+      githubLabel: document.getElementById('github-label'),
+      footer: document.getElementById('footer')
+    };
+
+    const btnEn = document.getElementById('btn-en');
+    const btnRu = document.getElementById('btn-ru');
+
+    function setLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      const t = langData[lang];
+      document.title = t.title;
+      elements.name.textContent = t.name;
+      elements.contactTitle.textContent = t.contactTitle;
+
+      // Перевод подписей без перезаписи ссылок
+      elements.emailLabel.childNodes[0].textContent = t.emailLabel + " ";
+      elements.telegramLabel.childNodes[0].textContent = t.telegramLabel + " ";
+      elements.githubLabel.childNodes[0].textContent = t.githubLabel + " ";
+
+      elements.footer.textContent = t.footer;
+
+      btnEn.classList.toggle('active', lang === 'en');
+      btnRu.classList.toggle('active', lang === 'ru');
+      document.documentElement.lang = lang;
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    btnEn.addEventListener('click', () => setLanguage('en'));
+    btnRu.addEventListener('click', () => setLanguage('ru'));
+  </script>
+
+</body>
+</html>
