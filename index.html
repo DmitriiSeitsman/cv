@@ -10,44 +10,16 @@
 </head>
 <body>
 
-  <!-- 🔤 Блок переключения языка -->
-  <div class="lang-buttons" style="justify-content: center; margin-top: 15px;">
-    <button class="lang-btn" id="btn-ru">RU</button>
-    <button class="lang-btn" id="btn-en">EN</button>
-  </div>
-
-  <!-- 🧭 Хедер -->
-  <header class="site-header">
-    <h1 id="name">Дмитрий Сейцман</h1>
-
-    <!-- Кнопка гамбургера -->
-    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
-      ☰
-    </button>
-
-    <!-- Навигация -->
-    <nav class="main-nav" id="main-nav">
-      <a href="index.html" class="active" data-ru="Обо мне" data-en="About">Обо мне</a>
-      <a href="portfolio.html" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
-      <a href="services.html" data-ru="Услуги и цены" data-en="Services & Pricing">Услуги и цены</a>
-      <a href="contacts.html" data-ru="Контакты" data-en="Contacts">Контакты</a>
-    </nav>
-  </header>
-
   <!-- 🧍 Основной контент -->
   <main>
     <section id="about">
       <h2 id="about-title">Обо мне</h2>
       <p id="about-text">
         Меня зовут Дмитрий Сейцман, мне 39 лет. Я — iOS-разработчик, который пришёл в программирование после долгой карьеры в авиации.<br><br>
-
         Когда-то я управлял пассажирскими самолётами и налетал более 5000 часов, а теперь создаю мобильные приложения на Swift — с тем же вниманием к деталям, структурности и ответственности, которые нужны в небе.<br><br>
-
         Я специализируюсь на разработке под iOS с использованием SwiftUI и UIKit, проектирую архитектуру по MVVM и MVP, работаю с Core Data, SwiftData, Combine, async/await, а также интегрирую REST API. Люблю, когда интерфейс не просто работает, а выглядит элегантно и откликается естественно.<br><br>
-
         Я постоянно совершенствуюсь, изучаю новые фреймворки и подходы Apple, уделяю внимание дизайну и UX. В работе ценю чистый код, надёжность и ощущение, что каждая строка написана не зря.<br><br>
-
-        Сейчас я ищу возможности для роста и сотрудничества — будь то интересный проект, продуктовая команда или заказ на разработку под ключ.
+        Сейчас я ищу возможности для роста и сотрудничества — будь то интересный проект, команда разработчиков или заказ на разработку под ключ.
       </p>
     </section>
   </main>
@@ -58,76 +30,37 @@
   </footer>
 
   <!-- 📜 Скрипты -->
+  <script src="scripts.js"></script>
   <script>
-    // === 🌐 Переводы ===
-    const langData = {
+    // Переводы только для контента этой страницы
+    const pageLang = {
       ru: {
-        title: "Дмитрий Сейцман — iOS Разработчик",
-        name: "Дмитрий Сейцман",
         aboutTitle: "Обо мне",
         aboutText: `Меня зовут Дмитрий Сейцман, мне 39 лет. Я — iOS-разработчик, который пришёл в программирование после долгой карьеры в авиации.<br><br>
         Когда-то я управлял пассажирскими самолётами и налетал более 5000 часов, а теперь создаю мобильные приложения на Swift — с тем же вниманием к деталям, структурности и ответственности, которые нужны в небе.<br><br>
         Я специализируюсь на разработке под iOS с использованием SwiftUI и UIKit, проектирую архитектуру по MVVM и MVP, работаю с Core Data, SwiftData, Combine, async/await, а также интегрирую REST API. Люблю, когда интерфейс не просто работает, а выглядит элегантно и откликается естественно.<br><br>
         Я постоянно совершенствуюсь, изучаю новые фреймворки и подходы Apple, уделяю внимание дизайну и UX. В работе ценю чистый код, надёжность и ощущение, что каждая строка написана не зря.<br><br>
-        Сейчас я ищу возможности для роста и сотрудничества — будь то интересный проект, компания, занимающаяся разработкой, или заказ на разработку под ключ.`,
-        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
+        Сейчас я ищу возможности для роста и сотрудничества — будь то интересный проект, команда разработчиков или заказ на разработку под ключ.`
       },
       en: {
-        title: "Dmitrii Seitsman — iOS Developer",
-        name: "Dmitrii Seitsman",
         aboutTitle: "About Me",
         aboutText: `My name is Dmitrii Seitsman, I’m 39 years old — an iOS developer who transitioned into programming after a long career in aviation.<br><br>
         I once piloted passenger aircraft with over 5,000 flight hours, and now I build mobile apps in Swift — with the same precision, structure, and responsibility required in the cockpit.<br><br>
         I specialize in iOS development using SwiftUI and UIKit, design architecture with MVVM and MVP, work with Core Data, SwiftData, Combine, async/await, and integrate REST APIs. I love when an interface not only works but feels elegant and natural.<br><br>
         I’m constantly improving my skills, exploring new Apple frameworks and design approaches, and paying attention to both code quality and user experience. Clean, reliable, purposeful code is what I aim for.<br><br>
-        I’m open to collaboration and new opportunities — whether it’s an exciting project, a product team, or a full-cycle iOS development contract.`,
-        footer: "© 2025 Dmitrii Seitsman — built with Swift and good coffee ☕"
+        I’m open to collaboration and new opportunities — whether it’s an exciting project, a team of developers, or a full-cycle iOS development contract.`
       }
     };
 
-    const elements = {
-      name: document.getElementById("name"),
-      aboutTitle: document.getElementById("about-title"),
-      aboutText: document.getElementById("about-text"),
-      footer: document.getElementById("footer")
-    };
-
-    const btnRu = document.getElementById("btn-ru");
-    const btnEn = document.getElementById("btn-en");
-    const navLinks = document.querySelectorAll(".main-nav a");
-
-    function setLanguage(lang) {
-      localStorage.setItem("lang", lang);
-      const t = langData[lang];
-      document.title = t.title;
-      document.documentElement.lang = lang;
-
-      elements.name.innerHTML = t.name;
-      elements.aboutTitle.innerHTML = t.aboutTitle;
-      elements.aboutText.innerHTML = t.aboutText;
-      elements.footer.innerHTML = t.footer;
-
-      btnRu.classList.toggle("active", lang === "ru");
-      btnEn.classList.toggle("active", lang === "en");
-
-      navLinks.forEach((link) => {
-        const text = link.getAttribute(`data-${lang}`);
-        if (text) link.textContent = text;
-      });
+    function applyPageLang(lang) {
+      document.getElementById("about-title").innerHTML = pageLang[lang].aboutTitle;
+      document.getElementById("about-text").innerHTML  = pageLang[lang].aboutText;
     }
 
-    const savedLang = localStorage.getItem("lang") || "ru";
-    setLanguage(savedLang);
-    btnRu.addEventListener("click", () => setLanguage("ru"));
-    btnEn.addEventListener("click", () => setLanguage("en"));
-
-    // === 🍔 Гамбургер меню ===
-    const menuToggle = document.getElementById("menu-toggle");
-    const mainNav = document.getElementById("main-nav");
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
-    });
+    // Применяем язык при загрузке и на любое изменение (scripts.js диспатчит событие)
+    const initial = localStorage.getItem("lang") || "ru";
+    applyPageLang(initial);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
   </script>
-
 </body>
 </html>
