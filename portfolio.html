@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,22 +9,31 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="lang-buttons">
-      <button class="lang-btn" id="btn-ru">RU</button>
-      <button class="lang-btn" id="btn-en">EN</button>
-    </div>
+  <!-- 🔤 Переключатель языка -->
+  <div class="lang-buttons" style="justify-content: center; margin-top: 15px;">
+    <button class="lang-btn" id="btn-ru">RU</button>
+    <button class="lang-btn" id="btn-en">EN</button>
+  </div>
 
+  <!-- 🧭 Хедер -->
+  <header class="site-header" style="flex-direction: column; align-items: center; margin-top: 10px;">
     <h1 id="name">Дмитрий Сейцман</h1>
 
-    <nav class="main-nav">
-      <a href="index.html">Обо мне</a>
-      <a href="portfolio.html" class="active">Портфолио</a>
-      <a href="services.html">Услуги и цены</a>
-      <a href="contacts.html">Контакты</a>
+    <!-- Гамбургер -->
+    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
+      ☰
+    </button>
+
+    <!-- Навигация -->
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" data-ru="Обо мне" data-en="About">Обо мне</a>
+      <a href="portfolio.html" class="active" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
+      <a href="services.html" data-ru="Услуги и цены" data-en="Services & Pricing">Услуги и цены</a>
+      <a href="contacts.html" data-ru="Контакты" data-en="Contacts">Контакты</a>
     </nav>
   </header>
 
+  <!-- 📂 Основной контент -->
   <main>
     <section id="portfolio">
       <h2 id="portfolio-title">Портфолио</h2>
@@ -33,42 +41,44 @@
         Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
       </p>
 
-      <div class="project-card">
+      <div class="project-card" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — Movie quiz app">
         <strong>🎬 MovieQuiz</strong><br>
-        UIKit + MVC — викторина по фильмам<br>
+        <span class="desc">UIKit + MVC — викторина по фильмам</span><br>
         <a href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank">Посмотреть на GitHub</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
         <strong>📸 ImageFeed</strong><br>
-        MVP + Kingfisher — фото-лента в стиле Unsplash<br>
+        <span class="desc">MVP + Kingfisher — фото-лента в стиле Unsplash</span><br>
         <a href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank">Посмотреть на GitHub</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-ru-desc="SwiftUI + Core Data — трекер привычек" data-en-desc="SwiftUI + Core Data — habit tracker app">
         <strong>📆 Tracker</strong><br>
-        SwiftUI + Core Data — трекер привычек<br>
+        <span class="desc">SwiftUI + Core Data — трекер привычек</span><br>
         <a href="https://github.com/DmitriiSeitsman/Tracker" target="_blank">Посмотреть на GitHub</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
         <strong>✈️ TravelSchedule</strong><br>
-        SwiftUI + Combine + Yandex API — расписания путешествий<br>
+        <span class="desc">SwiftUI + Combine + Yandex API — расписания путешествий</span><br>
         <a href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
         <strong>🛒 ShoppingList</strong><br>
-        SwiftData + MVVM + SwiftUI — список покупок<br>
+        <span class="desc">SwiftData + MVVM + SwiftUI — список покупок</span><br>
         <a href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
       </div>
     </section>
   </main>
 
+  <!-- ⚓ Футер -->
   <footer id="footer">
     © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
+  <!-- 📜 Скрипт -->
   <script>
     const langData = {
       ru: {
@@ -83,41 +93,69 @@
         title: "Portfolio — Dmitrii Seitsman",
         name: "Dmitrii Seitsman",
         portfolioTitle: "Portfolio",
-        portfolioTagline: "My iOS projects — from learning apps to advanced pet-projects with architecture and backend.",
-        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕",
+        portfolioTagline: "My iOS projects — from study apps to advanced pet projects with architecture and backend.",
+        footer: "© 2025 Dmitrii Seitsman — built with Swift and good coffee ☕",
         links: "View on GitHub"
       }
     };
 
     const elements = {
-      name: document.getElementById('name'),
-      portfolioTitle: document.getElementById('portfolio-title'),
-      portfolioTagline: document.getElementById('portfolio-tagline'),
-      footer: document.getElementById('footer'),
+      name: document.getElementById("name"),
+      portfolioTitle: document.getElementById("portfolio-title"),
+      portfolioTagline: document.getElementById("portfolio-tagline"),
+      footer: document.getElementById("footer")
     };
 
-    const btnEn = document.getElementById('btn-en');
-    const btnRu = document.getElementById('btn-ru');
-    const links = document.querySelectorAll('.project-card a');
+    const btnRu = document.getElementById("btn-ru");
+    const btnEn = document.getElementById("btn-en");
+    const links = document.querySelectorAll(".project-card a");
+    const projects = document.querySelectorAll(".project-card .desc");
+    const navLinks = document.querySelectorAll(".main-nav a");
 
     function setLanguage(lang) {
-      localStorage.setItem('lang', lang);
+      localStorage.setItem("lang", lang);
       const t = langData[lang];
       document.title = t.title;
-      for (const key in t) {
-        if (elements[key]) elements[key].innerHTML = t[key];
-      }
-      links.forEach(link => (link.textContent = t.links));
-      btnEn.classList.toggle('active', lang === 'en');
-      btnRu.classList.toggle('active', lang === 'ru');
       document.documentElement.lang = lang;
+
+      // Общие элементы
+      elements.name.innerHTML = t.name;
+      elements.portfolioTitle.innerHTML = t.portfolioTitle;
+      elements.portfolioTagline.innerHTML = t.portfolioTagline;
+      elements.footer.innerHTML = t.footer;
+
+      btnRu.classList.toggle("active", lang === "ru");
+      btnEn.classList.toggle("active", lang === "en");
+
+      // Ссылки на GitHub
+      links.forEach((link) => (link.textContent = t.links));
+
+      // Перевод описаний проектов
+      projects.forEach((desc) => {
+        const ru = desc.parentElement.getAttribute("data-ru-desc");
+        const en = desc.parentElement.getAttribute("data-en-desc");
+        desc.textContent = lang === "ru" ? ru : en;
+      });
+
+      // Перевод навигации
+      navLinks.forEach((link) => {
+        const text = link.getAttribute(`data-${lang}`);
+        if (text) link.textContent = text;
+      });
     }
 
-    const savedLang = localStorage.getItem('lang') || 'ru';
+    const savedLang = localStorage.getItem("lang") || "ru";
     setLanguage(savedLang);
 
-    btnEn.addEventListener('click', () => setLanguage('en'));
-    btnRu.addEventListener('click', () => setLanguage('ru'));
+    btnRu.addEventListener("click", () => setLanguage("ru"));
+    btnEn.addEventListener("click", () => setLanguage("en"));
+
+    // 🍔 Гамбургер меню
+    const menuToggle = document.getElementById("menu-toggle");
+    const mainNav = document.getElementById("main-nav");
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+    });
   </script>
 
 </body>

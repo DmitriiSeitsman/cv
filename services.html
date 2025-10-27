@@ -7,6 +7,7 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* 🧾 Таблица */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -39,26 +40,61 @@
       font-size: 0.9rem;
       color: #a0a0a0;
     }
+
+    /* 📱 Адаптация таблицы под мобильные устройства */
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        display: none;
+      }
+      tr {
+        background: rgba(255, 255, 255, 0.05);
+        margin-bottom: 15px;
+        border-radius: 8px;
+        padding: 10px;
+      }
+      td {
+        padding: 6px 10px;
+        display: flex;
+        justify-content: space-between;
+        border: none;
+      }
+      td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #ff6b6b;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="lang-buttons">
-      <button class="lang-btn active" id="btn-ru">RU</button>
-      <button class="lang-btn" id="btn-en">EN</button>
-    </div>
+  <!-- 🔤 Переключение языка -->
+  <div class="lang-buttons" style="justify-content: center; margin-top: 15px;">
+    <button class="lang-btn active" id="btn-ru">RU</button>
+    <button class="lang-btn" id="btn-en">EN</button>
+  </div>
 
+  <!-- 🧭 Хедер -->
+  <header class="site-header" style="flex-direction: column; align-items: center; margin-top: 10px;">
     <h1>Дмитрий Сейцман</h1>
 
-    <nav class="main-nav">
-      <a href="index.html">Обо мне</a>
-      <a href="portfolio.html">Портфолио</a>
-      <a href="services.html" class="active">Услуги и цены</a>
-      <a href="contacts.html">Контакты</a>
+    <!-- 🍔 Гамбургер -->
+    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
+      ☰
+    </button>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" data-ru="Обо мне" data-en="About">Обо мне</a>
+      <a href="portfolio.html" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
+      <a href="services.html" class="active" data-ru="Услуги и цены" data-en="Services & Pricing">Услуги и цены</a>
+      <a href="contacts.html" data-ru="Контакты" data-en="Contacts">Контакты</a>
     </nav>
   </header>
 
+  <!-- 📋 Основной контент -->
   <main>
     <section>
       <h2 id="services-title">Разработка iOS-приложений под ключ</h2>
@@ -67,32 +103,36 @@
         Работаю по готовым макетам из Figma или аналогичных инструментов.
       </p>
 
-      <table>
-        <tr>
-          <th>Услуга</th>
-          <th>Описание</th>
-          <th>Цена (₽ / $)</th>
-        </tr>
-        <tr>
-          <td><strong>Верстка экрана (UI)</strong></td>
-          <td>Разработка интерфейса по макету без бизнес-логики</td>
-          <td>5 000 – 10 000 ₽ / ≈ 60 $</td>
-        </tr>
-        <tr>
-          <td><strong>Экран с логикой</strong></td>
-          <td>Интерфейс + бизнес-логика (навигация, обработка действий)</td>
-          <td>10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
-        </tr>
-        <tr>
-          <td><strong>Экран с логикой и сетью</strong></td>
-          <td>Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
-          <td>от 15 000 ₽ / от 160 $</td>
-        </tr>
-        <tr>
-          <td><strong>Приложение под ключ по макету</strong></td>
-          <td>Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
-          <td>от 40 000 ₽ / от 500 $</td>
-        </tr>
+      <table id="services-table">
+        <thead>
+          <tr>
+            <th>Услуга</th>
+            <th>Описание</th>
+            <th>Цена (₽ / $)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Услуга" id="service1-name"><strong>Верстка экрана (UI)</strong></td>
+            <td data-label="Описание" id="service1-desc">Разработка интерфейса по макету без бизнес-логики</td>
+            <td data-label="Цена" id="service1-price">5 000 – 10 000 ₽ / ≈ 60 $</td>
+          </tr>
+          <tr>
+            <td data-label="Услуга" id="service2-name"><strong>Экран с логикой</strong></td>
+            <td data-label="Описание" id="service2-desc">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
+            <td data-label="Цена" id="service2-price">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
+          </tr>
+          <tr>
+            <td data-label="Услуга" id="service3-name"><strong>Экран с логикой и сетью</strong></td>
+            <td data-label="Описание" id="service3-desc">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
+            <td data-label="Цена" id="service3-price">от 15 000 ₽ / от 160 $</td>
+          </tr>
+          <tr>
+            <td data-label="Услуга" id="service4-name"><strong>Приложение под ключ по макету</strong></td>
+            <td data-label="Описание" id="service4-desc">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
+            <td data-label="Цена" id="service4-price">от 40 000 ₽ / от 500 $</td>
+          </tr>
+        </tbody>
       </table>
 
       <p class="note" id="note">
@@ -102,52 +142,97 @@
     </section>
   </main>
 
-  <footer>
+  <!-- ⚓ Футер -->
+  <footer id="footer">
     © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
+  <!-- 📜 Скрипт -->
   <script>
     const langData = {
       ru: {
         servicesTitle: "Разработка iOS-приложений под ключ",
         servicesSubtitle: "Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны. Работаю по готовым макетам из Figma или аналогичных инструментов.",
         note: "💬 Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>Сроки и детали обсуждаются индивидуально.",
-        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
+        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕",
+        table: [
+          ["Верстка экрана (UI)", "Разработка интерфейса по макету без бизнес-логики", "5 000 – 10 000 ₽ / ≈ 60 $"],
+          ["Экран с логикой", "Интерфейс + бизнес-логика (навигация, обработка действий)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
+          ["Экран с логикой и сетью", "Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)", "от 15 000 ₽ / от 160 $"],
+          ["Приложение под ключ по макету", "Полная разработка по дизайну: верстка, логика, сеть, публикация", "от 40 000 ₽ / от 500 $"]
+        ]
       },
       en: {
         servicesTitle: "iOS App Development",
-        servicesSubtitle: "I develop native iOS apps for iPhone and iPad — from single screens to full products. Work is based on provided Figma designs.",
-        note: "💬 Pricing depends on complexity, number of screens, and backend presence.<br>Timelines and details are discussed individually.",
-        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
+        servicesSubtitle: "I develop native iPhone and iPad apps — from single screens to full-scale projects. Work is based on your Figma or equivalent design files.",
+        note: "💬 Pricing depends on project complexity, screen count, and backend requirements.<br>Timelines and scope are discussed individually.",
+        footer: "© 2025 Dmitrii Seitsman — built with Swift and good coffee ☕",
+        table: [
+          ["Screen layout (UI only)", "Building a static interface based on design, no business logic", "5 000 – 10 000 ₽ / ≈ 60 $"],
+          ["Screen with logic", "UI + business logic (navigation, user actions handling)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
+          ["Screen with logic & networking", "Includes API integration or local storage (SwiftData, Core Data)", "from 15 000 ₽ / from 160 $"],
+          ["Full app development", "Complete app based on design: UI, logic, networking, App Store setup", "from 40 000 ₽ / from 500 $"]
+        ]
       }
     };
 
     const elements = {
-      servicesTitle: document.getElementById("services-title"),
-      servicesSubtitle: document.getElementById("services-subtitle"),
+      title: document.getElementById("services-title"),
+      subtitle: document.getElementById("services-subtitle"),
       note: document.getElementById("note"),
-      footer: document.querySelector("footer")
+      footer: document.getElementById("footer")
     };
 
-    const btnEn = document.getElementById("btn-en");
     const btnRu = document.getElementById("btn-ru");
+    const btnEn = document.getElementById("btn-en");
+    const rows = [
+      ["service1-name", "service1-desc", "service1-price"],
+      ["service2-name", "service2-desc", "service2-price"],
+      ["service3-name", "service3-desc", "service3-price"],
+      ["service4-name", "service4-desc", "service4-price"]
+    ];
+    const navLinks = document.querySelectorAll(".main-nav a");
 
     function setLanguage(lang) {
       localStorage.setItem("lang", lang);
       const t = langData[lang];
-      for (const key in t) {
-        if (elements[key]) elements[key].innerHTML = t[key];
-      }
-      btnEn.classList.toggle("active", lang === "en");
-      btnRu.classList.toggle("active", lang === "ru");
       document.documentElement.lang = lang;
+      document.title = t.servicesTitle + " — " + (lang === "ru" ? "Дмитрий Сейцман" : "Dmitrii Seitsman");
+
+      elements.title.innerHTML = t.servicesTitle;
+      elements.subtitle.innerHTML = t.servicesSubtitle;
+      elements.note.innerHTML = t.note;
+      elements.footer.innerHTML = t.footer;
+
+      // таблица
+      rows.forEach((ids, i) => {
+        const [nameId, descId, priceId] = ids;
+        document.getElementById(nameId).innerHTML = "<strong>" + t.table[i][0] + "</strong>";
+        document.getElementById(descId).innerHTML = t.table[i][1];
+        document.getElementById(priceId).innerHTML = t.table[i][2];
+      });
+
+      // навигация
+      navLinks.forEach((link) => {
+        const text = link.getAttribute(`data-${lang}`);
+        if (text) link.textContent = text;
+      });
+
+      btnRu.classList.toggle("active", lang === "ru");
+      btnEn.classList.toggle("active", lang === "en");
     }
 
     const savedLang = localStorage.getItem("lang") || "ru";
     setLanguage(savedLang);
-
-    btnEn.addEventListener("click", () => setLanguage("en"));
     btnRu.addEventListener("click", () => setLanguage("ru"));
+    btnEn.addEventListener("click", () => setLanguage("en"));
+
+    // 🍔 Гамбургер меню
+    const menuToggle = document.getElementById("menu-toggle");
+    const mainNav = document.getElementById("main-nav");
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+    });
   </script>
 
 </body>

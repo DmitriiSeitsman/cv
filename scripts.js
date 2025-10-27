@@ -1,6 +1,6 @@
+// 🌐 scripts.js — переключатель языка и мобильное меню
 
-// 🌐 scripts.js — общий переключатель языка для всего сайта
-
+// === Переключатель языка ===
 const langData = {
   ru: {
     title: "Дмитрий Сейцман — iOS Разработчик",
@@ -9,7 +9,7 @@ const langData = {
   en: {
     title: "Dmitrii Seitsman — iOS Developer",
     footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕",
-  }
+  },
 };
 
 // Получаем кнопки
@@ -39,3 +39,31 @@ function setLanguage(lang) {
   const footer = document.querySelector("footer");
   if (footer) footer.textContent = langData[lang].footer;
 }
+
+// === Мобильное меню ===
+(function () {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-nav");
+  if (!toggle || !nav) return;
+
+  const closeMenu = () => {
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Закрываем меню при клике на ссылку
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) closeMenu();
+  });
+
+  // Автоматически закрываем меню при переходе на десктоп
+  const mq = window.matchMedia("(min-width: 769px)");
+  mq.addEventListener?.("change", (e) => {
+    if (e.matches) closeMenu();
+  });
+})();

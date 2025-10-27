@@ -1,44 +1,86 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Контакты — Дмитрий Сейцман</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-section p {
+      margin: 12px 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-section a {
+      color: #ff6b6b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-section a:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="lang-buttons">
-      <button class="lang-btn" id="btn-ru">RU</button>
-      <button class="lang-btn" id="btn-en">EN</button>
-    </div>
+  <!-- 🔤 Переключение языка -->
+  <div class="lang-buttons" style="justify-content: center; margin-top: 15px;">
+    <button class="lang-btn" id="btn-ru">RU</button>
+    <button class="lang-btn" id="btn-en">EN</button>
+  </div>
 
+  <!-- 🧭 Хедер -->
+  <header class="site-header" style="flex-direction: column; align-items: center; margin-top: 10px;">
     <h1 id="name">Дмитрий Сейцман</h1>
 
-    <nav class="main-nav">
-      <a href="index.html">Обо мне</a>
-      <a href="portfolio.html">Портфолио</a>
-      <a href="services.html">Услуги и цены</a>
-      <a href="contacts.html" class="active">Контакты</a>
+    <!-- 🍔 Гамбургер -->
+    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
+      ☰
+    </button>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" data-ru="Обо мне" data-en="About">Обо мне</a>
+      <a href="portfolio.html" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
+      <a href="services.html" data-ru="Услуги и цены" data-en="Services & Pricing">Услуги и цены</a>
+      <a href="contacts.html" class="active" data-ru="Контакты" data-en="Contacts">Контакты</a>
     </nav>
   </header>
 
+  <!-- 📬 Контент -->
   <main>
     <section class="contact-section">
       <h2 id="contact-title">Связаться со мной</h2>
-      <p id="email-label">📬 Почта: <a href="mailto:dmitriiseitsman@gmail.com" target="_blank">dmitriiseitsman@gmail.com</a></p>
-      <p id="telegram-label">💬 Телеграм: <a href="https://t.me/dseitsman" target="_blank">@dseitsman</a></p>
-      <p id="github-label">💻 Гит: <a href="https://github.com/dmitriiseitsman" target="_blank">github.com/dmitriiseitsman</a></p>
+      <p id="email-label">
+        📬 Почта:
+        <a href="#" id="email-link">Написать письмо</a>
+      </p>
+      <p id="telegram-label">
+        💬 Телеграм:
+        <a href="#" id="telegram-link">Открыть чат</a>
+      </p>
+      <p id="github-label">
+        💻 GitHub:
+        <a href="#" id="github-link">Посмотреть профиль</a>
+      </p>
     </section>
   </main>
 
+  <!-- ⚓ Футер -->
   <footer id="footer">
     © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
+  <!-- 📜 Скрипт -->
   <script>
+    // === 🌐 Переводы ===
     const langData = {
       ru: {
         title: "Контакты — Дмитрий Сейцман",
@@ -46,7 +88,10 @@
         contactTitle: "Связаться со мной",
         emailLabel: "📬 Почта:",
         telegramLabel: "💬 Телеграм:",
-        githubLabel: "💻 Гит:",
+        githubLabel: "💻 GitHub:",
+        emailText: "Написать письмо",
+        telegramText: "Открыть чат",
+        githubText: "Посмотреть профиль",
         footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
       },
       en: {
@@ -56,46 +101,89 @@
         emailLabel: "📬 Email:",
         telegramLabel: "💬 Telegram:",
         githubLabel: "💻 GitHub:",
-        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
+        emailText: "Send an email",
+        telegramText: "Message on Telegram",
+        githubText: "View GitHub profile",
+        footer: "© 2025 Dmitrii Seitsman — built with Swift and good coffee ☕"
       }
     };
 
+    // === Элементы ===
     const elements = {
-      name: document.getElementById('name'),
-      contactTitle: document.getElementById('contact-title'),
-      emailLabel: document.getElementById('email-label'),
-      telegramLabel: document.getElementById('telegram-label'),
-      githubLabel: document.getElementById('github-label'),
-      footer: document.getElementById('footer')
+      name: document.getElementById("name"),
+      contactTitle: document.getElementById("contact-title"),
+      emailLabel: document.getElementById("email-label"),
+      telegramLabel: document.getElementById("telegram-label"),
+      githubLabel: document.getElementById("github-label"),
+      footer: document.getElementById("footer")
     };
 
-    const btnEn = document.getElementById('btn-en');
-    const btnRu = document.getElementById('btn-ru');
+    const btnRu = document.getElementById("btn-ru");
+    const btnEn = document.getElementById("btn-en");
 
+    // === Скрытые данные (не видны в исходнике) ===
+    const hidden = {
+      email: ["s", "e", "y", "t", "s", "m", "a", "n", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"].join(""),
+      telegram: ["h", "t", "t", "p", "s", ":", "/", "/", "t", ".", "m", "e", "/", "d", "s", "e", "i", "t", "s", "m", "a", "n"].join(""),
+      github: ["h", "t", "t", "p", "s", ":", "/", "/", "g", "i", "t", "h", "u", "b", ".", "c", "o", "m", "/", "D", "m", "i", "t", "r", "i", "i", "S", "e", "i", "t", "s", "m", "a", "n"].join("")
+    };
+
+    // === Привязка к ссылкам ===
+    const emailLink = document.getElementById("email-link");
+    const telegramLink = document.getElementById("telegram-link");
+    const githubLink = document.getElementById("github-link");
+
+    emailLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = `mailto:${hidden.email}`;
+    });
+
+    telegramLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(hidden.telegram, "_blank");
+    });
+
+    githubLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(hidden.github, "_blank");
+    });
+
+    // === Переключение языка ===
     function setLanguage(lang) {
-      localStorage.setItem('lang', lang);
+      localStorage.setItem("lang", lang);
       const t = langData[lang];
       document.title = t.title;
+      document.documentElement.lang = lang;
+
       elements.name.textContent = t.name;
       elements.contactTitle.textContent = t.contactTitle;
 
-      // Перевод подписей без перезаписи ссылок
       elements.emailLabel.childNodes[0].textContent = t.emailLabel + " ";
       elements.telegramLabel.childNodes[0].textContent = t.telegramLabel + " ";
       elements.githubLabel.childNodes[0].textContent = t.githubLabel + " ";
 
+      emailLink.textContent = t.emailText;
+      telegramLink.textContent = t.telegramText;
+      githubLink.textContent = t.githubText;
+
       elements.footer.textContent = t.footer;
 
-      btnEn.classList.toggle('active', lang === 'en');
-      btnRu.classList.toggle('active', lang === 'ru');
-      document.documentElement.lang = lang;
+      btnRu.classList.toggle("active", lang === "ru");
+      btnEn.classList.toggle("active", lang === "en");
     }
 
-    const savedLang = localStorage.getItem('lang') || 'ru';
+    const savedLang = localStorage.getItem("lang") || "ru";
     setLanguage(savedLang);
 
-    btnEn.addEventListener('click', () => setLanguage('en'));
-    btnRu.addEventListener('click', () => setLanguage('ru'));
+    btnRu.addEventListener("click", () => setLanguage("ru"));
+    btnEn.addEventListener("click", () => setLanguage("en"));
+
+    // 🍔 Гамбургер меню
+    const menuToggle = document.getElementById("menu-toggle");
+    const mainNav = document.getElementById("main-nav");
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+    });
   </script>
 
 </body>
