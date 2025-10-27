@@ -65,19 +65,22 @@
     }
 
     .screenshot-grid img {
-      width: 240px;
-      border-radius: 12px;
-      background: #fff;
-      padding: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
+  width: 240px;
+  border-radius: 12px;
+  background: #ff6b6b;             /* фирменный фон */
+  padding: 8px;                    /* отступ внутри карточки */
+  border: 2px solid #ffa3a3;       /* светло-розовая рамка */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
 
-    .screenshot-grid img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-    }
+.screenshot-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  background: #ff8282;             /* чуть светлее при наведении */
+  border-color: #ffd2d2;           /* мягкая подсветка */
+}
 
     /* 🖼️ Полноэкранный просмотр */
     .lightbox {
