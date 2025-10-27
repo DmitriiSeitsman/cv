@@ -1,5 +1,6 @@
 // 🌐 scripts.js — общий header, переключатель языка и мобильное меню
 
+// ======= Переводы базовых элементов =======
 const langData = {
   ru: {
     title: "Дмитрий Сейцман — iOS Разработчик",
@@ -13,7 +14,7 @@ const langData = {
 
 let currentLang = localStorage.getItem("lang") || "ru";
 
-// ————— helpers —————
+// ======= Вспомогательные функции =======
 function setActiveNav() {
   const here = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".main-nav a").forEach((a) => {
@@ -22,17 +23,18 @@ function setActiveNav() {
   });
 }
 
+// === Переключение языка ===
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
   document.documentElement.lang = lang;
 
-  // title + footer
+  // Обновляем title + footer
   document.title = langData[lang].title;
   const footer = document.querySelector("footer");
   if (footer) footer.textContent = langData[lang].footer;
 
-  // активные языковые кнопки
+  // Активные кнопки
   const btnRu = document.getElementById("btn-ru");
   const btnEn = document.getElementById("btn-en");
   if (btnRu && btnEn) {
@@ -40,32 +42,51 @@ function setLanguage(lang) {
     btnEn.classList.toggle("active", lang === "en");
   }
 
-  // перевод пунктов меню по data-атрибутам
+  // Перевод пунктов меню по data-атрибутам
   document.querySelectorAll(".main-nav a").forEach((link) => {
     const text = link.getAttribute(`data-${lang}`);
     if (text) link.textContent = text;
   });
 
-  // оповестим страницы, чтобы они обновили свой локальный текст
+  // Оповестим страницы, чтобы они обновили локальный текст
   document.dispatchEvent(new CustomEvent("langchange", { detail: { lang } }));
 }
 
+// === Обработка кнопок RU / EN ===
+function wireLangButtons() {
+  const btnRu = document.getElementById("btn-ru");
+  const btnEn = document.getElementById("btn-en");
+  btnRu?.addEventListener("click", () => setLanguage("ru"));
+  btnEn?.addEventListener("click", () => setLanguage("en"));
+}
+
+// === Мобильное меню с оверлеем, выезжающее снизу ===
 function initMobileMenu() {
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".main-nav");
-  if (!toggle || !nav) return;
+  const overlay = document.getElementById("nav-overlay");
+  if (!toggle || !nav || !overlay) return;
+
+  const openMenu = () => {
+    nav.classList.add("open");
+    overlay.classList.add("active");
+    document.body.classList.add("menu-open");
+    toggle.setAttribute("aria-expanded", "true");
+  };
 
   const closeMenu = () => {
     nav.classList.remove("open");
+    overlay.classList.remove("active");
+    document.body.classList.remove("menu-open");
     toggle.setAttribute("aria-expanded", "false");
   };
 
   toggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
+    const isOpen = nav.classList.contains("open");
+    isOpen ? closeMenu() : openMenu();
   });
 
-  // Закрыть по клику на ссылку
+  overlay.addEventListener("click", closeMenu);
   nav.addEventListener("click", (e) => {
     if (e.target.closest("a")) closeMenu();
   });
@@ -79,18 +100,10 @@ function initMobileMenu() {
   }
 }
 
-function wireLangButtons() {
-  const btnRu = document.getElementById("btn-ru");
-  const btnEn = document.getElementById("btn-en");
-  btnRu?.addEventListener("click", () => setLanguage("ru"));
-  btnEn?.addEventListener("click", () => setLanguage("en"));
-}
-
+// === Подключение общего header.html ===
 async function ensureHeaderLoaded() {
-  // если header уже есть — ничего не грузим
-  if (document.querySelector("header.site-header")) return;
+  if (document.querySelector("header.site-header")) return; // уже есть
 
-  // создаём контейнер в самом верху <body>
   const host = document.createElement("div");
   document.body.insertBefore(host, document.body.firstChild);
 
@@ -103,11 +116,11 @@ async function ensureHeaderLoaded() {
   }
 }
 
-// ————— bootstrap —————
+// ======= Bootstrap =======
 document.addEventListener("DOMContentLoaded", async () => {
-  await ensureHeaderLoaded();  // загрузим общий header, если его нет
-  wireLangButtons();           // обработчики RU/EN
-  initMobileMenu();            // бургер
-  setActiveNav();              // подсветка текущей страницы
-  setLanguage(currentLang);    // применим язык (title, footer, меню) и дернём langchange
+  await ensureHeaderLoaded(); // загрузим общий header
+  wireLangButtons();          // повесим обработчики
+  initMobileMenu();           // инициализируем бургер
+  setActiveNav();             // подсветка текущего раздела
+  setLanguage(currentLang);   // применим язык
 });

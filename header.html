@@ -1,16 +1,21 @@
 <!-- header.html -->
 <header class="site-header">
-  <div class="lang-buttons">
-    <button class="lang-btn" id="btn-ru">RU</button>
-    <button class="lang-btn" id="btn-en">EN</button>
+  <!-- 🧭 Верхняя панель с кнопками -->
+  <div class="header-controls">
+    <div class="lang-buttons">
+      <button class="lang-btn" id="btn-ru">RU</button>
+      <button class="lang-btn" id="btn-en">EN</button>
+    </div>
+
+    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
+      ☰
+    </button>
   </div>
 
+  <!-- 🎯 Заголовок -->
   <h1 id="name">Дмитрий Сейцман</h1>
 
-  <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
-    ☰
-  </button>
-
+  <!-- 🍔 Навигация (выезжающая снизу) -->
   <nav class="main-nav" id="main-nav">
     <a href="index.html" data-ru="Обо мне" data-en="About">Обо мне</a>
     <a href="portfolio.html" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
@@ -18,3 +23,6 @@
     <a href="contacts.html" data-ru="Контакты" data-en="Contacts">Контакты</a>
   </nav>
 </header>
+
+<!-- 🌫️ Оверлей для затемнения и закрытия меню -->
+<div class="nav-overlay" id="nav-overlay"></div>

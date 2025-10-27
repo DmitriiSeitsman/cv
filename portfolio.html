@@ -9,29 +9,7 @@
 </head>
 <body>
 
-  <!-- 🔤 Переключатель языка -->
-  <div class="lang-buttons" style="justify-content: center; margin-top: 15px;">
-    <button class="lang-btn" id="btn-ru">RU</button>
-    <button class="lang-btn" id="btn-en">EN</button>
-  </div>
-
-  <!-- 🧭 Хедер -->
-  <header class="site-header" style="flex-direction: column; align-items: center; margin-top: 10px;">
-    <h1 id="name">Дмитрий Сейцман</h1>
-
-    <!-- Гамбургер -->
-    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
-      ☰
-    </button>
-
-    <!-- Навигация -->
-    <nav class="main-nav" id="main-nav">
-      <a href="index.html" data-ru="Обо мне" data-en="About">Обо мне</a>
-      <a href="portfolio.html" class="active" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
-      <a href="services.html" data-ru="Услуги и цены" data-en="Services & Pricing">Услуги и цены</a>
-      <a href="contacts.html" data-ru="Контакты" data-en="Contacts">Контакты</a>
-    </nav>
-  </header>
+  <!-- 💡 header.html загружается динамически через scripts.js -->
 
   <!-- 📂 Основной контент -->
   <main>
@@ -78,85 +56,43 @@
     © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
-  <!-- 📜 Скрипт -->
+  <!-- 📜 Скрипты -->
+  <script src="scripts.js"></script>
   <script>
-    const langData = {
+    // 🌐 Переводы только для контента этой страницы
+    const pageLang = {
       ru: {
         title: "Портфолио — Дмитрий Сейцман",
-        name: "Дмитрий Сейцман",
         portfolioTitle: "Портфолио",
         portfolioTagline: "Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.",
-        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕",
-        links: "Посмотреть на GitHub"
+        githubLink: "Посмотреть на GitHub"
       },
       en: {
         title: "Portfolio — Dmitrii Seitsman",
-        name: "Dmitrii Seitsman",
         portfolioTitle: "Portfolio",
         portfolioTagline: "My iOS projects — from study apps to advanced pet projects with architecture and backend.",
-        footer: "© 2025 Dmitrii Seitsman — built with Swift and good coffee ☕",
-        links: "View on GitHub"
+        githubLink: "View on GitHub"
       }
     };
 
-    const elements = {
-      name: document.getElementById("name"),
-      portfolioTitle: document.getElementById("portfolio-title"),
-      portfolioTagline: document.getElementById("portfolio-tagline"),
-      footer: document.getElementById("footer")
-    };
-
-    const btnRu = document.getElementById("btn-ru");
-    const btnEn = document.getElementById("btn-en");
-    const links = document.querySelectorAll(".project-card a");
-    const projects = document.querySelectorAll(".project-card .desc");
-    const navLinks = document.querySelectorAll(".main-nav a");
-
-    function setLanguage(lang) {
-      localStorage.setItem("lang", lang);
-      const t = langData[lang];
+    function applyPageLang(lang) {
+      const t = pageLang[lang];
       document.title = t.title;
-      document.documentElement.lang = lang;
+      document.getElementById("portfolio-title").innerHTML = t.portfolioTitle;
+      document.getElementById("portfolio-tagline").innerHTML = t.portfolioTagline;
 
-      // Общие элементы
-      elements.name.innerHTML = t.name;
-      elements.portfolioTitle.innerHTML = t.portfolioTitle;
-      elements.portfolioTagline.innerHTML = t.portfolioTagline;
-      elements.footer.innerHTML = t.footer;
-
-      btnRu.classList.toggle("active", lang === "ru");
-      btnEn.classList.toggle("active", lang === "en");
-
-      // Ссылки на GitHub
-      links.forEach((link) => (link.textContent = t.links));
-
-      // Перевод описаний проектов
-      projects.forEach((desc) => {
-        const ru = desc.parentElement.getAttribute("data-ru-desc");
-        const en = desc.parentElement.getAttribute("data-en-desc");
-        desc.textContent = lang === "ru" ? ru : en;
-      });
-
-      // Перевод навигации
-      navLinks.forEach((link) => {
-        const text = link.getAttribute(`data-${lang}`);
-        if (text) link.textContent = text;
+      // обновляем описания и ссылки
+      document.querySelectorAll(".project-card").forEach((card) => {
+        const desc = card.querySelector(".desc");
+        desc.textContent = card.getAttribute(`data-${lang}-desc`);
+        card.querySelector("a").textContent = t.githubLink;
       });
     }
 
-    const savedLang = localStorage.getItem("lang") || "ru";
-    setLanguage(savedLang);
-
-    btnRu.addEventListener("click", () => setLanguage("ru"));
-    btnEn.addEventListener("click", () => setLanguage("en"));
-
-    // 🍔 Гамбургер меню
-    const menuToggle = document.getElementById("menu-toggle");
-    const mainNav = document.getElementById("main-nav");
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
-    });
+    // применяем язык при загрузке и слушаем переключения
+    const initial = localStorage.getItem("lang") || "ru";
+    applyPageLang(initial);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
   </script>
-
 </body>
 </html>

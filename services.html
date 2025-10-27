@@ -71,28 +71,7 @@
 </head>
 <body>
 
-  <!-- 🔤 Переключение языка -->
-  <div class="lang-buttons" style="justify-content: center; margin-top: 15px;">
-    <button class="lang-btn active" id="btn-ru">RU</button>
-    <button class="lang-btn" id="btn-en">EN</button>
-  </div>
-
-  <!-- 🧭 Хедер -->
-  <header class="site-header" style="flex-direction: column; align-items: center; margin-top: 10px;">
-    <h1>Дмитрий Сейцман</h1>
-
-    <!-- 🍔 Гамбургер -->
-    <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
-      ☰
-    </button>
-
-    <nav class="main-nav" id="main-nav">
-      <a href="index.html" data-ru="Обо мне" data-en="About">Обо мне</a>
-      <a href="portfolio.html" data-ru="Портфолио" data-en="Portfolio">Портфолио</a>
-      <a href="services.html" class="active" data-ru="Услуги и цены" data-en="Services & Pricing">Услуги и цены</a>
-      <a href="contacts.html" data-ru="Контакты" data-en="Contacts">Контакты</a>
-    </nav>
-  </header>
+  <!-- 💡 header.html загружается динамически через scripts.js -->
 
   <!-- 📋 Основной контент -->
   <main>
@@ -147,14 +126,15 @@
     © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
-  <!-- 📜 Скрипт -->
+  <!-- 📜 Скрипты -->
+  <script src="scripts.js"></script>
   <script>
-    const langData = {
+    const pageLang = {
       ru: {
+        title: "Услуги и цены — Дмитрий Сейцман",
         servicesTitle: "Разработка iOS-приложений под ключ",
         servicesSubtitle: "Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны. Работаю по готовым макетам из Figma или аналогичных инструментов.",
         note: "💬 Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>Сроки и детали обсуждаются индивидуально.",
-        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕",
         table: [
           ["Верстка экрана (UI)", "Разработка интерфейса по макету без бизнес-логики", "5 000 – 10 000 ₽ / ≈ 60 $"],
           ["Экран с логикой", "Интерфейс + бизнес-логика (навигация, обработка действий)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
@@ -163,77 +143,43 @@
         ]
       },
       en: {
+        title: "Services & Pricing — Dmitrii Seitsman",
         servicesTitle: "iOS App Development",
-        servicesSubtitle: "I develop native iPhone and iPad apps — from single screens to full-scale projects. Work is based on your Figma or equivalent design files.",
+        servicesSubtitle: "I develop native iPhone and iPad apps — from full projects to standalone screens. Work is based on ready designs (Figma or similar).",
         note: "💬 Pricing depends on project complexity, screen count, and backend requirements.<br>Timelines and scope are discussed individually.",
-        footer: "© 2025 Dmitrii Seitsman — built with Swift and good coffee ☕",
         table: [
           ["Screen layout (UI only)", "Building a static interface based on design, no business logic", "5 000 – 10 000 ₽ / ≈ 60 $"],
           ["Screen with logic", "UI + business logic (navigation, user actions handling)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
           ["Screen with logic & networking", "Includes API integration or local storage (SwiftData, Core Data)", "from 15 000 ₽ / from 160 $"],
-          ["Full app development", "Complete app based on design: UI, logic, networking, App Store setup", "from 40 000 ₽ / from 500 $"]
+          ["Full app development", "Complete development: UI, logic, network layer, and App Store submission", "from 40 000 ₽ / from 500 $"]
         ]
       }
     };
 
-    const elements = {
-      title: document.getElementById("services-title"),
-      subtitle: document.getElementById("services-subtitle"),
-      note: document.getElementById("note"),
-      footer: document.getElementById("footer")
-    };
+    function applyPageLang(lang) {
+      const t = pageLang[lang];
+      document.title = t.title;
+      document.getElementById("services-title").innerHTML = t.servicesTitle;
+      document.getElementById("services-subtitle").innerHTML = t.servicesSubtitle;
+      document.getElementById("note").innerHTML = t.note;
 
-    const btnRu = document.getElementById("btn-ru");
-    const btnEn = document.getElementById("btn-en");
-    const rows = [
-      ["service1-name", "service1-desc", "service1-price"],
-      ["service2-name", "service2-desc", "service2-price"],
-      ["service3-name", "service3-desc", "service3-price"],
-      ["service4-name", "service4-desc", "service4-price"]
-    ];
-    const navLinks = document.querySelectorAll(".main-nav a");
-
-    function setLanguage(lang) {
-      localStorage.setItem("lang", lang);
-      const t = langData[lang];
-      document.documentElement.lang = lang;
-      document.title = t.servicesTitle + " — " + (lang === "ru" ? "Дмитрий Сейцман" : "Dmitrii Seitsman");
-
-      elements.title.innerHTML = t.servicesTitle;
-      elements.subtitle.innerHTML = t.servicesSubtitle;
-      elements.note.innerHTML = t.note;
-      elements.footer.innerHTML = t.footer;
-
-      // таблица
-      rows.forEach((ids, i) => {
-        const [nameId, descId, priceId] = ids;
-        document.getElementById(nameId).innerHTML = "<strong>" + t.table[i][0] + "</strong>";
-        document.getElementById(descId).innerHTML = t.table[i][1];
-        document.getElementById(priceId).innerHTML = t.table[i][2];
+      // обновляем таблицу
+      const ids = [
+        ["service1-name", "service1-desc", "service1-price"],
+        ["service2-name", "service2-desc", "service2-price"],
+        ["service3-name", "service3-desc", "service3-price"],
+        ["service4-name", "service4-desc", "service4-price"]
+      ];
+      ids.forEach((row, i) => {
+        document.getElementById(row[0]).innerHTML = "<strong>" + t.table[i][0] + "</strong>";
+        document.getElementById(row[1]).innerHTML = t.table[i][1];
+        document.getElementById(row[2]).innerHTML = t.table[i][2];
       });
-
-      // навигация
-      navLinks.forEach((link) => {
-        const text = link.getAttribute(`data-${lang}`);
-        if (text) link.textContent = text;
-      });
-
-      btnRu.classList.toggle("active", lang === "ru");
-      btnEn.classList.toggle("active", lang === "en");
     }
 
-    const savedLang = localStorage.getItem("lang") || "ru";
-    setLanguage(savedLang);
-    btnRu.addEventListener("click", () => setLanguage("ru"));
-    btnEn.addEventListener("click", () => setLanguage("en"));
-
-    // 🍔 Гамбургер меню
-    const menuToggle = document.getElementById("menu-toggle");
-    const mainNav = document.getElementById("main-nav");
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
-    });
+    const initial = localStorage.getItem("lang") || "ru";
+    applyPageLang(initial);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
   </script>
-
 </body>
 </html>
