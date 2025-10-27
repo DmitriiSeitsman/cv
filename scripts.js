@@ -1,6 +1,5 @@
 // 🌐 scripts.js — общий header, переключатель языка и мобильное меню
 
-// ======= Переводы базовых элементов =======
 const langData = {
   ru: {
     title: "Дмитрий Сейцман — iOS Разработчик",
@@ -14,7 +13,7 @@ const langData = {
 
 let currentLang = localStorage.getItem("lang") || "ru";
 
-// ======= Вспомогательные функции =======
+// ————— helpers —————
 function setActiveNav() {
   const here = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".main-nav a").forEach((a) => {
@@ -23,18 +22,23 @@ function setActiveNav() {
   });
 }
 
-// === Переключение языка ===
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
   document.documentElement.lang = lang;
 
-  // Обновляем title + footer
+  // title + footer
   document.title = langData[lang].title;
   const footer = document.querySelector("footer");
   if (footer) footer.textContent = langData[lang].footer;
 
-  // Активные кнопки
+  // 🔤 имя в заголовке (перевод)
+  const nameEl = document.getElementById("name");
+  if (nameEl) {
+    nameEl.textContent = lang === "ru" ? "Дмитрий Сейцман" : "Dmitrii Seitsman";
+  }
+
+  // активные языковые кнопки
   const btnRu = document.getElementById("btn-ru");
   const btnEn = document.getElementById("btn-en");
   if (btnRu && btnEn) {
@@ -42,42 +46,33 @@ function setLanguage(lang) {
     btnEn.classList.toggle("active", lang === "en");
   }
 
-  // Перевод пунктов меню по data-атрибутам
+  // перевод пунктов меню по data-атрибутам
   document.querySelectorAll(".main-nav a").forEach((link) => {
     const text = link.getAttribute(`data-${lang}`);
     if (text) link.textContent = text;
   });
 
-  // Оповестим страницы, чтобы они обновили локальный текст
+  // оповестим страницы, чтобы они обновили свой локальный текст
   document.dispatchEvent(new CustomEvent("langchange", { detail: { lang } }));
 }
 
-// === Обработка кнопок RU / EN ===
-function wireLangButtons() {
-  const btnRu = document.getElementById("btn-ru");
-  const btnEn = document.getElementById("btn-en");
-  btnRu?.addEventListener("click", () => setLanguage("ru"));
-  btnEn?.addEventListener("click", () => setLanguage("en"));
-}
-
-// === Мобильное меню с оверлеем, выезжающее снизу ===
 function initMobileMenu() {
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".main-nav");
   const overlay = document.getElementById("nav-overlay");
-  if (!toggle || !nav || !overlay) return;
+  if (!toggle || !nav) return;
 
   const openMenu = () => {
     nav.classList.add("open");
-    overlay.classList.add("active");
     document.body.classList.add("menu-open");
+    overlay?.classList.add("active");
     toggle.setAttribute("aria-expanded", "true");
   };
 
   const closeMenu = () => {
     nav.classList.remove("open");
-    overlay.classList.remove("active");
     document.body.classList.remove("menu-open");
+    overlay?.classList.remove("active");
     toggle.setAttribute("aria-expanded", "false");
   };
 
@@ -86,12 +81,12 @@ function initMobileMenu() {
     isOpen ? closeMenu() : openMenu();
   });
 
-  overlay.addEventListener("click", closeMenu);
+  overlay?.addEventListener("click", closeMenu);
+
   nav.addEventListener("click", (e) => {
     if (e.target.closest("a")) closeMenu();
   });
 
-  // Сброс при переходе на десктоп (кроссбраузерно)
   const mq = window.matchMedia("(min-width: 769px)");
   if (mq.addEventListener) {
     mq.addEventListener("change", (e) => e.matches && closeMenu());
@@ -100,9 +95,15 @@ function initMobileMenu() {
   }
 }
 
-// === Подключение общего header.html ===
+function wireLangButtons() {
+  const btnRu = document.getElementById("btn-ru");
+  const btnEn = document.getElementById("btn-en");
+  btnRu?.addEventListener("click", () => setLanguage("ru"));
+  btnEn?.addEventListener("click", () => setLanguage("en"));
+}
+
 async function ensureHeaderLoaded() {
-  if (document.querySelector("header.site-header")) return; // уже есть
+  if (document.querySelector("header.site-header")) return;
 
   const host = document.createElement("div");
   document.body.insertBefore(host, document.body.firstChild);
@@ -116,11 +117,11 @@ async function ensureHeaderLoaded() {
   }
 }
 
-// ======= Bootstrap =======
+// ————— bootstrap —————
 document.addEventListener("DOMContentLoaded", async () => {
-  await ensureHeaderLoaded(); // загрузим общий header
-  wireLangButtons();          // повесим обработчики
-  initMobileMenu();           // инициализируем бургер
-  setActiveNav();             // подсветка текущего раздела
-  setLanguage(currentLang);   // применим язык
+  await ensureHeaderLoaded();  // загрузим общий header, если его нет
+  wireLangButtons();           // обработчики RU/EN
+  initMobileMenu();            // бургер
+  setActiveNav();              // подсветка текущей страницы
+  setLanguage(currentLang);    // применим язык (title, footer, имя, меню)
 });
