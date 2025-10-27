@@ -102,6 +102,7 @@ function wireLangButtons() {
   btnEn?.addEventListener("click", () => setLanguage("en"));
 }
 
+// ————— безопасная загрузка header —————
 async function ensureHeaderLoaded() {
   if (document.querySelector("header.site-header")) return;
 
@@ -110,10 +111,20 @@ async function ensureHeaderLoaded() {
 
   try {
     const res = await fetch("/header.html", { cache: "no-store" });
-    if (!res.ok) throw new Error("Failed to fetch header.html");
-    host.innerHTML = await res.text();
+
+    // GitHub Pages иногда отдаёт "opaque" (без .ok)
+    if (!res.ok && res.type !== "opaque") {
+      throw new Error(`Header fetch failed: ${res.status}`);
+    }
+
+    const html = await res.text();
+    if (!html.trim()) {
+      throw new Error("Header file is empty or not loaded");
+    }
+
+    host.innerHTML = html;
   } catch (err) {
-    console.error("Header load error:", err);
+    console.warn("⚠️ Header not loaded:", err);
   }
 }
 
