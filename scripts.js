@@ -3,11 +3,11 @@
 const langData = {
   ru: {
     title: "Дмитрий Сейцман — iOS Разработчик",
-    footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕",
+    footer: "© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. 🙂",
   },
   en: {
     title: "Dmitrii Seitsman — iOS Developer",
-    footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕",
+    footer: "© 2025 Dmitrii Seitsman. Built with pure HTML, JS, and a pinch of AI. 🙂",
   },
 };
 
