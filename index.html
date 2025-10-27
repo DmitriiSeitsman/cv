@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dmitrii Seitsman — iOS Developer Portfolio</title>
-  <meta name="description" content="Dmitrii Seitsman — iOS developer portfolio site. Not just a CV — my Swift universe in one page." />
+  <title>Дмитрий Сейцман — iOS Разработчик</title>
+  <meta name="description" content="Дмитрий Сейцман — iOS-разработчик. Не просто резюме — моя Swift-вселенная на одной странице." />
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <style>
     :root {
@@ -26,9 +26,7 @@
       padding: 60px 20px;
       transition: all 0.3s ease;
     }
-    header {
-      text-align: center;
-    }
+    header { text-align: center; }
     h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
@@ -96,48 +94,48 @@
 <body>
 
   <div class="lang-buttons">
-    <button class="lang-btn active" id="btn-en">EN</button>
-    <button class="lang-btn" id="btn-ru">RU</button>
+    <button class="lang-btn" id="btn-en">EN</button>
+    <button class="lang-btn active" id="btn-ru">RU</button>
   </div>
 
   <header>
-    <h1 id="name">Dmitrii Seitsman</h1>
-    <p class="tagline" id="tagline">Not just a CV — my Swift universe in one page 🌌</p>
+    <h1 id="name">Дмитрий Сейцман</h1>
+    <p class="tagline" id="tagline">Не просто резюме — моя Swift-вселенная на одной странице 🌌</p>
   </header>
 
   <section id="about">
-    <h2 id="about-title">About</h2>
+    <h2 id="about-title">Обо мне</h2>
     <p id="about-text">
-      iOS developer with a passion for clean code, design precision, and smooth animations.<br>
-      I build SwiftUI and UIKit apps, integrate APIs, and sometimes even talk to Vapor. ✈️<br>
-      Former pilot — so I like when everything runs on schedule.
+      iOS-разработчик, увлечён чистым кодом, точным дизайном и плавными анимациями.<br>
+      Создаю приложения на SwiftUI и UIKit, интегрирую API и иногда даже общаюсь с Vapor. ✈️<br>
+      В прошлом пилот — поэтому люблю, когда всё по расписанию.
     </p>
   </section>
 
   <section id="projects">
-    <h2 id="projects-title">Projects</h2>
+    <h2 id="projects-title">Проекты</h2>
 
     <div class="project">
       <strong>TravelSchedule</strong><br>
       SwiftUI + Yandex API + Combine<br>
-      <a id="project1-link" href="https://github.com/dmitriiseitsman/TravelSchedule" target="_blank">View on GitHub</a>
+      <a id="project1-link" href="https://github.com/dmitriiseitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
     </div>
 
     <div class="project">
       <strong>Twone</strong><br>
       Custom UI + Vapor backend + Yandex Object Storage<br>
-      <a id="project2-link" href="https://github.com/dmitriiseitsman/Twone" target="_blank">View on GitHub</a>
+      <a id="project2-link" href="https://github.com/dmitriiseitsman/Twone" target="_blank">Посмотреть на GitHub</a>
     </div>
 
     <div class="project">
       <strong>ShoppingList</strong><br>
       SwiftData + MVVM + SwiftUI<br>
-      <a id="project3-link" href="https://github.com/dmitriiseitsman/ShoppingList" target="_blank">View on GitHub</a>
+      <a id="project3-link" href="https://github.com/dmitriiseitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
     </div>
   </section>
 
   <section id="contact">
-    <h2 id="contact-title">Contact</h2>
+    <h2 id="contact-title">Контакты</h2>
     <p id="contact-text">
       💬 <a href="https://t.me/dseitsman" target="_blank">@dseitsman</a><br>
       💻 <a href="https://github.com/dmitriiseitsman" target="_blank">GitHub</a>
@@ -145,12 +143,13 @@
   </section>
 
   <footer id="footer">
-    © 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕
+    © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
   <script>
     const langData = {
       en: {
+        name: "Dmitrii Seitsman",
         tagline: "Not just a CV — my Swift universe in one page 🌌",
         aboutTitle: "About",
         aboutText: `iOS developer with a passion for clean code, design precision, and smooth animations.<br>
@@ -164,6 +163,7 @@
         footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
       },
       ru: {
+        name: "Дмитрий Сейцман",
         tagline: "Не просто резюме — моя Swift-вселенная на одной странице 🌌",
         aboutTitle: "Обо мне",
         aboutText: `iOS-разработчик, увлечён чистым кодом, точным дизайном и плавными анимациями.<br>
@@ -174,11 +174,12 @@
         project2: "Посмотреть на GitHub",
         project3: "Посмотреть на GitHub",
         contactTitle: "Контакты",
-        footer: "© 2025 Дмитрий Сейцман"
+        footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
       }
     };
 
     const elements = {
+      name: document.getElementById('name'),
       tagline: document.getElementById('tagline'),
       aboutTitle: document.getElementById('about-title'),
       aboutText: document.getElementById('about-text'),
@@ -205,6 +206,9 @@
 
     btnEn.addEventListener('click', () => setLanguage('en'));
     btnRu.addEventListener('click', () => setLanguage('ru'));
+
+    // 🚀 При загрузке — сразу ставим русскую версию
+    window.addEventListener('DOMContentLoaded', () => setLanguage('ru'));
   </script>
 
 </body>
