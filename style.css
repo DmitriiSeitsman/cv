@@ -172,6 +172,11 @@ footer {
   margin-top: auto;
 }
 
+/* --- 💻 На больших экранах гамбургер скрыт --- */
+.menu-toggle {
+  display: none;
+}
+
 /* --- 📱 Мобильная адаптация --- */
 @media (max-width: 768px) {
   header.site-header {
@@ -189,6 +194,7 @@ footer {
     font-size: 1.8rem;
     cursor: pointer;
     margin: 10px 0;
+    z-index: 9999;
   }
 
   .main-nav {
@@ -205,9 +211,4 @@ footer {
   .main-nav.open {
     display: flex !important;
   }
-}
-
-/* --- 💻 На больших экранах гамбургер скрыт --- */
-.menu-toggle {
-  display: none;
 }
