@@ -177,24 +177,38 @@ footer {
   display: none;
 }
 
-/* --- 📱 Мобильная адаптация --- */
+/* --- 📱 Улучшенный мобильный хедер --- */
 @media (max-width: 768px) {
   header.site-header {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 15px 20px;
+    width: 100%;
+  }
+
+  header h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    white-space: nowrap;
+  }
+
+  .lang-buttons {
+    order: 1;
+    flex-shrink: 0;
   }
 
   .menu-toggle {
+    order: 3;
     display: block !important;
     background: none;
     border: none;
     color: #ff6b6b;
     font-size: 1.8rem;
     cursor: pointer;
-    margin: 10px 0;
-    z-index: 9999;
   }
 
   .main-nav {
