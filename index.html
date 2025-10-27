@@ -71,7 +71,7 @@
     .lang-buttons {
       position: absolute;
       top: 20px;
-      right: 20px;
+      left: 20px; /* теперь слева */
       display: flex;
       gap: 10px;
     }
@@ -94,8 +94,8 @@
 <body>
 
   <div class="lang-buttons">
-    <button class="lang-btn" id="btn-en">EN</button>
     <button class="lang-btn active" id="btn-ru">RU</button>
+    <button class="lang-btn" id="btn-en">EN</button>
   </div>
 
   <header>
@@ -116,21 +116,33 @@
     <h2 id="projects-title">Проекты</h2>
 
     <div class="project">
-      <strong>TravelSchedule</strong><br>
-      SwiftUI + Yandex API + Combine<br>
-      <a id="project1-link" href="https://github.com/dmitriiseitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
+      <strong>MovieQuiz</strong><br>
+      UIKit + MVC — викторина по фильмам<br>
+      <a id="project1-link" href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank">Посмотреть на GitHub</a>
     </div>
 
     <div class="project">
-      <strong>Twone</strong><br>
-      Custom UI + Vapor backend + Yandex Object Storage<br>
-      <a id="project2-link" href="https://github.com/dmitriiseitsman/Twone" target="_blank">Посмотреть на GitHub</a>
+      <strong>ImageFeed</strong><br>
+      MVP + Kingfisher — фото-лента в стиле Unsplash<br>
+      <a id="project2-link" href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank">Посмотреть на GitHub</a>
+    </div>
+
+    <div class="project">
+      <strong>Tracker</strong><br>
+      SwiftUI + Core Data — приложение для привычек<br>
+      <a id="project3-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank">Посмотреть на GitHub</a>
+    </div>
+
+    <div class="project">
+      <strong>TravelSchedule</strong><br>
+      SwiftUI + Combine + Yandex API — расписания путешествий<br>
+      <a id="project4-link" href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
     </div>
 
     <div class="project">
       <strong>ShoppingList</strong><br>
-      SwiftData + MVVM + SwiftUI<br>
-      <a id="project3-link" href="https://github.com/dmitriiseitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
+      SwiftData + MVVM + SwiftUI — список покупок<br>
+      <a id="project5-link" href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
     </div>
   </section>
 
@@ -138,7 +150,7 @@
     <h2 id="contact-title">Контакты</h2>
     <p id="contact-text">
       💬 <a href="https://t.me/dseitsman" target="_blank">@dseitsman</a><br>
-      💻 <a href="https://github.com/dmitriiseitsman" target="_blank">GitHub</a>
+      💻 <a href="https://github.com/DmitriiSeitsman" target="_blank">GitHub</a>
     </p>
   </section>
 
@@ -148,20 +160,6 @@
 
   <script>
     const langData = {
-      en: {
-        name: "Dmitrii Seitsman",
-        tagline: "Not just a CV — my Swift universe in one page 🌌",
-        aboutTitle: "About",
-        aboutText: `iOS developer with a passion for clean code, design precision, and smooth animations.<br>
-          I build SwiftUI and UIKit apps, integrate APIs, and sometimes even talk to Vapor. ✈️<br>
-          Former pilot — so I like when everything runs on schedule.`,
-        projectsTitle: "Projects",
-        project1: "View on GitHub",
-        project2: "View on GitHub",
-        project3: "View on GitHub",
-        contactTitle: "Contact",
-        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
-      },
       ru: {
         name: "Дмитрий Сейцман",
         tagline: "Не просто резюме — моя Swift-вселенная на одной странице 🌌",
@@ -173,8 +171,26 @@
         project1: "Посмотреть на GitHub",
         project2: "Посмотреть на GitHub",
         project3: "Посмотреть на GitHub",
+        project4: "Посмотреть на GitHub",
+        project5: "Посмотреть на GitHub",
         contactTitle: "Контакты",
         footer: "© 2025 Дмитрий Сейцман — создано на Swift и кофе ☕"
+      },
+      en: {
+        name: "Dmitrii Seitsman",
+        tagline: "Not just a CV — my Swift universe in one page 🌌",
+        aboutTitle: "About",
+        aboutText: `iOS developer passionate about clean code, design precision, and smooth animations.<br>
+          I build SwiftUI and UIKit apps, integrate APIs, and sometimes even talk to Vapor. ✈️<br>
+          Former pilot — so I like when everything runs on schedule.`,
+        projectsTitle: "Projects",
+        project1: "View on GitHub",
+        project2: "View on GitHub",
+        project3: "View on GitHub",
+        project4: "View on GitHub",
+        project5: "View on GitHub",
+        contactTitle: "Contact",
+        footer: "© 2025 Dmitrii Seitsman — Crafted with Swift energy and good coffee ☕"
       }
     };
 
@@ -187,6 +203,8 @@
       project1: document.getElementById('project1-link'),
       project2: document.getElementById('project2-link'),
       project3: document.getElementById('project3-link'),
+      project4: document.getElementById('project4-link'),
+      project5: document.getElementById('project5-link'),
       contactTitle: document.getElementById('contact-title'),
       footer: document.getElementById('footer')
     };
@@ -207,7 +225,7 @@
     btnEn.addEventListener('click', () => setLanguage('en'));
     btnRu.addEventListener('click', () => setLanguage('ru'));
 
-    // 🚀 При загрузке — сразу ставим русскую версию
+    // 🚀 по умолчанию — русская версия
     window.addEventListener('DOMContentLoaded', () => setLanguage('ru'));
   </script>
 
