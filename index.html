@@ -3,14 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Dmitrii Seitsman — iOS Developer</title>
 
   <!-- 🔍 SEO -->
   <meta name="description" content="Dmitrii Seitsman — iOS developer with an aviation background. Creating clean, reliable iOS apps using Swift, SwiftUI, UIKit, Combine, and MVVM." />
-  <meta name="keywords" content="iOS, Swift, SwiftUI, UIKit, MVVM, Combine, Core Data, SwiftData, Dmitrii Seitsman, iOS developer" />
+  <meta name="keywords" content="iOS разработчик, Swift, SwiftUI, UIKit, MVVM, Combine, Core Data, SwiftData, разработка приложений, Dmitrii Seitsman, iOS Developer" />
   <meta name="author" content="Dmitrii Seitsman" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b1e33" />
+  <meta name="language" content="Russian, English" />
+
+  <!-- 🌐 Мультиязычные версии -->
+  <link rel="alternate" href="https://seitsman.com/" hreflang="ru" />
+  <link rel="alternate" href="https://seitsman.com/en/" hreflang="en" />
+  <link rel="canonical" href="https://seitsman.com/" />
 
   <!-- 🧠 FAVICONS -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
@@ -18,11 +25,13 @@
   <link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png" />
 
   <!-- 🌐 Open Graph -->
+  <meta property="og:locale" content="ru_RU" />
   <meta property="og:title" content="Dmitrii Seitsman — iOS Developer" />
-  <meta property="og:description" content="iOS developer creating clean, elegant, and functional Swift apps. Explore my portfolio and projects." />
+  <meta property="og:description" content="Разработка iOS-приложений на Swift, SwiftUI и UIKit. Опыт, авиация и внимание к деталям." />
   <meta property="og:image" content="https://seitsman.com/images/preview.png" />
   <meta property="og:url" content="https://seitsman.com/" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dmitrii Seitsman Portfolio" />
 
   <!-- 🐦 Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +52,12 @@
       "https://t.me/dseitsman"
     ],
     "description": "iOS developer building apps with Swift, SwiftUI, UIKit, MVVM, Combine, REST API, Core Data, and SwiftData.",
-    "knowsAbout": ["Swift", "SwiftUI", "UIKit", "MVVM", "Combine", "Core Data", "REST API"]
+    "knowsAbout": ["Swift", "SwiftUI", "UIKit", "MVVM", "Combine", "Core Data", "REST API"],
+    "nationality": "Russia",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance"
+    }
   }
   </script>
 
@@ -51,7 +65,7 @@
 </head>
 
 <body>
-  <!-- 💡 header.html загружается динамически через scripts.js -->
+  <!-- 💡 header.html подгружается через scripts.js -->
 
   <main>
     <section id="about" itemscope itemtype="https://schema.org/Person">
@@ -101,6 +115,9 @@
     function applyPageLang(lang) {
       document.getElementById("about-title").innerHTML = pageLang[lang].aboutTitle;
       document.getElementById("about-text").innerHTML = pageLang[lang].aboutText;
+
+      // 👇 Меняем язык в <html lang=""> для SEO
+      document.documentElement.lang = lang === "ru" ? "ru" : "en";
     }
 
     document.addEventListener("DOMContentLoaded", () => {
