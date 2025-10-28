@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://dseitsman.ru/sitemap.xml
+
+Sitemap: https://seitsman.com/sitemap.xml
