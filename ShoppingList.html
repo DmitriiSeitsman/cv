@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛒 ShoppingList — Дмитрий Сейцман</title>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    body {
+      background: #0b1e33;
+      color: #ccc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main.project-page {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: calc(100vh - 160px);
+      padding-top: 120px;
+      box-sizing: border-box;
+    }
+
+    .project-container {
+      text-align: center;
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+      padding: 40px 20px 60px;
+      max-width: 960px;
+      width: 100%;
+      background: #132b4a;
+      border-radius: 20px;
+      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-title {
+      color: #ff6b6b;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .tech-stack {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .screenshot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin: 0 auto 40px;
+      max-width: 880px;
+    }
+
+    .screenshot-grid img {
+      width: 225px;
+      border-radius: 14px;
+      background: #0b1e33;
+      padding: 8px;
+      border: 6px solid #10626B;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .screenshot-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+      border-color: #1490a0;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #ff6b6b;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    .github-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 24px;
+      border: 1px solid #ff6b6b;
+      border-radius: 8px;
+      color: #ff6b6b;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .github-button:hover {
+      background: #ff6b6b;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      main.project-page {
+        padding-top: 100px;
+      }
+
+      .screenshot-grid img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="project-page">
+    <section class="project-container">
+      <h2 class="project-title" id="project-title">🛒 ShoppingList</h2>
+      <p class="tech-stack" id="tech-stack">
+        ShoppingList — приложение для создания и ведения списков покупок.<br>
+        <strong>Стек:</strong> SwiftUI, SwiftData, MVVM, кастомные UI-компоненты.<br>
+        Реализованы: добавление и сортировка товаров, поиск, редактирование, удаление, выбор иконок и цветов.
+      </p>
+
+      <div class="screenshot-grid">
+        <img src="/images/shoppinglist_1.png" alt="ShoppingList Screenshot 1" />
+        <img src="/images/shoppinglist_2.png" alt="ShoppingList Screenshot 2" />
+        <img src="/images/shoppinglist_3.png" alt="ShoppingList Screenshot 3" />
+        <img src="/images/shoppinglist_4.png" alt="ShoppingList Screenshot 4" />
+        <img src="/images/shoppinglist_5.png" alt="ShoppingList Screenshot 5" />
+        <img src="/images/shoppinglist_6.png" alt="ShoppingList Screenshot 6" />
+        <img src="/images/shoppinglist_7.png" alt="ShoppingList Screenshot 7" />
+        <img src="/images/shoppinglist_8.png" alt="ShoppingList Screenshot 8" />
+        <img src="/images/shoppinglist_9.png" alt="ShoppingList Screenshot 9" />
+        <img src="/images/shoppinglist_10.png" alt="ShoppingList Screenshot 10" />
+        <img src="/images/shoppinglist_11.png" alt="ShoppingList Screenshot 11" />
+        <img src="/images/shoppinglist_12.png" alt="ShoppingList Screenshot 12" />
+        <img src="/images/shoppinglist_13.png" alt="ShoppingList Screenshot 13" />
+        <img src="/images/shoppinglist_14.png" alt="ShoppingList Screenshot 14" />
+      </div>
+
+      <a
+        href="https://github.com/DmitriiSeitsman/ShoppingList"
+        target="_blank"
+        class="github-button"
+        id="github-button"
+      >
+        Посмотреть на GitHub
+      </a>
+    </section>
+  </main>
+
+  <footer id="footer">
+    © 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)
+  </footer>
+
+  <script src="/scripts.js"></script>
+  <script>
+    const pageLang = {
+      ru: {
+        title: "🛒 ShoppingList — Дмитрий Сейцман",
+        tech: "ShoppingList — приложение для создания и ведения списков покупок.<br><strong>Стек:</strong> SwiftUI, SwiftData, MVVM, кастомные UI-компоненты.<br>Реализованы: добавление и сортировка товаров, поиск, редактирование, удаление, выбор иконок и цветов.",
+        github: "Посмотреть на GitHub"
+      },
+      en: {
+        title: "🛒 ShoppingList — Dmitrii Seitsman",
+        tech: "ShoppingList — an app for creating and managing shopping lists.<br><strong>Stack:</strong> SwiftUI, SwiftData, MVVM, custom UI components.<br>Features: add and sort items, search, edit, delete, choose icons and colors.",
+        github: "View on GitHub"
+      }
+    };
+
+    function applyPageLang(lang) {
+      document.title = pageLang[lang].title;
+      const techStack = document.getElementById("tech-stack");
+      const githubButton = document.getElementById("github-button");
+      if (techStack && githubButton) {
+        techStack.innerHTML = pageLang[lang].tech;
+        githubButton.innerText = pageLang[lang].github;
+      }
+    }
+
+    const lang = localStorage.getItem("lang") || "ru";
+    applyPageLang(lang);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+
+    // === Лайтбокс ===
+    const gridImages = document.querySelectorAll(".screenshot-grid img");
+    if (gridImages.length > 0) {
+      const lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+      const closeBtn = document.createElement("div");
+      closeBtn.className = "lightbox-close";
+      closeBtn.innerHTML = "&times;";
+      const lightboxImg = document.createElement("img");
+      lightbox.appendChild(lightboxImg);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
+
+      gridImages.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add("active");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("active");
+      });
+    }
+  </script>
+</body>
+</html>
