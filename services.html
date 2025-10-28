@@ -7,73 +7,99 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ===== Таблица (десктоп) ===== */
-    .services-wrap{
+    /* ===== Общие настройки секции ===== */
+    .services-wrap {
       max-width: 980px;
       margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
     }
+
+    /* ===== Таблица (десктоп) ===== */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      margin-top: 24px;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
     }
+
     th, td {
       padding: 14px 16px;
       text-align: left;
       vertical-align: top;
       line-height: 1.5;
     }
+
     th {
       background: rgba(255, 255, 255, 0.1);
       color: #ff6b6b;
       font-weight: 600;
       white-space: nowrap;
     }
+
     tr:nth-child(even) {
       background: rgba(255, 255, 255, 0.03);
     }
+
     tr:hover {
       background: rgba(255, 255, 255, 0.07);
       transition: background 0.2s ease;
     }
+
     td {
       color: #f5f5f5;
       overflow-wrap: anywhere;
       word-break: break-word;
       white-space: normal;
     }
-    td strong { font-weight: 700; }
+
+    td strong {
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
 
     .note {
       margin-top: 20px;
       font-size: 0.9rem;
       color: #a0a0a0;
+      text-align: left;
+      line-height: 1.5;
     }
 
-    /* ===== Мобильная версия: строки становятся карточками ===== */
+    /* ===== Мобильная версия ===== */
     @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr { display:block; width:100%; }
-      th { display:none; }
+      .services-wrap {
+        max-width: none;
+        width: 100%;
+        padding: 0 18px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+
+      th { display: none; }
 
       tr {
         background: rgba(255,255,255,0.06);
-        margin-bottom: 16px;
+        margin-bottom: 18px;
         border-radius: 12px;
-        padding: 14px 12px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        padding: 14px 14px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       }
 
-      /* каждый td — блок из двух строк: лейбл и значение */
       td {
         display: block;
         padding: 8px 0;
         border: none;
       }
 
-      /* лейбл сверху, с двоеточием */
+      /* 👇 лейбл (с двоеточием) над значением */
       td::before {
         content: attr(data-label);
         display: block;
@@ -82,7 +108,6 @@
         margin-bottom: 6px;
       }
 
-      /* значения не ломают вьюпорт */
       td, td * {
         overflow-wrap: anywhere;
         word-break: break-word;
@@ -90,14 +115,15 @@
         max-width: 100%;
       }
 
-      /* чуть воздуха между карточками */
-      tbody tr:last-child { margin-bottom: 28px; }
+      tbody tr:last-child {
+        margin-bottom: 28px;
+      }
     }
   </style>
 </head>
-<body>
 
-  <!-- header.html подтягивается через scripts.js -->
+<body>
+  <!-- header.html подгружается через scripts.js -->
 
   <main>
     <section class="services-wrap">
@@ -188,7 +214,6 @@
       document.getElementById("services-subtitle").innerHTML = t.servicesSubtitle;
       document.getElementById("note").innerHTML = t.note;
 
-      // Заголовки таблицы
       document.getElementById("th-service").textContent = t.headers[0];
       document.getElementById("th-desc").textContent = t.headers[1];
       document.getElementById("th-price").textContent = t.headers[2];
@@ -205,7 +230,6 @@
         document.getElementById(row[1]).textContent = t.rows[i][1];
         document.getElementById(row[2]).textContent = t.rows[i][2];
 
-        // Лейблы для мобильной раскладки (с двоеточиями)
         document.getElementById(row[0]).setAttribute("data-label", t.headers[0]);
         document.getElementById(row[1]).setAttribute("data-label", t.headers[1]);
         document.getElementById(row[2]).setAttribute("data-label", t.headers[2]);
