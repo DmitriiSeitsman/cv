@@ -7,7 +7,11 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* 🧾 Таблица */
+    /* ===== Таблица (десктоп) ===== */
+    .services-wrap{
+      max-width: 980px;
+      margin: 0 auto;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -19,11 +23,14 @@
     th, td {
       padding: 14px 16px;
       text-align: left;
+      vertical-align: top;
+      line-height: 1.5;
     }
     th {
       background: rgba(255, 255, 255, 0.1);
       color: #ff6b6b;
       font-weight: 600;
+      white-space: nowrap;
     }
     tr:nth-child(even) {
       background: rgba(255, 255, 255, 0.03);
@@ -34,45 +41,66 @@
     }
     td {
       color: #f5f5f5;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
     }
+    td strong { font-weight: 700; }
+
     .note {
       margin-top: 20px;
       font-size: 0.9rem;
       color: #a0a0a0;
     }
 
-    /* 📱 Адаптация таблицы под мобильные устройства */
+    /* ===== Мобильная версия: строки становятся карточками ===== */
     @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-      th {
-        display: none;
-      }
+      table, thead, tbody, th, td, tr { display:block; width:100%; }
+      th { display:none; }
+
       tr {
-        background: rgba(255, 255, 255, 0.05);
-        margin-bottom: 15px;
-        border-radius: 8px;
-        padding: 10px;
+        background: rgba(255,255,255,0.06);
+        margin-bottom: 16px;
+        border-radius: 12px;
+        padding: 14px 12px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
       }
+
+      /* каждый td — блок из двух строк: лейбл и значение */
       td {
-        padding: 6px 10px;
-        display: flex;
-        justify-content: space-between;
+        display: block;
+        padding: 8px 0;
         border: none;
       }
+
+      /* лейбл сверху, с двоеточием */
       td::before {
         content: attr(data-label);
-        font-weight: 600;
+        display: block;
+        font-weight: 700;
         color: #ff6b6b;
+        margin-bottom: 6px;
       }
+
+      /* значения не ломают вьюпорт */
+      td, td * {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        white-space: normal;
+        max-width: 100%;
+      }
+
+      /* чуть воздуха между карточками */
+      tbody tr:last-child { margin-bottom: 28px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- header.html подтягивается через scripts.js -->
+
   <main>
-    <section>
+    <section class="services-wrap">
       <h2 id="services-title">Разработка iOS-приложений под ключ</h2>
       <p id="services-subtitle">
         Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны.<br>
@@ -82,31 +110,31 @@
       <table id="services-table">
         <thead>
           <tr>
-            <th id="table-service">Услуга:</th>
-            <th id="table-desc">Описание:</th>
-            <th id="table-price">Цена (₽ / $):</th>
+            <th id="th-service">Услуга:</th>
+            <th id="th-desc">Описание:</th>
+            <th id="th-price">Цена (₽ / $):</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td data-label="Услуга:" id="service1-name"><strong>Верстка экрана (UI)</strong></td>
-            <td data-label="Описание:" id="service1-desc">Разработка интерфейса по макету без бизнес-логики</td>
-            <td data-label="Цена:" id="service1-price">5 000 – 10 000 ₽ / ≈ 60 $</td>
+            <td id="service1-name"  data-label="Услуга:"><strong>Верстка экрана (UI)</strong></td>
+            <td id="service1-desc"  data-label="Описание:">Разработка интерфейса по макету без бизнес-логики</td>
+            <td id="service1-price" data-label="Цена (₽ / $):">5 000 – 10 000 ₽ / ≈ 60 $</td>
           </tr>
           <tr>
-            <td data-label="Услуга:" id="service2-name"><strong>Экран с логикой</strong></td>
-            <td data-label="Описание:" id="service2-desc">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
-            <td data-label="Цена:" id="service2-price">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
+            <td id="service2-name"  data-label="Услуга:"><strong>Экран с логикой</strong></td>
+            <td id="service2-desc"  data-label="Описание:">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
+            <td id="service2-price" data-label="Цена (₽ / $):">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
           </tr>
           <tr>
-            <td data-label="Услуга:" id="service3-name"><strong>Экран с логикой и сетью</strong></td>
-            <td data-label="Описание:" id="service3-desc">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
-            <td data-label="Цена:" id="service3-price">от 15 000 ₽ / от 160 $</td>
+            <td id="service3-name"  data-label="Услуга:"><strong>Экран с логикой и сетью</strong></td>
+            <td id="service3-desc"  data-label="Описание:">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
+            <td id="service3-price" data-label="Цена (₽ / $):">от 15 000 ₽ / от 160 $</td>
           </tr>
           <tr>
-            <td data-label="Услуга:" id="service4-name"><strong>Приложение под ключ по макету</strong></td>
-            <td data-label="Описание:" id="service4-desc">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
-            <td data-label="Цена:" id="service4-price">от 40 000 ₽ / от 500 $</td>
+            <td id="service4-name"  data-label="Услуга:"><strong>Приложение под ключ по макету</strong></td>
+            <td id="service4-desc"  data-label="Описание:">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
+            <td id="service4-price" data-label="Цена (₽ / $):">от 40 000 ₽ / от 500 $</td>
           </tr>
         </tbody>
       </table>
@@ -129,9 +157,9 @@
         title: "Услуги и цены — Дмитрий Сейцман",
         servicesTitle: "Разработка iOS-приложений под ключ",
         servicesSubtitle: "Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны. Работаю по готовым макетам из Figma или аналогичных инструментов.",
-        tableHeaders: ["Услуга:", "Описание:", "Цена (₽ / $):"],
+        headers: ["Услуга:", "Описание:", "Цена (₽ / $):"],
         note: "💬 Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>Сроки и детали обсуждаются индивидуально.",
-        table: [
+        rows: [
           ["Верстка экрана (UI)", "Разработка интерфейса по макету без бизнес-логики", "5 000 – 10 000 ₽ / ≈ 60 $"],
           ["Экран с логикой", "Интерфейс + бизнес-логика (навигация, обработка действий)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
           ["Экран с логикой и сетью", "Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)", "от 15 000 ₽ / от 160 $"],
@@ -141,14 +169,14 @@
       en: {
         title: "Services & Pricing — Dmitrii Seitsman",
         servicesTitle: "iOS App Development",
-        servicesSubtitle: "I develop native iPhone and iPad apps — from complete projects to individual screens. Work is based on ready-made designs (Figma or similar).",
-        tableHeaders: ["Service:", "Description:", "Price (₽ / $):"],
-        note: "💬 Pricing depends on complexity, number of screens, and backend presence.<br>Timelines and scope are discussed individually.",
-        table: [
-          ["Screen layout (UI only)", "Building a static interface based on design, no business logic", "5 000 – 10 000 ₽ / ≈ 60 $"],
-          ["Screen with logic", "UI + business logic (navigation, actions, interactions)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
-          ["Screen with logic & networking", "Includes API integration or local storage (SwiftData, Core Data)", "from 15 000 ₽ / from 160 $"],
-          ["Full app development", "Complete app: UI, logic, network, and App Store publishing", "from 40 000 ₽ / from 500 $"]
+        servicesSubtitle: "I build native iPhone and iPad apps — from complete products to individual screens. Work is based on ready designs (Figma or similar).",
+        headers: ["Service:", "Description:", "Price (₽ / $):"],
+        note: "💬 Pricing depends on complexity, number of screens, and backend requirements.<br>Timeline and scope are discussed individually.",
+        rows: [
+          ["Screen layout (UI only)", "Static UI based on design, no business logic", "5,000 – 10,000 ₽ / ≈ 60 $"],
+          ["Screen with logic", "UI + business logic (navigation, interactions)", "10,000 – 15,000 ₽ / ≈ 100 – 160 $"],
+          ["Screen with logic & networking", "Adds API integration or local storage (SwiftData, Core Data)", "from 15,000 ₽ / from 160 $"],
+          ["Full app (by design)", "Full cycle: UI, logic, networking, App Store submission", "from 40,000 ₽ / from 500 $"]
         ]
       }
     };
@@ -160,9 +188,10 @@
       document.getElementById("services-subtitle").innerHTML = t.servicesSubtitle;
       document.getElementById("note").innerHTML = t.note;
 
-      document.getElementById("table-service").innerHTML = t.tableHeaders[0];
-      document.getElementById("table-desc").innerHTML = t.tableHeaders[1];
-      document.getElementById("table-price").innerHTML = t.tableHeaders[2];
+      // Заголовки таблицы
+      document.getElementById("th-service").textContent = t.headers[0];
+      document.getElementById("th-desc").textContent = t.headers[1];
+      document.getElementById("th-price").textContent = t.headers[2];
 
       const ids = [
         ["service1-name", "service1-desc", "service1-price"],
@@ -170,20 +199,21 @@
         ["service3-name", "service3-desc", "service3-price"],
         ["service4-name", "service4-desc", "service4-price"]
       ];
-      ids.forEach((row, i) => {
-        document.getElementById(row[0]).innerHTML = "<strong>" + t.table[i][0] + "</strong>";
-        document.getElementById(row[1]).innerHTML = t.table[i][1];
-        document.getElementById(row[2]).innerHTML = t.table[i][2];
 
-        // для мобильной версии — обновляем data-label
-        document.getElementById(row[0]).setAttribute("data-label", t.tableHeaders[0]);
-        document.getElementById(row[1]).setAttribute("data-label", t.tableHeaders[1]);
-        document.getElementById(row[2]).setAttribute("data-label", t.tableHeaders[2]);
+      ids.forEach((row, i) => {
+        document.getElementById(row[0]).innerHTML = "<strong>" + t.rows[i][0] + "</strong>";
+        document.getElementById(row[1]).textContent = t.rows[i][1];
+        document.getElementById(row[2]).textContent = t.rows[i][2];
+
+        // Лейблы для мобильной раскладки (с двоеточиями)
+        document.getElementById(row[0]).setAttribute("data-label", t.headers[0]);
+        document.getElementById(row[1]).setAttribute("data-label", t.headers[1]);
+        document.getElementById(row[2]).setAttribute("data-label", t.headers[2]);
       });
     }
 
-    const initialLang = localStorage.getItem("lang") || "ru";
-    applyPageLang(initialLang);
+    const initial = localStorage.getItem("lang") || "ru";
+    applyPageLang(initial);
     document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
   </script>
 </body>
