@@ -22,15 +22,16 @@
       margin-top: 24px;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 14px;
-      overflow: hidden;
       box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+      overflow: hidden;
     }
 
     th, td {
-      padding: 14px 16px;
+      padding: 14px 18px;
       text-align: left;
       vertical-align: top;
       line-height: 1.5;
+      box-sizing: border-box;
     }
 
     th {
@@ -75,7 +76,7 @@
       .services-wrap {
         max-width: none;
         width: 100%;
-        padding: 0 18px;
+        padding: 0 16px;
       }
 
       table, thead, tbody, th, td, tr {
@@ -88,15 +89,18 @@
       tr {
         background: rgba(255,255,255,0.06);
         margin-bottom: 18px;
-        border-radius: 12px;
-        padding: 14px 14px;
+        border-radius: 14px;
+        padding: 16px 18px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        overflow: visible; /* чтобы углы не обрезались */
       }
 
       td {
         display: block;
         padding: 8px 0;
         border: none;
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
 
       /* 👇 лейбл (с двоеточием) над значением */
@@ -123,8 +127,6 @@
 </head>
 
 <body>
-  <!-- header.html подгружается через scripts.js -->
-
   <main>
     <section class="services-wrap">
       <h2 id="services-title">Разработка iOS-приложений под ключ</h2>
