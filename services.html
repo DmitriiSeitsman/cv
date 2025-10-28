@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ===== Общие настройки секции ===== */
-    .services-wrap {
+    section.services-wrap {
       max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
       box-sizing: border-box;
     }
+    section.services-wrap * { box-sizing: border-box; }
 
     /* ===== Таблица (десктоп) ===== */
     table {
@@ -23,7 +24,7 @@
       background: rgba(255, 255, 255, 0.05);
       border-radius: 14px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.3);
-      overflow: hidden;
+      overflow: hidden; /* десктоп: держим скругления контейнера */
     }
 
     th, td {
@@ -31,7 +32,6 @@
       text-align: left;
       vertical-align: top;
       line-height: 1.5;
-      box-sizing: border-box;
     }
 
     th {
@@ -73,12 +73,13 @@
 
     /* ===== Мобильная версия ===== */
     @media (max-width: 768px) {
-      .services-wrap {
+      section.services-wrap {
         max-width: none;
         width: 100%;
-        padding: 0 16px;
+        padding: 0 12px; /* больше воздуха справа/слева */
       }
 
+      /* карточная вёрстка строк */
       table, thead, tbody, th, td, tr {
         display: block;
         width: 100%;
@@ -86,13 +87,23 @@
 
       th { display: none; }
 
+      /* ключ: таблица не режет содержимое */
+      table {
+        border-radius: 0;       /* скругление уедет на tr */
+        overflow: visible;      /* больше нет подрезания справа */
+        box-shadow: none;
+        background: transparent;
+      }
+
+      tbody { gap: 16px; }
+
       tr {
         background: rgba(255,255,255,0.06);
         margin-bottom: 18px;
         border-radius: 14px;
-        padding: 16px 18px;
+        padding: 16px 14px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-        overflow: visible; /* чтобы углы не обрезались */
+        overflow: visible;      /* углы и тени не обрезаются */
       }
 
       td {
@@ -101,9 +112,11 @@
         border: none;
         word-break: break-word;
         overflow-wrap: break-word;
+        white-space: normal;
+        max-width: 100%;
       }
 
-      /* 👇 лейбл (с двоеточием) над значением */
+      /* лейбл над значением */
       td::before {
         content: attr(data-label);
         display: block;
@@ -112,13 +125,7 @@
         margin-bottom: 6px;
       }
 
-      td, td * {
-        overflow-wrap: anywhere;
-        word-break: break-word;
-        white-space: normal;
-        max-width: 100%;
-      }
-
+      /* финальный буфер снизу */
       tbody tr:last-child {
         margin-bottom: 28px;
       }
@@ -127,6 +134,8 @@
 </head>
 
 <body>
+  <!-- header.html подгружается через scripts.js -->
+
   <main>
     <section class="services-wrap">
       <h2 id="services-title">Разработка iOS-приложений под ключ</h2>
