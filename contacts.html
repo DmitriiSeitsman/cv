@@ -7,60 +7,120 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .contact-section p {
-      margin: 12px 0;
-      font-size: 1.1rem;
+    /* === Контейнер секции === */
+    .contact-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      box-sizing: border-box;
+      text-align: center;
     }
 
-    .contact-section a {
+    .contact-section h2 {
+      color: #ff6b6b;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+    }
+
+    /* === Карточки контактов === */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #f5f5f5;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      border-color: #ff6b6b;
+      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+    }
+
+    .contact-card span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .contact-card a {
       color: #ff6b6b;
       text-decoration: none;
       font-weight: 500;
+      transition: opacity 0.2s ease;
     }
 
-    .contact-section a:hover {
+    .contact-card a:hover {
       opacity: 0.8;
     }
 
+    /* === Мобильная версия === */
     @media (max-width: 768px) {
-      .contact-section p {
+      .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+        gap: 6px;
         font-size: 1rem;
+      }
+
+      .contact-card span {
+        font-size: 1rem;
+      }
+
+      .contact-section h2 {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 💡 header.html загружается динамически через scripts.js -->
+  <!-- 💡 header.html подгружается через scripts.js -->
 
-  <!-- 📬 Контент -->
   <main>
     <section class="contact-section">
       <h2 id="contact-title">Связаться со мной</h2>
-      <p id="email-label">
-        📬 Почта:
-        <a href="#" id="email-link">Написать письмо</a>
-      </p>
-      <p id="telegram-label">
-        💬 Телеграм:
-        <a href="#" id="telegram-link">Открыть чат</a>
-      </p>
-      <p id="github-label">
-        💻 GitHub:
-        <a href="#" id="github-link">Посмотреть профиль</a>
-      </p>
+
+      <div class="contact-list">
+        <div class="contact-card" id="email-card">
+          <span id="email-label">📬 Почта:</span>
+          <a href="#" id="email-link">Написать письмо</a>
+        </div>
+
+        <div class="contact-card" id="telegram-card">
+          <span id="telegram-label">💬 Телеграм:</span>
+          <a href="#" id="telegram-link">Открыть чат</a>
+        </div>
+
+        <div class="contact-card" id="github-card">
+          <span id="github-label">💻 GitHub:</span>
+          <a href="#" id="github-link">Посмотреть профиль</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- ⚓ Футер -->
   <footer id="footer">
     © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
-  <!-- 📜 Скрипты -->
   <script src="scripts.js"></script>
   <script>
-    // 🌐 Тексты для перевода (только контент страницы)
     const pageLang = {
       ru: {
         title: "Контакты — Дмитрий Сейцман",
@@ -84,54 +144,44 @@
       }
     };
 
-    // ✉️ Скрытые реальные контакты (не палятся в исходнике)
     const hidden = {
-      email: ["s", "e", "y", "t", "s", "m", "a", "n", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"].join(""),
-      telegram: ["h", "t", "t", "p", "s", ":", "/", "/", "t", ".", "m", "e", "/", "d", "s", "e", "i", "t", "s", "m", "a", "n"].join(""),
-      github: ["h", "t", "t", "p", "s", ":", "/", "/", "g", "i", "t", "h", "u", "b", ".", "c", "o", "m", "/", "D", "m", "i", "t", "r", "i", "i", "S", "e", "i", "t", "s", "m", "a", "n"].join("")
+      email: ["s","e","y","t","s","m","a","n","@","g","m","a","i","l",".","c","o","m"].join(""),
+      telegram: ["h","t","t","p","s",":","/","/","t",".","m","e","/","d","s","e","i","t","s","m","a","n"].join(""),
+      github: ["h","t","t","p","s",":","/","/","g","i","t","h","u","b",".","c","o","m","/","D","m","i","t","r","i","i","S","e","i","t","s","m","a","n"].join("")
     };
 
-    // 🎯 Привязка к DOM
     const emailLink = document.getElementById("email-link");
     const telegramLink = document.getElementById("telegram-link");
     const githubLink = document.getElementById("github-link");
 
-    emailLink.addEventListener("click", (e) => {
+    emailLink.addEventListener("click", e => {
       e.preventDefault();
       window.location.href = `mailto:${hidden.email}`;
     });
-
-    telegramLink.addEventListener("click", (e) => {
+    telegramLink.addEventListener("click", e => {
       e.preventDefault();
       window.open(hidden.telegram, "_blank");
     });
-
-    githubLink.addEventListener("click", (e) => {
+    githubLink.addEventListener("click", e => {
       e.preventDefault();
       window.open(hidden.github, "_blank");
     });
 
-    // 🌍 Функция перевода контента
     function applyPageLang(lang) {
       const t = pageLang[lang];
       document.title = t.title;
       document.getElementById("contact-title").textContent = t.contactTitle;
-
-      // подписи
-      document.getElementById("email-label").childNodes[0].textContent = t.emailLabel + " ";
-      document.getElementById("telegram-label").childNodes[0].textContent = t.telegramLabel + " ";
-      document.getElementById("github-label").childNodes[0].textContent = t.githubLabel + " ";
-
-      // ссылки
+      document.getElementById("email-label").textContent = t.emailLabel;
+      document.getElementById("telegram-label").textContent = t.telegramLabel;
+      document.getElementById("github-label").textContent = t.githubLabel;
       emailLink.textContent = t.emailText;
       telegramLink.textContent = t.telegramText;
       githubLink.textContent = t.githubText;
     }
 
-    // 🌐 Применяем язык при загрузке и слушаем глобальное событие
     const initial = localStorage.getItem("lang") || "ru";
     applyPageLang(initial);
-    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+    document.addEventListener("langchange", e => applyPageLang(e.detail.lang));
   </script>
 </body>
 </html>
