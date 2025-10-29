@@ -43,7 +43,7 @@ header.site-header {
 }
 
 header h1 {
-  color: var(--keyword);
+  color: var(--accent);
   font-size: 1.8rem;
   letter-spacing: 0.5px;
   text-shadow: 0 0 10px rgba(255,45,85,0.3);
@@ -58,7 +58,7 @@ header h1 {
 }
 
 .main-nav a {
-  color: var(--type);
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.25s ease, transform 0.2s ease, text-shadow 0.25s ease;
@@ -67,7 +67,7 @@ header h1 {
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--type);
+  color: var(--accent);
   text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
   transform: translateY(-1px);
 }
@@ -81,8 +81,8 @@ header h1 {
 
 .lang-btn {
   background: none;
-  border: 1px solid var(--type);
-  color: var(--type);
+  border: 1px solid var(--accent);
+  color: var(--accent);
   border-radius: 6px;
   padding: 5px 10px;
   cursor: pointer;
@@ -92,7 +92,7 @@ header h1 {
 
 .lang-btn.active,
 .lang-btn:hover {
-  background: var(--type);
+  background: var(--accent);
   color: #fff;
 }
 
@@ -173,7 +173,7 @@ button {
 }
 
 button:hover {
-  background: var(--brand);
+  background: var(--keyword);
 }
 
 /* === КАРТОЧКИ === */
@@ -282,7 +282,7 @@ main.project-page {
     display: block !important;
     background: none !important;
     border: none;
-    color: var(--type);
+    color: var(--accent);
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 1001;
@@ -343,7 +343,7 @@ main.project-page {
   }
 
   .main-nav a {
-    color: var(--type);
+    color: var(--accent);
     font-size: 1.2rem;
     padding: 12px 0;
     width: 100%;
@@ -352,7 +352,7 @@ main.project-page {
   }
 
   .main-nav a:hover {
-    color: var(--type);
+    color: var(--accent);
     text-shadow: 0 0 10px rgba(187,134,252,0.6);
   }
 
