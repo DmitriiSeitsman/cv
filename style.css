@@ -6,11 +6,11 @@
   --text-primary: #E8E9EB;
   --text-secondary: #9AA1AC;
   --keyword: #FF2D55; /* struct, var, #Preview — маджента */
-  --type: #5AC8FA; /* View, VStack */
+  --type: #5AC8FA; /* View, VStack, ссылки */
   --string: #FF9F0A; /* строки */
   --comment: #6C7986;
   --accent: #6FA8FF; /* hover и акценты */
-  --brand: #FF6B6B;
+  --brand: #FF6B6B; /* fallback для кнопок */
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -61,7 +61,7 @@ header h1 {
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color 0.25s ease, transform 0.2s ease;
   font-size: 1rem;
 }
 
@@ -80,18 +80,18 @@ header h1 {
 
 .lang-btn {
   background: none;
-  border: 1px solid var(--brand);
-  color: var(--brand);
+  border: 1px solid var(--keyword);
+  color: var(--keyword);
   border-radius: 6px;
   padding: 5px 10px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .lang-btn.active,
 .lang-btn:hover {
-  background: var(--brand);
+  background: var(--keyword);
   color: #fff;
 }
 
@@ -151,7 +151,7 @@ h2 {
 a {
   color: var(--type);
   text-decoration: none;
-  transition: opacity 0.2s ease, text-shadow 0.2s ease;
+  transition: opacity 0.2s ease, text-shadow 0.25s ease;
 }
 
 a:hover {
@@ -168,7 +168,7 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 button:hover {
@@ -204,7 +204,7 @@ button:hover {
   border-radius: 8px;
   padding: 15px 20px;
   margin: 10px 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .services-list li:hover {
@@ -258,7 +258,7 @@ main.project-page {
   display: none;
 }
 
-/* === Мобильная версия === */
+/* === 📱 Мобильная версия === */
 
 @media (max-width: 768px) {
   header.site-header {
@@ -292,13 +292,15 @@ main.project-page {
     font-size: 1.6rem;
   }
 
+  /* 🌫️ Оверлей с мягким блюром */
   .nav-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(15, 20, 30, 0.5); /* ✅ полупрозрачное */
-    backdrop-filter: blur(8px); /* ✅ мягкое размытие */
+    background: rgba(15, 20, 30, 0.5);
+    backdrop-filter: blur(8px);
     z-index: 1000;
+    opacity: 0;
     transition: opacity 0.3s ease;
   }
 
@@ -335,6 +337,7 @@ main.project-page {
     padding: 12px 0;
     width: 100%;
     text-align: center;
+    transition: color 0.25s ease;
   }
 
   .main-nav a:hover {
