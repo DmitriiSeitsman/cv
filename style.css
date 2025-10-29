@@ -1,4 +1,4 @@
-/* 🌌 === THEME: XCODE PRESENTATION DARK === */
+/* 🌌 === THEME: XCODE PRESENTATION DARK (refined) === */
 
 :root {
   --bg-main: #1C1C23;
@@ -6,7 +6,7 @@
   --text-primary: #E8E9EB;
   --text-secondary: #9AA1AC;
   --keyword: #FF2D55; /* struct, var, #Preview — маджента */
-  --type: #5AC8FA; /* View, VStack, ссылки */
+  --type: #BB86FC; /* View, VStack, ссылки */
   --string: #FF9F0A; /* строки */
   --comment: #6C7986;
   --accent: #6FA8FF; /* hover и акценты */
@@ -58,16 +58,17 @@ header h1 {
 }
 
 .main-nav a {
-  color: var(--text-primary);
+  color: var(--type);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.25s ease, transform 0.2s ease;
+  transition: color 0.25s ease, transform 0.2s ease, text-shadow 0.25s ease;
   font-size: 1rem;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--keyword);
+  color: var(--type);
+  text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
   transform: translateY(-1px);
 }
 
@@ -156,7 +157,7 @@ a {
 
 a:hover {
   opacity: 0.9;
-  text-shadow: 0 0 8px rgba(90,200,250,0.4);
+  text-shadow: 0 0 8px rgba(187,134,252,0.5);
 }
 
 button {
@@ -279,12 +280,22 @@ main.project-page {
 
   .menu-toggle {
     display: block !important;
-    background: none;
+    background: none !important;
     border: none;
     color: var(--keyword);
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 1001;
+    outline: none;
+    box-shadow: none;
+    transition: transform 0.2s ease;
+  }
+
+  .menu-toggle:focus,
+  .menu-toggle:active {
+    background: none !important;
+    color: var(--keyword);
+    transform: scale(1.05);
   }
 
   h1 {
@@ -292,12 +303,12 @@ main.project-page {
     font-size: 1.6rem;
   }
 
-  /* 🌫️ Оверлей с мягким блюром */
+  /* 🌫️ Оверлей */
   .nav-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(15, 20, 30, 0.5);
+    background: rgba(15, 20, 30, 0.6);
     backdrop-filter: blur(8px);
     z-index: 1000;
     opacity: 0;
@@ -332,16 +343,17 @@ main.project-page {
   }
 
   .main-nav a {
-    color: #fff;
+    color: var(--type);
     font-size: 1.2rem;
     padding: 12px 0;
     width: 100%;
     text-align: center;
-    transition: color 0.25s ease;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
   }
 
   .main-nav a:hover {
-    color: var(--keyword);
+    color: var(--type);
+    text-shadow: 0 0 10px rgba(187,134,252,0.6);
   }
 
   body.menu-open {
