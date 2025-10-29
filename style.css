@@ -43,7 +43,7 @@ header.site-header {
 }
 
 header h1 {
-  color: var(--accent);
+  color: var(--keyword);
   font-size: 1.8rem;
   letter-spacing: 0.5px;
   text-shadow: 0 0 10px rgba(255,45,85,0.3);
