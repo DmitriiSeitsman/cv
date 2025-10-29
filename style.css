@@ -81,8 +81,8 @@ header h1 {
 
 .lang-btn {
   background: none;
-  border: 1px solid var(--keyword);
-  color: var(--keyword);
+  border: 1px solid var(--type);
+  color: var(--type);
   border-radius: 6px;
   padding: 5px 10px;
   cursor: pointer;
@@ -92,7 +92,7 @@ header h1 {
 
 .lang-btn.active,
 .lang-btn:hover {
-  background: var(--keyword);
+  background: var(--type);
   color: #fff;
 }
 
@@ -282,7 +282,7 @@ main.project-page {
     display: block !important;
     background: none !important;
     border: none;
-    color: var(--keyword);
+    color: var(--type);
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 1001;
