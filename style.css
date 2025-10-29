@@ -1,13 +1,16 @@
 /* 🌌 === THEME: XCODE PRESENTATION DARK === */
 
 :root {
-  --bg-main: #0B1E33;
-  --bg-secondary: #102944;
+  --bg-main: #1C1C23;
+  --bg-secondary: #262633;
   --text-primary: #E8E9EB;
   --text-secondary: #9AA1AC;
-  --accent: #6FA8FF; /* Swift keywords blue */
-  --highlight: #A3E5C4; /* mint */
-  --brand: #FF6B6B; /* твой фирменный */
+  --keyword: #FF2D55; /* struct, var, #Preview — маджента */
+  --type: #5AC8FA; /* View, VStack */
+  --string: #FF9F0A; /* строки */
+  --comment: #6C7986;
+  --accent: #6FA8FF; /* hover и акценты */
+  --brand: #FF6B6B;
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -33,7 +36,6 @@ header.site-header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  flex-wrap: wrap;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -41,11 +43,10 @@ header.site-header {
 }
 
 header h1 {
-  color: var(--accent);
+  color: var(--keyword);
   font-size: 1.8rem;
   letter-spacing: 0.5px;
-  text-align: center;
-  text-shadow: 0 0 10px rgba(111,168,255,0.3);
+  text-shadow: 0 0 10px rgba(255,45,85,0.3);
 }
 
 /* === НАВИГАЦИЯ === */
@@ -66,7 +67,7 @@ header h1 {
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--accent);
+  color: var(--keyword);
   transform: translateY(-1px);
 }
 
@@ -109,7 +110,7 @@ main {
 /* === КОНТЕНТНЫЕ СЕКЦИИ === */
 
 section {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
   padding: 40px;
@@ -129,14 +130,14 @@ section {
 }
 
 section:hover {
-  box-shadow: 0 0 30px rgba(111,168,255,0.2);
+  box-shadow: 0 0 30px rgba(255,45,85,0.25);
   transition: box-shadow 0.6s ease;
 }
 
 /* === ЗАГОЛОВКИ === */
 
 h1, h2, h3 {
-  color: var(--accent);
+  color: var(--keyword);
   margin-bottom: 20px;
   font-weight: 700;
 }
@@ -148,19 +149,19 @@ h2 {
 /* === ТЕКСТ, ССЫЛКИ, КНОПКИ === */
 
 a {
-  color: var(--accent);
+  color: var(--type);
   text-decoration: none;
   transition: opacity 0.2s ease, text-shadow 0.2s ease;
 }
 
 a:hover {
   opacity: 0.9;
-  text-shadow: 0 0 8px rgba(111,168,255,0.4);
+  text-shadow: 0 0 8px rgba(90,200,250,0.4);
 }
 
 button {
   font-family: inherit;
-  background: var(--accent);
+  background: var(--keyword);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -174,7 +175,7 @@ button:hover {
   background: var(--brand);
 }
 
-/* === ПОРТФОЛИО КАРТОЧКИ === */
+/* === КАРТОЧКИ === */
 
 .project-card {
   background: rgba(255, 255, 255, 0.04);
@@ -187,7 +188,7 @@ button:hover {
 
 .project-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(111,168,255,0.15);
+  box-shadow: 0 0 20px rgba(255,45,85,0.2);
 }
 
 /* === СПИСОК УСЛУГ === */
@@ -208,7 +209,7 @@ button:hover {
 
 .services-list li:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 14px rgba(111,168,255,0.15);
+  box-shadow: 0 0 14px rgba(255,45,85,0.2);
 }
 
 /* === КОНТАКТЫ === */
@@ -217,15 +218,6 @@ button:hover {
   margin: 10px 0;
   font-size: 1.1rem;
   color: var(--text-secondary);
-}
-
-/* === ПОДПИСИ / ЦИТАТЫ === */
-
-.tagline {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-  font-style: italic;
 }
 
 /* === ФУТЕР === */
@@ -266,42 +258,7 @@ main.project-page {
   display: none;
 }
 
-/* === 🧾 ТАБЛИЦА УСЛУГ === */
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-th, td {
-  padding: 14px 16px;
-  text-align: left;
-}
-
-th {
-  background: rgba(255, 255, 255, 0.07);
-  color: var(--accent);
-  font-weight: 600;
-}
-
-tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-tr:hover {
-  background: rgba(255, 255, 255, 0.06);
-  transition: background 0.2s ease;
-}
-
-td {
-  color: var(--text-primary);
-}
-
-/* === 📱 Мобильная версия таблицы === */
+/* === Мобильная версия === */
 
 @media (max-width: 768px) {
   header.site-header {
@@ -320,38 +277,34 @@ td {
     padding: 0 4vw;
   }
 
-  .lang-buttons {
-    flex-shrink: 0;
-  }
-
   .menu-toggle {
     display: block !important;
     background: none;
     border: none;
-    color: var(--brand);
+    color: var(--keyword);
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 1001;
-    flex-shrink: 0;
   }
 
   h1 {
     margin: 10px 0;
     font-size: 1.6rem;
-    text-align: center;
   }
 
   .nav-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(6px);
+    background: rgba(15, 20, 30, 0.5); /* ✅ полупрозрачное */
+    backdrop-filter: blur(8px); /* ✅ мягкое размытие */
     z-index: 1000;
+    transition: opacity 0.3s ease;
   }
 
   .nav-overlay.active {
     display: block;
+    opacity: 1;
   }
 
   .main-nav {
@@ -359,7 +312,7 @@ td {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(11, 30, 51, 0.96);
+    background: rgba(28,28,35,0.96);
     backdrop-filter: blur(10px);
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
@@ -382,56 +335,13 @@ td {
     padding: 12px 0;
     width: 100%;
     text-align: center;
-    transition: color 0.2s ease;
   }
 
   .main-nav a:hover {
-    color: var(--accent);
+    color: var(--keyword);
   }
 
   body.menu-open {
     overflow: hidden;
-  }
-
-  /* 🧾 Мобильная таблица */
-  table, thead, tbody, th, td, tr {
-    display: block;
-    width: 100%;
-  }
-
-  th {
-    display: none;
-  }
-
-  tr {
-    background: rgba(255, 255, 255, 0.04);
-    margin-bottom: 18px;
-    border-radius: 10px;
-    padding: 14px 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  }
-
-  td {
-    display: block;
-    padding: 8px 0;
-    border: none;
-  }
-
-  td::before {
-    content: attr(data-label) ":";
-    display: block;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-
-  td strong {
-    display: block;
-    margin-top: 2px;
-    font-size: 1.05rem;
-  }
-
-  tbody tr:last-child {
-    margin-bottom: 28px;
   }
 }
