@@ -27,7 +27,7 @@
       box-shadow: 0 0 30px rgba(187,134,252,0.25);
     }
 
-    /* === Заголовок === */
+    /* === Заголовок секции === */
     #portfolio h2 {
       color: #fff;
       font-size: 1.8rem;
@@ -37,6 +37,20 @@
         0 0 6px rgba(111,168,255,0.4),
         0 0 12px rgba(111,168,255,0.3);
       animation: h2Pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes h2Pulse {
+      0%,100% {
+        text-shadow:
+          0 0 6px rgba(111,168,255,0.4),
+          0 0 12px rgba(111,168,255,0.3);
+      }
+      50% {
+        text-shadow:
+          0 0 12px rgba(111,168,255,0.8),
+          0 0 25px rgba(111,168,255,0.6),
+          0 0 40px rgba(111,168,255,0.4);
+      }
     }
 
     /* === Подзаголовок === */
@@ -52,9 +66,10 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInCard 0.6s ease forwards;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  box-shadow 0.25s ease,
-                  border-color 0.3s ease;
+      transition:
+        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.25s ease,
+        border-color 0.3s ease;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -81,15 +96,22 @@
       border-color: rgba(255,255,255,0.35);
     }
 
-    /* 🎬 Названия проектов (цвета сохраняем) */
+    /* 🎬 Названия проектов — белый с зелёным свечением */
     .project-card strong a {
+      color: #fff;
       text-decoration: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, text-shadow 0.3s ease;
+      text-shadow:
+        0 0 6px rgba(70,196,116,0.5),
+        0 0 12px rgba(70,196,116,0.35);
     }
 
     .project-card strong a:hover {
       transform: scale(1.05);
-      text-shadow: 0 0 6px rgba(255,255,255,0.25);
+      text-shadow:
+        0 0 10px rgba(70,196,116,0.8),
+        0 0 18px rgba(70,196,116,0.55),
+        0 0 26px rgba(70,196,116,0.4);
     }
 
     /* 📝 Описание */
@@ -100,7 +122,7 @@
       line-height: 1.5;
     }
 
-    /* 🔗 GitHub-ссылка (цвет не трогаем) */
+    /* 🔗 GitHub-ссылка — фиолетовая */
     .project-card a.github-link {
       display: inline-block;
       color: #BB86FC;
@@ -113,27 +135,21 @@
       text-decoration: underline;
     }
 
-    /* Адаптив */
+    /* === Адаптив === */
     @media (max-width: 768px) {
       #portfolio {
         margin: 40px 16px;
         padding: 30px 20px;
       }
 
-      .project-card {
-        padding: 18px;
-      }
+      .project-card { padding: 18px; }
 
-      #portfolio h2 {
-        font-size: 1.6rem;
-      }
+      #portfolio h2 { font-size: 1.6rem; }
     }
   </style>
 </head>
 
 <body>
-  <!-- 💡 header.html загружается динамически через scripts.js -->
-
   <main>
     <section id="portfolio">
       <h2 id="portfolio-title">Портфолио</h2>
