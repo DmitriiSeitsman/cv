@@ -1,4 +1,4 @@
-/* 🌌 === THEME: XCODE PRESENTATION DARK (refined) === */
+/* 🌌 === THEME: XCODE PRESENTATION DARK (animated header) === */
 
 :root {
   --bg-main: #1C1C23;
@@ -11,6 +11,7 @@
   --comment: #6C7986;
   --accent: #6FA8FF; /* hover и акценты */
   --brand: #FF6B6B; /* fallback для кнопок */
+  --mint: #46C474; /* дополнительный для градиента */
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -42,11 +43,31 @@ header.site-header {
   box-sizing: border-box;
 }
 
+/* ✨ Анимированный градиент заголовка */
 header h1 {
-  color: var(--text-primary);
   font-size: 1.8rem;
   letter-spacing: 0.5px;
-  text-shadow: 0 0 10px rgba(255,45,85,0.3);
+  font-weight: 700;
+  text-transform: none;
+  background: linear-gradient(
+    90deg,
+    #BB52F6 0%,
+    #4ACFFF 25%,
+    #46C474 50%,
+    #BB52F6 75%,
+    #4ACFFF 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 6s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(187,134,252,0.3);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* === НАВИГАЦИЯ === */
@@ -58,7 +79,7 @@ header h1 {
 }
 
 .main-nav a {
-  color: var(--accent);
+  color: var(--type);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.25s ease, transform 0.2s ease, text-shadow 0.25s ease;
@@ -67,7 +88,7 @@ header h1 {
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--accent);
+  color: var(--type);
   text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
   transform: translateY(-1px);
 }
@@ -131,13 +152,13 @@ section {
 }
 
 section:hover {
-  box-shadow: 0 0 30px rgba(255,45,85,0.25);
+  box-shadow: 0 0 30px rgba(187,134,252,0.25);
   transition: box-shadow 0.6s ease;
 }
 
 /* === ЗАГОЛОВКИ === */
 
-h1, h2, h3 {
+h2, h3 {
   color: var(--keyword);
   margin-bottom: 20px;
   font-weight: 700;
@@ -150,7 +171,7 @@ h2 {
 /* === ТЕКСТ, ССЫЛКИ, КНОПКИ === */
 
 a {
-  color: var(--keyword);
+  color: var(--type);
   text-decoration: none;
   transition: opacity 0.2s ease, text-shadow 0.25s ease;
 }
@@ -173,7 +194,7 @@ button {
 }
 
 button:hover {
-  background: var(--keyword);
+  background: var(--brand);
 }
 
 /* === КАРТОЧКИ === */
@@ -189,7 +210,7 @@ button:hover {
 
 .project-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(255,45,85,0.2);
+  box-shadow: 0 0 20px rgba(187,134,252,0.2);
 }
 
 /* === СПИСОК УСЛУГ === */
@@ -210,7 +231,7 @@ button:hover {
 
 .services-list li:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 14px rgba(255,45,85,0.2);
+  box-shadow: 0 0 14px rgba(187,134,252,0.25);
 }
 
 /* === КОНТАКТЫ === */
@@ -343,7 +364,7 @@ main.project-page {
   }
 
   .main-nav a {
-    color: var(--keyword);
+    color: var(--type);
     font-size: 1.2rem;
     padding: 12px 0;
     width: 100%;
@@ -352,7 +373,7 @@ main.project-page {
   }
 
   .main-nav a:hover {
-    color: var(--keyword);
+    color: var(--type);
     text-shadow: 0 0 10px rgba(187,134,252,0.6);
   }
 
