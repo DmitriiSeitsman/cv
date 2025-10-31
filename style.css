@@ -1,11 +1,11 @@
-/* 🌌 === THEME: XCODE PRESENTATION DARK (animated header) === */
+/* 🌌 === THEME: XCODE PRESENTATION DARK (animated header & pulsating h2) === */
 
 :root {
   --bg-main: #1C1C23;
   --bg-secondary: #262633;
   --text-primary: #E8E9EB;
   --text-secondary: #9AA1AC;
-  --keyword: #BB86FC;; /* struct, var, #Preview — маджента */
+  --keyword: #BB86FC; /* struct, var, #Preview — маджента */
   --type: #BB86FC; /* View, VStack, ссылки */
   --string: #FF9F0A; /* строки */
   --comment: #6C7986;
@@ -46,16 +46,15 @@ header.site-header {
 /* ✨ Анимированный градиент заголовка */
 header h1 {
   font-size: 1.8rem;
-  letter-spacing: 0.5px;
   font-weight: 700;
-  text-transform: none;
+  letter-spacing: 0.5px;
   background: linear-gradient(
     90deg,
-    #BB52F6 0%,
-    #4ACFFF 25%,
+    #BB86FC 0%,
+    #6FA8FF 25%,
     #46C474 50%,
-    #BB52F6 75%,
-    #4ACFFF 100%
+    #BB86FC 75%,
+    #6FA8FF 100%
   );
   background-size: 300% 300%;
   -webkit-background-clip: text;
@@ -89,7 +88,7 @@ header h1 {
 .main-nav a:hover,
 .main-nav a.active {
   color: var(--type);
-  text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+  text-shadow: 0 0 10px rgba(187,134,252,0.6);
   transform: translateY(-1px);
 }
 
@@ -158,14 +157,34 @@ section:hover {
 
 /* === ЗАГОЛОВКИ === */
 
-h2, h3 {
-  color: var(--keyword);
-  margin-bottom: 20px;
+h2 {
+  color: #fff;
+  font-size: 1.8rem;
   font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow:
+    0 0 6px rgba(111,168,255,0.4),
+    0 0 12px rgba(111,168,255,0.3);
+  animation: h2Pulse 3s ease-in-out infinite;
 }
 
-h2 {
-  font-size: 1.8rem;
+@keyframes h2Pulse {
+  0% {
+    text-shadow:
+      0 0 6px rgba(111,168,255,0.4),
+      0 0 12px rgba(111,168,255,0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 12px rgba(111,168,255,0.8),
+      0 0 25px rgba(111,168,255,0.6),
+      0 0 40px rgba(111,168,255,0.4);
+  }
+  100% {
+    text-shadow:
+      0 0 6px rgba(111,168,255,0.4),
+      0 0 12px rgba(111,168,255,0.3);
+  }
 }
 
 /* === ТЕКСТ, ССЫЛКИ, КНОПКИ === */
@@ -183,7 +202,7 @@ a:hover {
 
 button {
   font-family: inherit;
-  background: var(--keyword);
+  background: var(--brand);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -194,7 +213,7 @@ button {
 }
 
 button:hover {
-  background: var(--brand);
+  background: var(--accent);
 }
 
 /* === КАРТОЧКИ === */
@@ -324,7 +343,6 @@ main.project-page {
     font-size: 1.6rem;
   }
 
-  /* 🌫️ Оверлей */
   .nav-overlay {
     display: none;
     position: fixed;
