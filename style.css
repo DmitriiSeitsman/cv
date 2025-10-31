@@ -5,12 +5,12 @@
   --bg-secondary: #262633;
   --text-primary: #E8E9EB;
   --text-secondary: #9AA1AC;
-  --keyword: #FF2D55; /* struct, var, #Preview — маджента */
+  --keyword: #BB86FC;; /* struct, var, #Preview — маджента */
   --type: #BB86FC; /* View, VStack, ссылки */
   --string: #FF9F0A; /* строки */
   --comment: #6C7986;
   --accent: #6FA8FF; /* hover и акценты */
-  --brand: #FF6B6B; /* fallback для кнопок */
+  --brand: #46C474; /* fallback для кнопок */
   --mint: #46C474; /* дополнительный для градиента */
 }
 
