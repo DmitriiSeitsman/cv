@@ -128,9 +128,9 @@ main {
   box-sizing: border-box;
 }
 
-/* === КОНТЕНТНЫЕ СЕКЦИИ === */
+/* === УНИВЕРСАЛЬНЫЕ СЕКЦИИ === */
 
-section {
+.page-section {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
@@ -143,16 +143,16 @@ section {
   animation: fadeSlideIn 1s ease-out forwards;
   animation-delay: 0.2s;
   backdrop-filter: blur(6px);
+  transition: box-shadow 0.6s ease;
+}
+
+.page-section:hover {
+  box-shadow: 0 0 30px rgba(187,134,252,0.25);
 }
 
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-section:hover {
-  box-shadow: 0 0 30px rgba(187,134,252,0.25);
-  transition: box-shadow 0.6s ease;
 }
 
 /* === ЗАГОЛОВКИ === */

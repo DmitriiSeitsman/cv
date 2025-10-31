@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Dmitrii Seitsman — iOS Developer</title>
 
   <!-- 🔍 SEO -->
@@ -68,8 +67,8 @@
   <!-- 💡 header.html подгружается через scripts.js -->
 
   <main>
-    <section id="about" itemscope itemtype="https://schema.org/Person">
-      <h1 id="about-title" itemprop="name">Обо мне</h1>
+    <section id="about" class="page-section" itemscope itemtype="https://schema.org/Person">
+      <h2 id="about-title" itemprop="name">Обо мне</h2>
       <p id="about-text" itemprop="description">
         Меня зовут Дмитрий, мне 39 лет. Я — iOS-разработчик, который пришёл в программирование после долгой карьеры в авиации.<br><br>
         Ранее я работал пилотом гражданской авиации и налетал более 5000 часов на Airbus A320. Сегодня создаю мобильные приложения на Swift — с тем же вниманием к деталям, структурности и ответственности, которые нужны в небе.<br><br>
@@ -115,8 +114,6 @@
     function applyPageLang(lang) {
       document.getElementById("about-title").innerHTML = pageLang[lang].aboutTitle;
       document.getElementById("about-text").innerHTML = pageLang[lang].aboutText;
-
-      // 👇 Меняем язык в <html lang=""> для SEO
       document.documentElement.lang = lang === "ru" ? "ru" : "en";
     }
 
