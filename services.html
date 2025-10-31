@@ -4,56 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Услуги и цены — Дмитрий Сейцман</title>
-  <meta name="description" content="Разработка iOS-приложений на Swift, SwiftUI и UIKit. Услуги, цены, примеры работ. Дмитрий Сейцман — iOS-разработчик с авиационным прошлым." />
+  <meta name="description" content="Разработка iOS-приложений на Swift, SwiftUI и UIKit. Услуги, цены, примеры работ. Дмитрий Сейцман — iOS-разработчик." />
+  <meta name="keywords" content="iOS разработчик, Swift, SwiftUI, UIKit, MVVM, Combine, разработка приложений, Dmitrii Seitsman, iOS Developer" />
+  <meta name="author" content="Dmitrii Seitsman" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b1e33" />
+
+  <!-- 🌍 alternate & canonical (обе на одну страницу, т.к. локализация JS-ом) -->
+  <link rel="alternate" hreflang="ru" href="https://seitsman.com/services.html" />
+  <link rel="alternate" hreflang="en" href="https://seitsman.com/services.html" />
+  <link rel="canonical" href="https://seitsman.com/services.html" />
+
+  <!-- 🧩 Open Graph -->
+  <meta property="og:title" content="Services & Pricing — Dmitrii Seitsman" />
+  <meta property="og:description" content="Custom iOS app development using Swift, SwiftUI, UIKit, and Combine. Services and pricing." />
+  <meta property="og:image" content="https://seitsman.com/images/preview.png" />
+  <meta property="og:url" content="https://seitsman.com/services.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- 🐦 Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Services & Pricing — Dmitrii Seitsman" />
+  <meta name="twitter:description" content="iOS developer building clean, modern Swift apps. Explore services and pricing." />
+  <meta name="twitter:image" content="https://seitsman.com/images/preview.png" />
+
+  <!-- 💡 JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "iOS App Development",
+    "provider": {
+      "@type": "Person",
+      "name": "Dmitrii Seitsman",
+      "url": "https://seitsman.com",
+      "sameAs": [
+        "https://github.com/DmitriiSeitsman",
+        "https://t.me/dseitsman"
+      ]
+    },
+    "inLanguage": ["ru", "en"],
+    "areaServed": "Worldwide",
+    "description": "Разработка iOS-приложений на Swift, SwiftUI и UIKit. Full-cycle mobile development.",
+    "offers": [
+      { "@type": "Offer", "name": "UI layout", "price": "5000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Screen with logic", "price": "10000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Screen with networking", "price": "15000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Full app by design", "price": "40000", "priceCurrency": "RUB" }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* === Единый стиль секции === */
+    /* ===== Секция и таблица (адаптив без горизонтального скролла) ===== */
     section.services-wrap {
       max-width: 980px;
       margin: 80px auto;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.04);
+      padding: 40px 24px;
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
       backdrop-filter: blur(6px);
       text-align: center;
       transition: box-shadow 0.6s ease;
       animation: fadeSlideIn 1s ease-out forwards;
+      box-sizing: border-box;
     }
+    section.services-wrap:hover { box-shadow: 0 0 30px rgba(187,134,252,0.25); }
+    .services-wrap * { box-sizing: border-box; }
 
-    section.services-wrap:hover {
-      box-shadow: 0 0 30px rgba(111,168,255,0.25);
-    }
-
-    /* === Заголовок секции === */
     .services-wrap h2 {
       color: #fff;
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 20px;
-      text-shadow:
-        0 0 6px rgba(111,168,255,0.4),
-        0 0 12px rgba(111,168,255,0.3);
+      text-shadow: 0 0 6px rgba(111,168,255,0.4), 0 0 12px rgba(111,168,255,0.3);
       animation: h2Pulse 3s ease-in-out infinite;
     }
 
-    @keyframes h2Pulse {
-      0% { text-shadow: 0 0 6px rgba(111,168,255,0.4), 0 0 12px rgba(111,168,255,0.3); }
-      50% { text-shadow: 0 0 14px rgba(111,168,255,0.8), 0 0 28px rgba(111,168,255,0.6); }
-      100% { text-shadow: 0 0 6px rgba(111,168,255,0.4), 0 0 12px rgba(111,168,255,0.3); }
-    }
-
-    /* === Подзаголовок === */
     .services-wrap p#services-subtitle {
-      color: var(--text-secondary, #9AA1AC);
+      color: var(--text-secondary);
       font-size: 1.05rem;
       line-height: 1.6;
       margin-bottom: 30px;
     }
 
-    /* === Таблица === */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -64,74 +105,58 @@
       overflow: hidden;
       transition: box-shadow 0.4s ease;
     }
-
-    table:hover {
-      box-shadow: 0 0 20px rgba(111,168,255,0.25);
-    }
+    table:hover { box-shadow: 0 0 20px rgba(187,134,252,0.25); }
 
     th, td {
       padding: 14px 18px;
       text-align: left;
       vertical-align: top;
       line-height: 1.5;
-      word-break: break-word; /* 🔧 перенос длинных строк */
     }
-
     th {
       background: rgba(255, 255, 255, 0.08);
-      color: #6FA8FF;
+      color: var(--type);
       font-weight: 600;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+    tr:nth-child(even) { background: rgba(255, 255, 255, 0.03); }
+    tr:hover { background: rgba(255, 255, 255, 0.08); transition: background 0.2s ease; }
 
-    tr:nth-child(even) {
-      background: rgba(255, 255, 255, 0.03);
-    }
+    td { color: var(--text-primary); overflow-wrap: anywhere; word-break: break-word; white-space: normal; }
 
-    tr:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transition: background 0.2s ease;
-    }
-
-    td {
-      color: #E8E9EB;
-    }
-
-    /* 🎯 Названия услуг — белые с мягким зелёным свечением */
+    /* 🔆 Название услуги — белое с зелёным свечением */
     td strong {
+      color: #fff;
+      text-shadow:
+        0 0 6px rgba(70,196,116,0.55),
+        0 0 14px rgba(70,196,116,0.35);
       font-weight: 700;
       display: inline-block;
       margin-bottom: 4px;
-      color: #fff;
-      text-shadow:
-        0 0 6px rgba(70,196,116,0.5),
-        0 0 18px rgba(70,196,116,0.3);
     }
 
-    /* === Примечание === */
     .note {
-      margin: 30px auto 0;
+      margin: 28px auto 0;
       font-size: 0.95rem;
-      color: var(--text-secondary, #9AA1AC);
+      color: var(--text-secondary);
       text-align: center;
       line-height: 1.6;
       max-width: 90%;
     }
 
-    /* === Мобильная версия === */
+    /* 📱 Мобильная таблица — карточки, БЕЗ горизонтального скролла */
     @media (max-width: 768px) {
-      section.services-wrap {
-        margin: 40px 16px;
-        padding: 30px 20px;
-      }
+      section.services-wrap { margin: 40px 16px; padding: 30px 16px; }
 
-      table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-      }
-
+      table, thead, tbody, th, td, tr { display: block; width: 100%; }
       th { display: none; }
+
+      table {
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+        background: transparent;
+      }
 
       tr {
         background: rgba(255,255,255,0.06);
@@ -144,21 +169,29 @@
       td {
         display: block;
         padding: 8px 0;
-        word-break: break-word; /* 💡 перенос слов */
+        border: none;
+        word-break: break-word;
+        white-space: normal;
       }
 
+      /* метка поля берём из data-label — JS будет обновлять под язык */
       td::before {
         content: attr(data-label);
         display: block;
         font-weight: 700;
-        color: #6FA8FF;
+        color: var(--type);
         margin-bottom: 6px;
       }
 
-      .note {
-        margin-top: 24px;
-        font-size: 0.9rem;
-      }
+      tbody tr:last-child { margin-bottom: 28px; }
+
+      .note { margin-top: 24px; font-size: 0.9rem; max-width: 95%; }
+    }
+
+    @keyframes h2Pulse {
+      0%   { text-shadow: 0 0 6px rgba(111,168,255,0.4), 0 0 12px rgba(111,168,255,0.3); }
+      50%  { text-shadow: 0 0 12px rgba(111,168,255,0.8), 0 0 25px rgba(111,168,255,0.6), 0 0 40px rgba(111,168,255,0.4); }
+      100% { text-shadow: 0 0 6px rgba(111,168,255,0.4), 0 0 12px rgba(111,168,255,0.3); }
     }
   </style>
 </head>
@@ -175,36 +208,36 @@
       <table id="services-table">
         <thead>
           <tr>
-            <th>Услуга</th>
-            <th>Описание</th>
-            <th>Цена (₽ / $)</th>
+            <th id="th-service">Услуга</th>
+            <th id="th-desc">Описание</th>
+            <th id="th-price">Цена (₽ / $)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td data-label="Услуга:"><strong>Верстка экрана (UI)</strong></td>
-            <td data-label="Описание:">Разработка интерфейса по макету без бизнес-логики</td>
-            <td data-label="Цена:">5 000 – 10 000 ₽ / ≈ 60 $</td>
+            <td id="service1-name" data-label="Услуга"><strong>Верстка экрана (UI)</strong></td>
+            <td id="service1-desc" data-label="Описание">Разработка интерфейса по макету без бизнес-логики</td>
+            <td id="service1-price" data-label="Цена (₽ / $)">5 000 – 10 000 ₽ / ≈ 60 $</td>
           </tr>
           <tr>
-            <td data-label="Услуга:"><strong>Экран с логикой</strong></td>
-            <td data-label="Описание:">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
-            <td data-label="Цена:">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
+            <td id="service2-name" data-label="Услуга"><strong>Экран с логикой</strong></td>
+            <td id="service2-desc" data-label="Описание">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
+            <td id="service2-price" data-label="Цена (₽ / $)">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
           </tr>
           <tr>
-            <td data-label="Услуга:"><strong>Экран с логикой и сетью</strong></td>
-            <td data-label="Описание:">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
-            <td data-label="Цена:">от 15 000 ₽ / от 160 $</td>
+            <td id="service3-name" data-label="Услуга"><strong>Экран с логикой и сетью</strong></td>
+            <td id="service3-desc" data-label="Описание">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
+            <td id="service3-price" data-label="Цена (₽ / $)">от 15 000 ₽ / от 160 $</td>
           </tr>
           <tr>
-            <td data-label="Услуга:"><strong>Приложение под ключ по макету</strong></td>
-            <td data-label="Описание:">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
-            <td data-label="Цена:">от 40 000 ₽ / от 500 $</td>
+            <td id="service4-name" data-label="Услуга"><strong>Приложение под ключ по макету</strong></td>
+            <td id="service4-desc" data-label="Описание">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
+            <td id="service4-price" data-label="Цена (₽ / $)">от 40 000 ₽ / от 500 $</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="note">
+      <p class="note" id="note">
         💬 Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>
         Сроки и детали обсуждаются индивидуально.
       </p>
@@ -212,9 +245,100 @@
   </main>
 
   <footer id="footer">
-    © 2025 Дмитрий Сейцман — создано на чистом энтузиазме и кофе ☕
+    © 2025 Дмитрий Сейцман — создано на Swift и кофе ☕
   </footer>
 
   <script src="scripts.js"></script>
+  <script>
+    // Двухъязычный словарь
+    const pageLang = {
+      ru: {
+        title: "Услуги и цены — Дмитрий Сейцман",
+        servicesTitle: "Разработка iOS-приложений под ключ",
+        servicesSubtitle: "Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны. Работаю по готовым макетам (Figma или аналогичные).",
+        headers: ["Услуга", "Описание", "Цена (₽ / $)"],
+        note: "💬 Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>Сроки и детали обсуждаются индивидуально.",
+        rows: [
+          ["Верстка экрана (UI)", "Разработка интерфейса по макету без бизнес-логики", "5 000 – 10 000 ₽ / ≈ 60 $"],
+          ["Экран с логикой", "UI + бизнес-логика (навигация, обработка действий)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
+          ["Экран с логикой и сетью", "Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)", "от 15 000 ₽ / от 160 $"],
+          ["Приложение под ключ по макету", "Полная разработка по дизайну: верстка, логика, сеть, публикация", "от 40 000 ₽ / от 500 $"]
+        ]
+      },
+      en: {
+        title: "Services & Pricing — Dmitrii Seitsman",
+        servicesTitle: "iOS App Development",
+        servicesSubtitle: "I build native iPhone and iPad apps — full products or individual screens. Work based on ready designs (Figma or similar).",
+        headers: ["Service", "Description", "Price (₽ / $)"],
+        note: "💬 Pricing depends on complexity, number of screens, and backend requirements.<br>Timeline and scope are discussed individually.",
+        rows: [
+          ["Screen layout (UI only)", "Static UI based on design, no business logic", "5,000 – 10,000 ₽ / ≈ 60 $"],
+          ["Screen with logic", "UI + business logic (navigation, interactions)", "10,000 – 15,000 ₽ / ≈ 100 – 160 $"],
+          ["Screen with logic & networking", "Adds API integration or local storage (SwiftData, Core Data)", "from 15,000 ₽ / from 160 $"],
+          ["Full app (by design)", "Full cycle: UI, logic, networking, App Store submission", "from 40,000 ₽ / from 500 $"]
+        ]
+      }
+    };
+
+    // Инициализация после готовности DOM (чтобы ничего не потерять)
+    document.addEventListener("DOMContentLoaded", () => {
+      const initial = localStorage.getItem("lang") || "ru";
+      applyPageLang(initial);
+    });
+
+    // Слушаем кастомное событие из хедера (scripts.js должен диспатчить 'langchange')
+    document.addEventListener("langchange", (e) => {
+      const lang = e.detail?.lang || "ru";
+      localStorage.setItem("lang", lang);
+      applyPageLang(lang);
+    });
+
+    function applyPageLang(lang) {
+      const t = pageLang[lang] || pageLang.ru;
+
+      // Заголовки/подписи
+      document.title = t.title;
+      document.getElementById("services-title").innerHTML = t.servicesTitle;
+      document.getElementById("services-subtitle").innerHTML = t.servicesSubtitle;
+      document.getElementById("note").innerHTML = t.note;
+
+      // Заголовок таблицы (desktop)
+      const thIds = ["th-service", "th-desc", "th-price"];
+      thIds.forEach((id, i) => {
+        const th = document.getElementById(id);
+        if (th) th.textContent = t.headers[i];
+      });
+
+      // Строки таблицы + data-label для мобильной версии
+      const ids = [
+        ["service1-name","service1-desc","service1-price"],
+        ["service2-name","service2-desc","service2-price"],
+        ["service3-name","service3-desc","service3-price"],
+        ["service4-name","service4-desc","service4-price"]
+      ];
+
+      ids.forEach((row, i) => {
+        const [nId, dId, pId] = row;
+        const r = t.rows[i];
+
+        const nEl = document.getElementById(nId);
+        const dEl = document.getElementById(dId);
+        const pEl = document.getElementById(pId);
+
+        if (nEl) {
+          nEl.innerHTML = "<strong>" + r[0] + "</strong>";
+          nEl.setAttribute("data-label", t.headers[0]);
+        }
+        if (dEl) {
+          dEl.textContent = r[1];
+          dEl.setAttribute("data-label", t.headers[1]);
+        }
+        if (pEl) {
+          pEl.textContent = r[2];
+          pEl.setAttribute("data-label", t.headers[2]);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
