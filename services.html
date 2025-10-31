@@ -98,11 +98,41 @@
       color: var(--text-primary);
     }
 
+    /* 🌿 Названия услуг — белый текст с зелёным свечением */
     td strong {
       font-weight: 700;
       display: inline-block;
       margin-bottom: 4px;
-      color: var(--type);
+      color: #fff;
+      text-shadow:
+        0 0 6px rgba(70,196,116,0.6),
+        0 0 12px rgba(70,196,116,0.4);
+      transition: text-shadow 0.3s ease;
+      animation: greenPulse 3s ease-in-out infinite;
+    }
+
+    td strong:hover {
+      text-shadow:
+        0 0 10px rgba(70,196,116,0.8),
+        0 0 22px rgba(70,196,116,0.6);
+    }
+
+    @keyframes greenPulse {
+      0% {
+        text-shadow:
+          0 0 6px rgba(70,196,116,0.4),
+          0 0 12px rgba(70,196,116,0.2);
+      }
+      50% {
+        text-shadow:
+          0 0 12px rgba(70,196,116,0.8),
+          0 0 26px rgba(70,196,116,0.5);
+      }
+      100% {
+        text-shadow:
+          0 0 6px rgba(70,196,116,0.4),
+          0 0 12px rgba(70,196,116,0.2);
+      }
     }
 
     /* === Примечание === */
