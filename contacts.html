@@ -7,49 +7,67 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* === Контейнер секции === */
+    /* === Контейнер секции (в едином стиле со страницами) === */
     .contact-section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 24px;
-      box-sizing: border-box;
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
       text-align: center;
+      transition: box-shadow 0.6s ease;
+      backdrop-filter: blur(6px);
+      animation: fadeSlideIn 1s ease-out forwards;
     }
 
+    .contact-section:hover {
+      box-shadow: 0 0 30px rgba(187, 134, 252, 0.25);
+    }
+
+    /* === Подзаголовок (пульсирующий белый, как h2 на других страницах) === */
     .contact-section h2 {
-      color: #FF2D55;
-      margin-bottom: 30px;
+      color: #fff;
       font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-shadow:
+        0 0 6px rgba(111,168,255,0.4),
+        0 0 12px rgba(111,168,255,0.3);
+      animation: h2Pulse 3s ease-in-out infinite;
     }
 
-    /* === Карточки контактов === */
+    /* === Контейнер с карточками === */
     .contact-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      align-items: stretch;
+      gap: 20px;
     }
 
+    /* === Каждая карточка === */
     .contact-card {
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
       padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #f5f5f5;
+      color: var(--text-primary);
       font-size: 1.1rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
       transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
+    /* === Светящийся эффект при наведении на карточку === */
     .contact-card:hover {
       transform: translateY(-2px);
-      border-color: #FF2D55;
-      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
+    /* === Содержимое карточки === */
     .contact-card span {
       display: flex;
       align-items: center;
@@ -58,18 +76,28 @@
     }
 
     .contact-card a {
-      color: #BB86FC;
+      color: var(--type);
       text-decoration: none;
       font-weight: 500;
-      transition: opacity 0.2s ease;
+      transition: text-shadow 0.3s ease, opacity 0.3s ease;
     }
 
     .contact-card a:hover {
-      opacity: 0.8;
+      opacity: 0.9;
+      text-shadow: 0 0 8px rgba(187,134,252,0.6);
     }
 
-    /* === Мобильная версия === */
+    /* === Мобильная адаптация === */
     @media (max-width: 768px) {
+      .contact-section {
+        margin: 40px 16px;
+        padding: 30px 20px;
+      }
+
+      .contact-list {
+        gap: 16px;
+      }
+
       .contact-card {
         flex-direction: column;
         align-items: flex-start;
@@ -88,8 +116,8 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- 💡 header.html подгружается через scripts.js -->
 
   <main>
