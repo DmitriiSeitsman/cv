@@ -12,7 +12,7 @@
     body {
       background: #0b1e33;
       color: #ccc;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       padding: 0;
     }
@@ -26,7 +26,7 @@
       box-sizing: border-box;
     }
 
-    /* 💡 Контейнер секции */
+    /* 💡 Контейнер секции (как в MovieQuiz) */
     .project-container {
       text-align: center;
       animation: fadeIn 0.8s ease forwards;
@@ -34,20 +34,39 @@
       padding: 40px 20px 60px;
       max-width: 960px;
       width: 100%;
-      background: #132b4a;
+      background: rgba(19, 43, 74, 0.8);
       border-radius: 20px;
       box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* === Заголовок проекта — тот же glow-эффект === */
     .project-title {
-      color: #ff6b6b;
+      color: #fff;
       font-size: 2rem;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
+      text-shadow:
+        0 0 8px rgba(111,168,255,0.6),
+        0 0 16px rgba(111,168,255,0.4);
+      animation: h2Pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes h2Pulse {
+      0%, 100% {
+        text-shadow:
+          0 0 8px rgba(111,168,255,0.6),
+          0 0 16px rgba(111,168,255,0.4);
+      }
+      50% {
+        text-shadow:
+          0 0 12px rgba(111,168,255,0.9),
+          0 0 24px rgba(111,168,255,0.6);
+      }
     }
 
     .tech-stack {
@@ -57,12 +76,12 @@
       line-height: 1.6;
     }
 
-    /* 🎨 Сетка скринов */
+    /* 🎨 Сетка скринов — стиль как у MovieQuiz */
     .screenshot-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
+      gap: 20px;
       margin: 0 auto 40px;
       max-width: 880px;
     }
@@ -70,18 +89,20 @@
     .screenshot-grid img {
       width: 225px;
       border-radius: 14px;
-      background: #0b1e33;
+      background: rgba(11, 30, 51, 0.8);
       padding: 8px;
-      border: 6px solid #10626B;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow:
+        0 0 12px rgba(111,168,255,0.25),
+        0 0 18px rgba(111,168,255,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
 
     .screenshot-grid img:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
-      border-color: #1490a0;
+      box-shadow:
+        0 0 20px rgba(111,168,255,0.5),
+        0 0 40px rgba(111,168,255,0.3);
     }
 
     /* 🖼️ Лайтбокс */
@@ -109,7 +130,7 @@
 
     @keyframes zoomIn {
       from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      to   { transform: scale(1); opacity: 1; }
     }
 
     .lightbox-close {
@@ -117,7 +138,7 @@
       top: 20px;
       right: 30px;
       font-size: 2rem;
-      color: #ff6b6b;
+      color: #6FA8FF;
       cursor: pointer;
       font-weight: bold;
       transition: transform 0.2s ease;
@@ -127,23 +148,24 @@
       transform: scale(1.2);
     }
 
-    /* 🔗 GitHub-кнопка */
+    /* 🔗 GitHub-кнопка — та же стилистика */
     .github-button {
       display: inline-block;
       margin-top: 10px;
       padding: 12px 24px;
-      border: 1px solid #ff6b6b;
+      border: 1px solid #6FA8FF;
       border-radius: 8px;
-      color: #ff6b6b;
+      color: #6FA8FF;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.3s ease;
     }
 
     .github-button:hover {
-      background: #ff6b6b;
-      color: #fff;
+      background: #6FA8FF;
+      color: #0b1e33;
       transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(111,168,255,0.4);
     }
 
     /* 📱 Адаптив */
@@ -230,15 +252,18 @@
     applyPageLang(lang);
     document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
 
-    /* === Лайтбокс === */
+    /* === Лайтбокс (тот же, что и в MovieQuiz) === */
     const gridImages = document.querySelectorAll(".screenshot-grid img");
     if (gridImages.length > 0) {
       const lightbox = document.createElement("div");
       lightbox.className = "lightbox";
+
       const closeBtn = document.createElement("div");
       closeBtn.className = "lightbox-close";
       closeBtn.innerHTML = "&times;";
+
       const lightboxImg = document.createElement("img");
+
       lightbox.appendChild(lightboxImg);
       lightbox.appendChild(closeBtn);
       document.body.appendChild(lightbox);
