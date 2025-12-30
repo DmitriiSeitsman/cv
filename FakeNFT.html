@@ -169,19 +169,21 @@
       </p>
 
       <div class="screenshot-grid">
-        <img src="/images/fakenft_1.png" alt="FakeNFT Screenshot 1" />
-        <img src="/images/fakenft_2.png" alt="FakeNFT Screenshot 2" />
-        <img src="/images/fakenft_3.png" alt="FakeNFT Screenshot 3" />
-        <img src="/images/fakenft_4.png" alt="FakeNFT Screenshot 4" />
-        <img src="/images/fakenft_5.png" alt="FakeNFT Screenshot 5" />
-        <img src="/images/fakenft_6.png" alt="FakeNFT Screenshot 6" />
-        <img src="/images/fakenft_7.png" alt="FakeNFT Screenshot 7" />
-        <img src="/images/fakenft_8.png" alt="FakeNFT Screenshot 8" />
+        <img src="/images/fakenft_1.png" alt="FakeNFT Screenshot 1" loading="lazy" />
+        <img src="/images/fakenft_2.png" alt="FakeNFT Screenshot 2" loading="lazy" />
+        <img src="/images/fakenft_3.png" alt="FakeNFT Screenshot 3" loading="lazy" />
+        <img src="/images/fakenft_4.png" alt="FakeNFT Screenshot 4" loading="lazy" />
+        <img src="/images/fakenft_5.png" alt="FakeNFT Screenshot 5" loading="lazy" />
+        <img src="/images/fakenft_6.png" alt="FakeNFT Screenshot 6" loading="lazy" />
+        <img src="/images/fakenft_7.png" alt="FakeNFT Screenshot 7" loading="lazy" />
+        <img src="/images/fakenft_8.png" alt="FakeNFT Screenshot 8" loading="lazy" />
+        <img src="/images/fakenft_9.png" alt="FakeNFT Screenshot 9" loading="lazy" />
       </div>
 
       <a
         href="https://github.com/DmitriiSeitsman/FakeNFT"
         target="_blank"
+        rel="noopener noreferrer"
         class="github-button"
         id="github-button"
       >
@@ -199,6 +201,7 @@
     const pageLang = {
       ru: {
         title: "🖼️ FakeNFT — Дмитрий Сейцман",
+        h2: "🖼️ FakeNFT",
         tech:
           "FakeNFT — учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.<br>" +
           "<strong>Стек:</strong> SwiftUI, MVC/MVVM, URLSession, REST API, JSON, асинхронная загрузка изображений, кеширование, обработка ошибок.",
@@ -206,6 +209,7 @@
       },
       en: {
         title: "🖼️ FakeNFT — Dmitrii Seitsman",
+        h2: "🖼️ FakeNFT",
         tech:
           "FakeNFT — a training NFT marketplace app: collections catalog, NFT details, likes, cart, and checkout flow.<br>" +
           "<strong>Stack:</strong> SwiftUI, MVC/MVVM, URLSession, REST API, JSON, async image loading, caching, error handling.",
@@ -213,15 +217,31 @@
       }
     };
 
-    function applyPageLang(lang) {
-      document.title = pageLang[lang].title;
-      document.getElementById("tech-stack").innerHTML = pageLang[lang].tech;
-      document.getElementById("github-button").innerText = pageLang[lang].github;
+    function normalizeLang(value) {
+      return (value === "ru" || value === "en") ? value : "ru";
     }
 
-    const lang = localStorage.getItem("lang") || "ru";
+    function applyPageLang(lang) {
+      const safeLang = normalizeLang(lang);
+      document.title = pageLang[safeLang].title;
+      document.documentElement.lang = safeLang;
+
+      const h2 = document.getElementById("project-title");
+      if (h2) h2.innerText = pageLang[safeLang].h2;
+
+      const tech = document.getElementById("tech-stack");
+      if (tech) tech.innerHTML = pageLang[safeLang].tech;
+
+      const btn = document.getElementById("github-button");
+      if (btn) btn.innerText = pageLang[safeLang].github;
+    }
+
+    const lang = normalizeLang(localStorage.getItem("lang") || "ru");
     applyPageLang(lang);
-    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+
+    document.addEventListener("langchange", (e) => {
+      applyPageLang(normalizeLang(e.detail?.lang));
+    });
 
     // === Lightbox ===
     const gridImages = document.querySelectorAll(".screenshot-grid img");
@@ -234,25 +254,38 @@
       closeBtn.innerHTML = "&times;";
 
       const lightboxImg = document.createElement("img");
+      lightboxImg.alt = "Screenshot preview";
 
       lightbox.appendChild(lightboxImg);
       lightbox.appendChild(closeBtn);
       document.body.appendChild(lightbox);
 
+      const openLightbox = (img) => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || "Screenshot preview";
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+        // по желанию можно сбрасывать src, чтобы не держать картинку в памяти:
+        // lightboxImg.src = "";
+      };
+
       gridImages.forEach((img) => {
-        img.addEventListener("click", () => {
-          lightboxImg.src = img.src;
-          lightbox.classList.add("active");
-        });
+        img.addEventListener("click", () => openLightbox(img));
       });
 
-      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+      closeBtn.addEventListener("click", closeLightbox);
+
       lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) lightbox.classList.remove("active");
+        if (e.target === lightbox) closeLightbox();
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") lightbox.classList.remove("active");
+        if (e.key === "Escape") closeLightbox();
       });
     }
   </script>
