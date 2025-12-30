@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🖼️ FakeNFT — Дмитрий Сейцман</title>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    body {
+      background: #0b1e33;
+      color: #ccc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main.project-page {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: calc(100vh - 160px);
+      padding-top: 120px;
+      box-sizing: border-box;
+    }
+
+    .project-container {
+      text-align: center;
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+      padding: 40px 20px 60px;
+      max-width: 960px;
+      width: 100%;
+      background: rgba(19, 43, 74, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-title {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 16px;
+      text-shadow:
+        0 0 8px rgba(111,168,255,0.6),
+        0 0 16px rgba(111,168,255,0.4);
+      animation: h2Pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes h2Pulse {
+      0%, 100% { text-shadow: 0 0 8px rgba(111,168,255,0.6), 0 0 16px rgba(111,168,255,0.4); }
+      50% { text-shadow: 0 0 12px rgba(111,168,255,0.9), 0 0 24px rgba(111,168,255,0.6); }
+    }
+
+    .tech-stack {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .screenshot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 0 auto 40px;
+      max-width: 880px;
+    }
+
+    .screenshot-grid img {
+      width: 225px;
+      border-radius: 14px;
+      background: rgba(11, 30, 51, 0.8);
+      padding: 8px;
+      box-shadow:
+        0 0 12px rgba(111,168,255,0.25),
+        0 0 18px rgba(111,168,255,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .screenshot-grid img:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 20px rgba(111,168,255,0.5),
+        0 0 40px rgba(111,168,255,0.3);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #6FA8FF;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+      user-select: none;
+    }
+
+    .lightbox-close:hover { transform: scale(1.2); }
+
+    .github-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 24px;
+      border: 1px solid #6FA8FF;
+      border-radius: 8px;
+      color: #6FA8FF;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .github-button:hover {
+      background: #6FA8FF;
+      color: #0b1e33;
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(111,168,255,0.4);
+    }
+
+    @media (max-width: 768px) {
+      main.project-page { padding-top: 100px; }
+      .screenshot-grid img { width: 90%; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="project-page">
+    <section class="project-container">
+      <h2 class="project-title" id="project-title">🖼️ FakeNFT</h2>
+
+      <p class="tech-stack" id="tech-stack">
+        FakeNFT — учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.<br>
+        <strong>Стек:</strong> Swift, UIKit, MVC/MVVM, URLSession, REST API, JSON, асинхронная загрузка изображений, кеширование, обработка ошибок.
+      </p>
+
+      <div class="screenshot-grid">
+        <img src="/images/fakenft_1.png" alt="FakeNFT Screenshot 1" />
+        <img src="/images/fakenft_2.png" alt="FakeNFT Screenshot 2" />
+        <img src="/images/fakenft_3.png" alt="FakeNFT Screenshot 3" />
+        <img src="/images/fakenft_4.png" alt="FakeNFT Screenshot 4" />
+        <img src="/images/fakenft_5.png" alt="FakeNFT Screenshot 5" />
+        <img src="/images/fakenft_6.png" alt="FakeNFT Screenshot 6" />
+        <img src="/images/fakenft_7.png" alt="FakeNFT Screenshot 7" />
+        <img src="/images/fakenft_8.png" alt="FakeNFT Screenshot 8" />
+      </div>
+
+      <a
+        href="https://github.com/DmitriiSeitsman/FakeNFT"
+        target="_blank"
+        class="github-button"
+        id="github-button"
+      >
+        Посмотреть на GitHub
+      </a>
+    </section>
+  </main>
+
+  <footer id="footer">
+    © 2025 Дмитрий Сейцман — сайт создан на чистом энтузиазме и кофе ☕
+  </footer>
+
+  <script src="/scripts.js"></script>
+  <script>
+    const pageLang = {
+      ru: {
+        title: "🖼️ FakeNFT — Дмитрий Сейцман",
+        tech:
+          "FakeNFT — учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.<br>" +
+          "<strong>Стек:</strong> Swift, UIKit, MVC/MVVM, URLSession, REST API, JSON, асинхронная загрузка изображений, кеширование, обработка ошибок.",
+        github: "Посмотреть на GitHub"
+      },
+      en: {
+        title: "🖼️ FakeNFT — Dmitrii Seitsman",
+        tech:
+          "FakeNFT — a training NFT marketplace app: collections catalog, NFT details, likes, cart, and checkout flow.<br>" +
+          "<strong>Stack:</strong> Swift, UIKit, MVC/MVVM, URLSession, REST API, JSON, async image loading, caching, error handling.",
+        github: "View on GitHub"
+      }
+    };
+
+    function applyPageLang(lang) {
+      document.title = pageLang[lang].title;
+      document.getElementById("tech-stack").innerHTML = pageLang[lang].tech;
+      document.getElementById("github-button").innerText = pageLang[lang].github;
+    }
+
+    const lang = localStorage.getItem("lang") || "ru";
+    applyPageLang(lang);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+
+    // === Lightbox ===
+    const gridImages = document.querySelectorAll(".screenshot-grid img");
+    if (gridImages.length > 0) {
+      const lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+
+      const closeBtn = document.createElement("div");
+      closeBtn.className = "lightbox-close";
+      closeBtn.innerHTML = "&times;";
+
+      const lightboxImg = document.createElement("img");
+
+      lightbox.appendChild(lightboxImg);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
+
+      gridImages.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add("active");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("active");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") lightbox.classList.remove("active");
+      });
+    }
+  </script>
+</body>
+</html>
