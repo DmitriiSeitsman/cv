@@ -4,6 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Портфолио — Дмитрий Сейцман</title>
+  <meta name="description" content="Портфолио iOS-разработчика Dmitrii Seitsman: проекты на Swift, SwiftUI и UIKit, включая Snapty — приложение, опубликованное в App Store." />
+  <meta name="keywords" content="портфолио iOS разработчика, iOS Developer portfolio, Swift Developer, SwiftUI, UIKit, MVVM, Combine, Core Data, SwiftData, App Store, Snapty" />
+  <meta name="author" content="Dmitrii Seitsman" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#060914" />
+  <link rel="alternate" href="https://seitsman.com/portfolio.html" hreflang="ru" />
+  <link rel="alternate" href="https://seitsman.com/portfolio.html" hreflang="en" />
+  <link rel="alternate" href="https://seitsman.com/portfolio.html" hreflang="x-default" />
+  <link rel="canonical" href="https://seitsman.com/portfolio.html" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="Портфолио — Dmitrii Seitsman | iOS Developer" />
+  <meta property="og:description" content="Проекты iOS-разработки на Swift: Snapty, MovieQuiz, ImageFeed, Tracker, TravelSchedule, ShoppingList и FakeNFT." />
+  <meta property="og:image" content="https://seitsman.com/images/preview.png" />
+  <meta property="og:url" content="https://seitsman.com/portfolio.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dmitrii Seitsman Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Portfolio — Dmitrii Seitsman | iOS Developer" />
+  <meta name="twitter:description" content="iOS developer portfolio with Swift/SwiftUI/UIKit projects including Snapty published in the App Store." />
+  <meta name="twitter:image" content="https://seitsman.com/images/preview.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Portfolio — Dmitrii Seitsman",
+    "url": "https://seitsman.com/portfolio.html",
+    "inLanguage": ["ru", "en"],
+    "about": [
+      "iOS Development",
+      "Swift",
+      "SwiftUI",
+      "UIKit"
+    ]
+  }
+  </script>
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 
@@ -89,14 +124,30 @@
 
     .project-card.featured::before {
       content: "★ Featured";
-      display: inline-block;
+      display: block;
+      width: fit-content;
       margin-bottom: 10px;
+      margin-left: auto;
       padding: 4px 10px;
       border-radius: 999px;
       font-size: 12px;
       color: #d9ebff;
       background: rgba(111,168,255,0.22);
       border: 1px solid rgba(111,168,255,0.55);
+    }
+
+    .project-card .site-note {
+      display: block;
+      margin: 0 0 12px;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.45;
+    }
+
+    .project-card .site-note a {
+      color: #cfe1ff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
     .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -180,47 +231,50 @@
 
       <div class="project-card featured"
      data-ru-desc="Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store."
-     data-en-desc="Snapty — planner for photographers and videographers. My first pet project, published on the App Store.">
+     data-en-desc="Snapty — planner for photographers and videographers. My first pet project, published on the App Store."
+     data-ru-site-note="Подробная информация о проекте доступна на <a href='https://snapty.pro' target='_blank' rel='noopener noreferrer'>сайте</a>."
+     data-en-site-note="Detailed project information is available on the <a href='https://snapty.pro' target='_blank' rel='noopener noreferrer'>website</a>.">
   <strong><a href="Snapty.html">📱 Snapty</a></strong>
   <span class="desc">Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store.</span>
+  <span class="site-note">Подробная информация о проекте доступна на <a href="https://snapty.pro" target="_blank" rel="noopener noreferrer">сайте</a>.</span>
   <a class="github-link" href="https://apps.apple.com/app/snapty-photo-planner/id6766277207" target="_blank" rel="noopener noreferrer">Открыть проект</a>
 </div>
 
       <div class="project-card" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — Movie quiz app">
         <strong><a href="MovieQuiz.html">🎬 MovieQuiz</a></strong>
         <span class="desc">UIKit + MVC — викторина по фильмам</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank">Посмотреть на GitHub</a>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
         <strong><a href="ImageFeed.html">📸 ImageFeed</a></strong>
         <span class="desc">MVP + Kingfisher — фото-лента в стиле Unsplash</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank">Посмотреть на GitHub</a>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="SwiftUI + Core Data — трекер привычек" data-en-desc="SwiftUI + Core Data — habit tracker app">
         <strong><a href="Tracker.html">📆 Tracker</a></strong>
         <span class="desc">SwiftUI + Core Data — трекер привычек</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank">Посмотреть на GitHub</a>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
         <strong><a href="TravelSchedule.html">✈️ TravelSchedule</a></strong>
         <span class="desc">SwiftUI + Combine + Yandex API — расписания путешествий</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank">Посмотреть на GitHub</a>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
       </div>
 
       <div class="project-card" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
         <strong><a href="ShoppingList.html">🛒 ShoppingList</a></strong>
         <span class="desc">SwiftData + MVVM + SwiftUI — список покупок</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank">Посмотреть на GitHub</a>
+        <a class="github-link" href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
       </div>
       <div class="project-card"
      data-ru-desc="SwiftUI — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа"
      data-en-desc="SwiftUI — NFT marketplace: catalog, likes, cart, checkout flow">
   <strong><a href="FakeNFT.html">🖼️ FakeNFT</a></strong>
   <span class="desc">UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа</span>
-  <a class="github-link" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank">Посмотреть на GitHub</a>
+  <a class="github-link" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
 </div>
 
     </section>
@@ -254,7 +308,11 @@
       document.getElementById("portfolio-tagline").innerHTML = t.portfolioTagline;
       document.querySelectorAll(".project-card").forEach((card) => {
         const desc = card.querySelector(".desc");
+        const siteNote = card.querySelector(".site-note");
         desc.textContent = card.getAttribute(`data-${lang}-desc`);
+        if (siteNote) {
+          siteNote.innerHTML = card.getAttribute(`data-${lang}-site-note`);
+        }
         card.querySelector(".github-link").textContent = t.projectLink;
       });
     }
