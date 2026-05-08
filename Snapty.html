@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📱 Snapty — Дмитрий Сейцман</title>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    body {
+      background: #0b1e33;
+      color: #ccc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main.project-page {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: calc(100vh - 160px);
+      padding-top: 120px;
+      box-sizing: border-box;
+    }
+
+    .project-container {
+      text-align: center;
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+      padding: 40px 20px 60px;
+      max-width: 960px;
+      width: 100%;
+      background: rgba(19, 43, 74, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-title {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 16px;
+      text-shadow:
+        0 0 8px rgba(111,168,255,0.6),
+        0 0 16px rgba(111,168,255,0.4);
+      animation: h2Pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes h2Pulse {
+      0%, 100% {
+        text-shadow:
+          0 0 8px rgba(111,168,255,0.6),
+          0 0 16px rgba(111,168,255,0.4);
+      }
+      50% {
+        text-shadow:
+          0 0 12px rgba(111,168,255,0.9),
+          0 0 24px rgba(111,168,255,0.6);
+      }
+    }
+
+    .tech-stack {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .tech-details {
+      margin: 0 auto 26px;
+      max-width: 860px;
+      text-align: left;
+      padding: 18px 18px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(141, 160, 199, 0.28);
+      background: rgba(17, 24, 42, 0.55);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    }
+
+    .tech-details h3 {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 1.08rem;
+    }
+
+    .tech-details p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.62;
+    }
+
+    .screenshot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 0 auto 40px;
+      max-width: 880px;
+    }
+
+    .screenshot-grid img {
+      width: 225px;
+      border-radius: 14px;
+      background: rgba(11, 30, 51, 0.8);
+      padding: 8px;
+      box-shadow:
+        0 0 12px rgba(111,168,255,0.25),
+        0 0 18px rgba(111,168,255,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .screenshot-grid img:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 20px rgba(111,168,255,0.5),
+        0 0 40px rgba(111,168,255,0.3);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #6FA8FF;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    .appstore-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #000;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .appstore-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(255,255,255,0.32);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .appstore-badge-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .appstore-badge-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      line-height: 1.1;
+    }
+
+    .appstore-badge-small {
+      font-size: 0.66rem;
+      opacity: 0.85;
+      letter-spacing: 0.02em;
+    }
+
+    .appstore-badge-big {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      main.project-page {
+        padding-top: 100px;
+      }
+
+      .screenshot-grid img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="project-page">
+    <section class="project-container">
+      <h2 class="project-title" id="project-title">📱 Snapty</h2>
+      <p class="tech-stack" id="tech-stack">
+        Snapty помогает фотографам держать в одном месте бронирования, карточки клиентов, напоминания, личные заметки, чек-листы и обзор доходов в одном сфокусированном приложении для iPhone. Меньше рутины — больше времени на съёмку.
+      </p>
+
+      <div class="tech-details">
+        <h3 id="tech-details-title">Технически о проекте</h3>
+        <p id="tech-details-text">
+          Проект построен на SwiftUI с локальным хранением через SwiftData и архитектурой по фичам (Shoots, Clients, Calendar, Today, Personal, Settings). В приложении используются CloudKit (опциональная iCloud-синхронизация), UserNotifications (локальные напоминания), PhotosUI и Contacts/ContactsUI (фото и контакты клиентов), Charts (аналитика), UniformTypeIdentifiers и экспорт данных, а также YandexMobileMetrica для продуктовой аналитики. Части UI интегрируются через UIKit там, где это даёт более точный контроль поведения.
+        </p>
+      </div>
+
+      <div class="screenshot-grid">
+        <img src="/images/snapty_01_ru.jpg" data-ru-src="/images/snapty_01_ru.jpg" data-en-src="/images/snapty_01_en.jpg" alt="Snapty Screenshot 1" />
+        <img src="/images/snapty_02_ru.jpg" data-ru-src="/images/snapty_02_ru.jpg" data-en-src="/images/snapty_02_en.jpg" alt="Snapty Screenshot 2" />
+        <img src="/images/snapty_03_ru.jpg" data-ru-src="/images/snapty_03_ru.jpg" data-en-src="/images/snapty_03_en.jpg" alt="Snapty Screenshot 3" />
+        <img src="/images/snapty_04_ru.jpg" data-ru-src="/images/snapty_04_ru.jpg" data-en-src="/images/snapty_04_en.jpg" alt="Snapty Screenshot 4" />
+        <img src="/images/snapty_05_ru.jpg" data-ru-src="/images/snapty_05_ru.jpg" data-en-src="/images/snapty_05_en.jpg" alt="Snapty Screenshot 5" />
+        <img src="/images/snapty_06_ru.jpg" data-ru-src="/images/snapty_06_ru.jpg" data-en-src="/images/snapty_06_en.jpg" alt="Snapty Screenshot 6" />
+      </div>
+
+      <a
+        href="https://apps.apple.com/app/snapty-photo-planner/id6766277207"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="appstore-badge"
+        id="appstore-badge"
+        aria-label="Download Snapty on the App Store"
+      >
+        <span class="appstore-badge-icon" aria-hidden="true"></span>
+        <span class="appstore-badge-text">
+          <span class="appstore-badge-small" id="badge-small">Загрузить в</span>
+          <span class="appstore-badge-big" id="badge-big">App Store</span>
+        </span>
+      </a>
+    </section>
+  </main>
+
+  <footer id="footer">
+    © 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. :)
+  </footer>
+
+  <script src="/scripts.js"></script>
+  <script>
+    const pageLang = {
+      ru: {
+        title: "📱 Snapty — Дмитрий Сейцман",
+        tech: "Snapty помогает фотографам держать в одном месте бронирования, карточки клиентов, напоминания, личные заметки, чек-листы и обзор доходов в одном сфокусированном приложении для iPhone. Меньше рутины — больше времени на съёмку.",
+        badgeSmall: "Загрузить в",
+        badgeBig: "App Store",
+        appStoreAria: "Скачать Snapty в App Store",
+        techDetailsTitle: "Технически о проекте",
+        techDetailsText: "Проект построен на SwiftUI с локальным хранением через SwiftData и архитектурой по фичам (Shoots, Clients, Calendar, Today, Personal, Settings). В приложении используются CloudKit (опциональная iCloud-синхронизация), UserNotifications (локальные напоминания), PhotosUI и Contacts/ContactsUI (фото и контакты клиентов), Charts (аналитика), UniformTypeIdentifiers и экспорт данных, а также YandexMobileMetrica для продуктовой аналитики. Части UI интегрируются через UIKit там, где это даёт более точный контроль поведения."
+      },
+      en: {
+        title: "📱 Snapty — Dmitrii Seitsman",
+        tech: "Snapty helps photographers organize bookings, client records, reminders, personal notes, checklists, and income overview in one focused iPhone app. Less admin noise. More time for actual photography.",
+        badgeSmall: "Download on the",
+        badgeBig: "App Store",
+        appStoreAria: "Download Snapty on the App Store",
+        techDetailsTitle: "Technical overview",
+        techDetailsText: "The app is built with SwiftUI, local-first persistence in SwiftData, and a feature-based structure (Shoots, Clients, Calendar, Today, Personal, Settings). It uses CloudKit for optional iCloud sync, UserNotifications for local reminders, PhotosUI and Contacts/ContactsUI for client photos and contact picking, Charts for analytics, UniformTypeIdentifiers for export flows, and YandexMobileMetrica for product analytics. UIKit is used in selected places where deeper platform-level control is needed."
+      }
+    };
+
+    function applyPageLang(lang) {
+      document.title = pageLang[lang].title;
+      const techStack = document.getElementById("tech-stack");
+      const badgeSmall = document.getElementById("badge-small");
+      const badgeBig = document.getElementById("badge-big");
+      const appStoreBadge = document.getElementById("appstore-badge");
+      const techDetailsTitle = document.getElementById("tech-details-title");
+      const techDetailsText = document.getElementById("tech-details-text");
+      if (techStack && badgeSmall && badgeBig && appStoreBadge && techDetailsTitle && techDetailsText) {
+        techStack.innerHTML = pageLang[lang].tech;
+        badgeSmall.innerText = pageLang[lang].badgeSmall;
+        badgeBig.innerText = pageLang[lang].badgeBig;
+        techDetailsTitle.innerText = pageLang[lang].techDetailsTitle;
+        techDetailsText.innerText = pageLang[lang].techDetailsText;
+        appStoreBadge.setAttribute("aria-label", pageLang[lang].appStoreAria);
+      }
+
+      document.querySelectorAll(".screenshot-grid img").forEach((img) => {
+        img.src = img.getAttribute(`data-${lang}-src`);
+      });
+    }
+
+    const lang = localStorage.getItem("lang") || "ru";
+    applyPageLang(lang);
+    document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
+
+    const gridImages = document.querySelectorAll(".screenshot-grid img");
+    if (gridImages.length > 0) {
+      const lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+
+      const closeBtn = document.createElement("div");
+      closeBtn.className = "lightbox-close";
+      closeBtn.innerHTML = "&times;";
+
+      const lightboxImg = document.createElement("img");
+
+      lightbox.appendChild(lightboxImg);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
+
+      gridImages.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add("active");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("active");
+      });
+    }
+  </script>
+</body>
+</html>

@@ -79,6 +79,26 @@
       box-shadow: 0 0 0 rgba(255,255,255,0);
     }
 
+    .project-card.featured {
+      border-color: rgba(111,168,255,0.7);
+      box-shadow:
+        0 0 0 1px rgba(111,168,255,0.35),
+        0 0 26px rgba(111,168,255,0.2);
+      background: linear-gradient(120deg, rgba(111,168,255,0.12), rgba(255,255,255,0.05));
+    }
+
+    .project-card.featured::before {
+      content: "★ Featured";
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #d9ebff;
+      background: rgba(111,168,255,0.22);
+      border: 1px solid rgba(111,168,255,0.55);
+    }
+
     .project-card:nth-child(1) { animation-delay: 0.1s; }
     .project-card:nth-child(2) { animation-delay: 0.2s; }
     .project-card:nth-child(3) { animation-delay: 0.3s; }
@@ -158,6 +178,14 @@
         Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
       </p>
 
+      <div class="project-card featured"
+     data-ru-desc="Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store."
+     data-en-desc="Snapty — planner for photographers and videographers. My first pet project, published on the App Store.">
+  <strong><a href="Snapty.html">📱 Snapty</a></strong>
+  <span class="desc">Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store.</span>
+  <a class="github-link" href="https://apps.apple.com/app/snapty-photo-planner/id6766277207" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+</div>
+
       <div class="project-card" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — Movie quiz app">
         <strong><a href="MovieQuiz.html">🎬 MovieQuiz</a></strong>
         <span class="desc">UIKit + MVC — викторина по фильмам</span>
@@ -194,6 +222,7 @@
   <span class="desc">UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа</span>
   <a class="github-link" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank">Посмотреть на GitHub</a>
 </div>
+
     </section>
   </main>
 
@@ -208,13 +237,13 @@
         title: "Портфолио — Дмитрий Сейцман",
         portfolioTitle: "Портфолио",
         portfolioTagline: "Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.",
-        githubLink: "Посмотреть на GitHub"
+        projectLink: "Открыть проект"
       },
       en: {
         title: "Portfolio — Dmitrii Seitsman",
         portfolioTitle: "Portfolio",
         portfolioTagline: "My iOS projects — from study apps to advanced pet projects with architecture and backend.",
-        githubLink: "View on GitHub"
+        projectLink: "Open project"
       }
     };
 
@@ -226,7 +255,7 @@
       document.querySelectorAll(".project-card").forEach((card) => {
         const desc = card.querySelector(".desc");
         desc.textContent = card.getAttribute(`data-${lang}-desc`);
-        card.querySelector(".github-link").textContent = t.githubLink;
+        card.querySelector(".github-link").textContent = t.projectLink;
       });
     }
 
