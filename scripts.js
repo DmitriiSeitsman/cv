@@ -3,11 +3,11 @@
 const langData = {
   ru: {
     title: "Дмитрий Сейцман — iOS Разработчик",
-    footer: "© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей. 🙂",
+    footer: "© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей.",
   },
   en: {
     title: "Dmitrii Seitsman — iOS Developer",
-    footer: "© 2025 Dmitrii Seitsman. Built with pure HTML, JS, and a pinch of AI. 🙂",
+    footer: "© 2025 Dmitrii Seitsman. Built with pure HTML, JS, and a pinch of AI.",
   },
 };
 
@@ -175,7 +175,7 @@ async function ensureHeaderLoaded() {
 
     host.innerHTML = html;
   } catch (err) {
-    console.warn("⚠️ Header not loaded:", err);
+    console.warn("Header not loaded:", err);
   }
 }
 

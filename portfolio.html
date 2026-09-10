@@ -124,7 +124,7 @@
     }
 
     .project-card.featured::before {
-      content: "★ Featured";
+      content: "Featured";
       display: block;
       width: fit-content;
       margin-bottom: 10px;
@@ -223,60 +223,106 @@
 </head>
 
 <body>
-  <main>
+  <main class="portfolio-page">
     <section id="portfolio">
-      <h2 id="portfolio-title">Портфолио</h2>
-      <p class="tagline" id="portfolio-tagline">
-        Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
-      </p>
+      <header class="portfolio-intro">
+        <p class="portfolio-eyebrow" id="portfolio-eyebrow">Избранные работы</p>
+        <h2 id="portfolio-title">Портфолио</h2>
+        <p class="tagline" id="portfolio-tagline">
+          Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
+        </p>
+      </header>
 
-      <div class="project-card featured"
-     data-ru-desc="Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store."
-     data-en-desc="Snapty — planner for photographers and videographers. My first pet project, published on the App Store."
-     data-ru-site-note="Подробная информация о проекте доступна на <a href='https://snapty.pro' target='_blank' rel='noopener noreferrer'>сайте</a>."
-     data-en-site-note="Detailed project information is available on the <a href='https://snapty.pro' target='_blank' rel='noopener noreferrer'>website</a>.">
-  <strong><a href="Snapty.html">📱 Snapty</a></strong>
-  <span class="desc">Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store.</span>
-  <span class="site-note">Подробная информация о проекте доступна на <a href="https://snapty.pro" target="_blank" rel="noopener noreferrer">сайте</a>.</span>
-  <a class="github-link" href="https://apps.apple.com/app/snapty-photo-planner/id6766277207" target="_blank" rel="noopener noreferrer">Открыть проект</a>
-</div>
+      <article class="project-card portfolio-featured"
+        data-ru-kind="Приложение в App Store"
+        data-en-kind="App Store release"
+        data-ru-desc="Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store."
+        data-en-desc="Snapty — planner for photographers and videographers. My first pet project, published on the App Store.">
+        <div class="project-content">
+          <span class="project-kind">Приложение в App Store</span>
+          <h3><a href="Snapty.html">Snapty</a></h3>
+          <p class="desc">Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store.</p>
+          <ul class="project-tags" aria-label="Technologies">
+            <li>SwiftUI</li><li>SwiftData</li><li>CloudKit</li><li>Charts</li>
+          </ul>
+          <div class="project-actions">
+            <a class="project-detail-link" href="Snapty.html">Подробнее</a>
+            <a class="project-external-link" href="https://snapty.pro/" target="_blank" rel="noopener noreferrer">snapty.pro ↗</a>
+            <a class="github-link" href="https://apps.apple.com/app/snapty-photo-planner/id6766277207" target="_blank" rel="noopener noreferrer">App Store ↗</a>
+          </div>
+        </div>
+        <a class="project-preview project-preview-featured" href="Snapty.html" aria-label="Открыть проект Snapty">
+          <img class="localized-preview" src="images/snapty_01_ru.jpg" data-ru-src="images/snapty_01_ru.jpg" data-en-src="images/snapty_01_en.jpg" alt="Интерфейс Snapty" loading="eager" />
+        </a>
+      </article>
 
-      <div class="project-card" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — Movie quiz app">
-        <strong><a href="MovieQuiz.html">🎬 MovieQuiz</a></strong>
-        <span class="desc">UIKit + MVC — викторина по фильмам</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
+      <div class="portfolio-grid">
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — movie quiz app">
+          <a class="project-preview" href="MovieQuiz.html" aria-label="Открыть проект MovieQuiz"><img src="images/moviequiz_2.png" alt="Интерфейс MovieQuiz" loading="lazy" /></a>
+          <div class="project-content">
+            <span class="project-kind">iOS-проект</span>
+            <h3><a href="MovieQuiz.html">MovieQuiz</a></h3>
+            <p class="desc">UIKit + MVC — викторина по фильмам</p>
+            <ul class="project-tags" aria-label="Technologies"><li>UIKit</li><li>MVC</li><li>REST API</li></ul>
+            <div class="project-actions"><a class="project-detail-link" href="MovieQuiz.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/MovieQuiz" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
+          <a class="project-preview" href="ImageFeed.html" aria-label="Открыть проект ImageFeed"><img src="images/imagefeed_2.png" alt="Интерфейс ImageFeed" loading="lazy" /></a>
+          <div class="project-content">
+            <span class="project-kind">iOS-проект</span>
+            <h3><a href="ImageFeed.html">ImageFeed</a></h3>
+            <p class="desc">MVP + Kingfisher — фото-лента в стиле Unsplash</p>
+            <ul class="project-tags" aria-label="Technologies"><li>UIKit</li><li>MVP</li><li>Kingfisher</li></ul>
+            <div class="project-actions"><a class="project-detail-link" href="ImageFeed.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI + Core Data — трекер привычек" data-en-desc="SwiftUI + Core Data — habit tracker app">
+          <a class="project-preview" href="Tracker.html" aria-label="Открыть проект Tracker"><img src="images/tracker_2.png" alt="Интерфейс Tracker" loading="lazy" /></a>
+          <div class="project-content">
+            <span class="project-kind">iOS-проект</span>
+            <h3><a href="Tracker.html">Tracker</a></h3>
+            <p class="desc">SwiftUI + Core Data — трекер привычек</p>
+            <ul class="project-tags" aria-label="Technologies"><li>SwiftUI</li><li>Core Data</li></ul>
+            <div class="project-actions"><a class="project-detail-link" href="Tracker.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
+          <a class="project-preview" href="TravelSchedule.html" aria-label="Открыть проект TravelSchedule"><img src="images/travelschedule_3.png" alt="Интерфейс TravelSchedule" loading="lazy" /></a>
+          <div class="project-content">
+            <span class="project-kind">iOS-проект</span>
+            <h3><a href="TravelSchedule.html">TravelSchedule</a></h3>
+            <p class="desc">SwiftUI + Combine + Yandex API — расписания путешествий</p>
+            <ul class="project-tags" aria-label="Technologies"><li>SwiftUI</li><li>Combine</li><li>Yandex API</li></ul>
+            <div class="project-actions"><a class="project-detail-link" href="TravelSchedule.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
+          <a class="project-preview" href="ShoppingList.html" aria-label="Открыть проект ShoppingList"><img src="images/shoppinglist_2.png" alt="Интерфейс ShoppingList" loading="lazy" /></a>
+          <div class="project-content">
+            <span class="project-kind">iOS-проект</span>
+            <h3><a href="ShoppingList.html">ShoppingList</a></h3>
+            <p class="desc">SwiftData + MVVM + SwiftUI — список покупок</p>
+            <ul class="project-tags" aria-label="Technologies"><li>SwiftUI</li><li>MVVM</li><li>SwiftData</li></ul>
+            <div class="project-actions"><a class="project-detail-link" href="ShoppingList.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа" data-en-desc="UIKit — NFT marketplace: catalog, likes, cart, checkout flow">
+          <a class="project-preview" href="FakeNFT.html" aria-label="Открыть проект FakeNFT"><img src="images/fakenft_2.png" alt="Интерфейс FakeNFT" loading="lazy" /></a>
+          <div class="project-content">
+            <span class="project-kind">iOS-проект</span>
+            <h3><a href="FakeNFT.html">FakeNFT</a></h3>
+            <p class="desc">UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа</p>
+            <ul class="project-tags" aria-label="Technologies"><li>UIKit</li><li>MVVM</li><li>REST API</li></ul>
+            <div class="project-actions"><a class="project-detail-link" href="FakeNFT.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+        </article>
       </div>
-
-      <div class="project-card" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
-        <strong><a href="ImageFeed.html">📸 ImageFeed</a></strong>
-        <span class="desc">MVP + Kingfisher — фото-лента в стиле Unsplash</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/ImageFeed" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
-      </div>
-
-      <div class="project-card" data-ru-desc="SwiftUI + Core Data — трекер привычек" data-en-desc="SwiftUI + Core Data — habit tracker app">
-        <strong><a href="Tracker.html">📆 Tracker</a></strong>
-        <span class="desc">SwiftUI + Core Data — трекер привычек</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
-      </div>
-
-      <div class="project-card" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
-        <strong><a href="TravelSchedule.html">✈️ TravelSchedule</a></strong>
-        <span class="desc">SwiftUI + Combine + Yandex API — расписания путешествий</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/TravelSchedule" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
-      </div>
-
-      <div class="project-card" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
-        <strong><a href="ShoppingList.html">🛒 ShoppingList</a></strong>
-        <span class="desc">SwiftData + MVVM + SwiftUI — список покупок</span>
-        <a class="github-link" href="https://github.com/DmitriiSeitsman/ShoppingList" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
-      </div>
-      <div class="project-card"
-     data-ru-desc="SwiftUI — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа"
-     data-en-desc="SwiftUI — NFT marketplace: catalog, likes, cart, checkout flow">
-  <strong><a href="FakeNFT.html">🖼️ FakeNFT</a></strong>
-  <span class="desc">UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа</span>
-  <a class="github-link" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank" rel="noopener noreferrer">Посмотреть на GitHub</a>
-</div>
 
     </section>
   </main>
@@ -290,31 +336,45 @@
     const pageLang = {
       ru: {
         title: "Портфолио — Дмитрий Сейцман",
+        eyebrow: "Избранные работы",
         portfolioTitle: "Портфолио",
         portfolioTagline: "Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.",
-        projectLink: "Открыть проект"
+        detailLink: "Подробнее",
+        technologiesLabel: "Технологии"
       },
       en: {
         title: "Portfolio — Dmitrii Seitsman",
+        eyebrow: "Selected work",
         portfolioTitle: "Portfolio",
         portfolioTagline: "My iOS projects — from study apps to advanced pet projects with architecture and backend.",
-        projectLink: "Open project"
+        detailLink: "View case",
+        technologiesLabel: "Technologies"
       }
     };
 
     function applyPageLang(lang) {
       const t = pageLang[lang];
       document.title = t.title;
+      document.getElementById("portfolio-eyebrow").textContent = t.eyebrow;
       document.getElementById("portfolio-title").innerHTML = t.portfolioTitle;
       document.getElementById("portfolio-tagline").innerHTML = t.portfolioTagline;
       document.querySelectorAll(".project-card").forEach((card) => {
         const desc = card.querySelector(".desc");
-        const siteNote = card.querySelector(".site-note");
+        const kind = card.querySelector(".project-kind");
         desc.textContent = card.getAttribute(`data-${lang}-desc`);
-        if (siteNote) {
-          siteNote.innerHTML = card.getAttribute(`data-${lang}-site-note`);
-        }
-        card.querySelector(".github-link").textContent = t.projectLink;
+        kind.textContent = card.getAttribute(`data-${lang}-kind`);
+        card.querySelector(".project-detail-link").textContent = t.detailLink;
+
+        const projectName = card.querySelector("h3").textContent.trim();
+        const preview = card.querySelector(".project-preview");
+        const image = preview.querySelector("img");
+        preview.setAttribute("aria-label", lang === "ru" ? `Открыть проект ${projectName}` : `Open the ${projectName} project`);
+        image.alt = lang === "ru" ? `Интерфейс ${projectName}` : `${projectName} interface`;
+        card.querySelector(".project-tags").setAttribute("aria-label", t.technologiesLabel);
+      });
+
+      document.querySelectorAll(".localized-preview").forEach((image) => {
+        image.src = image.getAttribute(`data-${lang}-src`);
       });
     }
 
