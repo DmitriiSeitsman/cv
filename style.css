@@ -345,7 +345,9 @@ main.home-page {
 }
 
 .hero-button:focus-visible,
-.hero-project:focus-visible {
+.hero-device-link:focus-visible,
+.hero-project-name:focus-visible,
+.hero-project-site:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
@@ -359,8 +361,9 @@ main.home-page {
   color: var(--text-primary);
 }
 
-.hero-project:hover {
-  color: var(--text-primary);
+.hero-device-link {
+  display: block;
+  color: inherit;
 }
 
 .hero-device {
@@ -375,7 +378,7 @@ main.home-page {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hero-project:hover .hero-device {
+.hero-device-link:hover .hero-device {
   transform: translateY(-3px);
   box-shadow: 0 32px 76px var(--shadow-color);
 }
@@ -397,9 +400,31 @@ main.home-page {
   font-size: 0.82rem;
 }
 
-.hero-project-caption strong {
+.hero-project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-project-name {
   color: var(--text-primary);
   font-size: 1rem;
+  font-weight: 750;
+}
+
+.hero-project-name:hover {
+  color: var(--accent);
+}
+
+.hero-project-site {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.hero-project-site:hover {
+  color: var(--text-primary);
 }
 
 .home-page #about {

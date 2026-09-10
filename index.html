@@ -221,24 +221,37 @@
         </div>
       </div>
 
-      <a class="hero-project" id="hero-project-link" href="Snapty.html" aria-label="Открыть проект Snapty">
-        <span class="hero-device" aria-hidden="true">
-          <img
-            id="hero-project-image"
-            src="images/snapty_01_ru.jpg"
-            data-ru-src="images/snapty_01_ru.jpg"
-            data-en-src="images/snapty_01_en.jpg"
-            width="1242"
-            height="2688"
-            alt=""
-            fetchpriority="high"
-          />
-        </span>
-        <span class="hero-project-caption">
-          <strong>Snapty</strong>
-          <span id="hero-project-status">Опубликовано в App Store</span>
-        </span>
-      </a>
+      <div class="hero-project">
+        <a class="hero-device-link" id="hero-project-link" href="Snapty.html" aria-label="Открыть проект Snapty">
+          <span class="hero-device" aria-hidden="true">
+            <img
+              id="hero-project-image"
+              src="images/snapty_01_ru.jpg"
+              data-ru-src="images/snapty_01_ru.jpg"
+              data-en-src="images/snapty_01_en.jpg"
+              width="1242"
+              height="2688"
+              alt=""
+              fetchpriority="high"
+            />
+          </span>
+        </a>
+
+        <div class="hero-project-caption">
+          <span class="hero-project-meta">
+            <a class="hero-project-name" href="Snapty.html">Snapty</a>
+            <span id="hero-project-status">Опубликовано в App Store</span>
+          </span>
+          <a
+            class="hero-project-site"
+            id="hero-project-site"
+            href="https://snapty.pro/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Открыть сайт Snapty"
+          >snapty.pro ↗</a>
+        </div>
+      </div>
     </section>
 
     <section id="about" class="page-section" itemscope itemtype="https://schema.org/Person">
@@ -301,6 +314,7 @@
         heroContact: "Связаться",
         heroProjectStatus: "Опубликовано в App Store",
         heroProjectAria: "Открыть проект Snapty",
+        heroProjectSiteAria: "Открыть сайт Snapty",
         aboutTitle: "Обо мне",
         aboutText: `
           Я iOS-разработчик, создаю мобильные приложения на Swift с фокусом на архитектуру, стабильность, визуальную аккуратность и понятный UX.<br><br>
@@ -324,6 +338,7 @@
         heroContact: "Get in touch",
         heroProjectStatus: "Published on the App Store",
         heroProjectAria: "Open the Snapty project",
+        heroProjectSiteAria: "Open the Snapty website",
         aboutTitle: "About Me",
         aboutText: `
           I’m an iOS developer building mobile apps with Swift, focusing on architecture, stability, visual polish, and clear user experience.<br><br>
@@ -352,8 +367,10 @@
       document.getElementById("hero-project-status").textContent = dict.heroProjectStatus;
 
       const heroProjectLink = document.getElementById("hero-project-link");
+      const heroProjectSite = document.getElementById("hero-project-site");
       const heroProjectImage = document.getElementById("hero-project-image");
       heroProjectLink.setAttribute("aria-label", dict.heroProjectAria);
+      heroProjectSite.setAttribute("aria-label", dict.heroProjectSiteAria);
       heroProjectImage.src = heroProjectImage.getAttribute(`data-${lang}-src`);
 
       document.getElementById("about-title").innerHTML = dict.aboutTitle;
