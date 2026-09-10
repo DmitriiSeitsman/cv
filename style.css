@@ -136,16 +136,14 @@ header h1 {
   color: var(--type);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.25s ease, transform 0.2s ease, text-shadow 0.25s ease;
+  transition: color 0.16s ease, opacity 0.16s ease;
   font-size: 0.98rem;
   opacity: 0.94;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: #d8e6ff;
-  text-shadow: 0 0 12px rgba(120,168,255,0.65);
-  transform: translateY(-1px);
+  color: var(--accent);
   opacity: 1;
 }
 
@@ -235,60 +233,31 @@ section,
   padding: 40px;
   max-width: 900px;
   width: 100%;
-  box-shadow:
-    0 18px 40px rgba(0,0,0,0.35),
-    0 0 0 1px rgba(255,255,255,0.02) inset;
+  box-shadow: 0 18px 40px var(--shadow-color);
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeSlideIn 1s ease-out forwards;
-  animation-delay: 0.2s;
+  transform: translateY(10px);
+  animation: calmReveal 0.45s ease-out forwards;
   backdrop-filter: blur(12px);
-  transition: box-shadow 0.6s ease;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
 }
 
 section:hover,
 .page-section:hover {
-  box-shadow:
-    0 22px 48px rgba(0,0,0,0.4),
-    0 0 26px rgba(123,77,255,0.2),
-    0 0 34px rgba(120,168,255,0.18);
+  box-shadow: 0 20px 44px var(--shadow-color);
 }
 
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(30px); }
+@keyframes calmReveal {
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 /* === HEADINGS === */
 
 h2 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: clamp(1.5rem, 2.8vw, 1.95rem);
   font-weight: 800;
   margin-bottom: 20px;
-  text-shadow:
-    0 0 8px rgba(120,168,255,0.5),
-    0 0 14px rgba(123,77,255,0.42);
-  animation: h2Pulse 3s ease-in-out infinite;
-}
-
-@keyframes h2Pulse {
-  0% {
-    text-shadow:
-      0 0 6px  rgba(111,168,255,0.4),
-      0 0 12px rgba(111,168,255,0.3);
-  }
-  50% {
-    text-shadow:
-      0 0 12px rgba(111,168,255,0.8),
-      0 0 25px rgba(111,168,255,0.6),
-      0 0 40px rgba(111,168,255,0.4);
-  }
-  100% {
-    text-shadow:
-      0 0 6px  rgba(111,168,255,0.4),
-      0 0 12px rgba(111,168,255,0.3);
-  }
 }
 
 /* === TEXT / LINKS / BUTTONS === */
@@ -296,68 +265,58 @@ h2 {
 a {
   color: var(--type);
   text-decoration: none;
-  transition: opacity 0.2s ease, text-shadow 0.25s ease, color 0.25s ease;
+  transition: opacity 0.16s ease, color 0.16s ease;
 }
 
 a:hover {
   opacity: 1;
-  color: #cfe1ff;
-  text-shadow: 0 0 10px rgba(120,168,255,0.6);
+  color: var(--accent);
 }
 
 button {
   font-family: inherit;
-  background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+  background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
   font-weight: 700;
-  transition: all 0.25s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 24px rgba(123,77,255,0.28);
+  transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+  box-shadow: none;
 }
 
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(120,168,255,0.35);
+  box-shadow: none;
 }
 
 /* === PROJECT CARDS === */
 
 .project-card {
   background: var(--surface-strong);
-  border: 1px solid rgba(144, 162, 198, 0.26);
+  border: 1px solid var(--border-soft);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 16px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
   text-align: left;
 }
 
 .project-card:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow:
-    0 14px 28px rgba(0,0,0,0.32),
-    0 0 18px rgba(123,77,255,0.2);
+  transform: translateY(-2px);
+  box-shadow: none;
 }
 
 /* Project titles (white + green glow) */
 .project-card strong a {
-  color: #fff;
+  color: var(--text-primary);
   text-decoration: none;
-  transition: transform 0.2s ease, text-shadow 0.3s ease;
-  text-shadow:
-    0 0 6px  rgba(70,196,116,0.5),
-    0 0 12px rgba(70,196,116,0.35);
+  transition: color 0.16s ease;
 }
 
 .project-card strong a:hover {
-  transform: scale(1.05);
-  text-shadow:
-    0 0 10px rgba(70,196,116,0.8),
-    0 0 18px rgba(70,196,116,0.55),
-    0 0 26px rgba(70,196,116,0.40);
+  color: var(--accent);
 }
 
 /* === SERVICES LIST === */
@@ -366,16 +325,17 @@ button:hover {
 
 .services-list li {
   background: var(--surface);
-  border: 1px solid rgba(145, 164, 198, 0.22);
+  border: 1px solid var(--border-soft);
   border-radius: 12px;
   padding: 15px 20px;
   margin: 10px 0;
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
 }
 
 .services-list li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 16px rgba(120,168,255,0.24);
+  transform: translateY(-1px);
+  background: var(--surface-hover);
+  border-color: var(--accent);
 }
 
 /* === CONTACTS === */
@@ -530,6 +490,7 @@ h2,
   background: none !important;
   -webkit-text-fill-color: currentColor !important;
   text-shadow: none !important;
+  animation: none !important;
 }
 
 header.site-header {
@@ -561,6 +522,19 @@ a:hover {
   backdrop-filter: blur(12px) !important;
 }
 
+section,
+.page-section,
+.project-container,
+#portfolio,
+.services-wrap,
+.contact-section {
+  animation-name: calmReveal !important;
+  animation-duration: 0.45s !important;
+  animation-delay: 0s !important;
+  animation-timing-function: ease-out !important;
+  animation-fill-mode: forwards !important;
+}
+
 .project-container:hover,
 #portfolio:hover,
 .services-wrap:hover,
@@ -575,6 +549,14 @@ a:hover {
   background: var(--surface-strong) !important;
   border-color: var(--border-soft) !important;
   box-shadow: none !important;
+}
+
+.project-card {
+  animation-name: calmReveal !important;
+  animation-duration: 0.35s !important;
+  animation-delay: 0.06s !important;
+  animation-timing-function: ease-out !important;
+  animation-fill-mode: forwards !important;
 }
 
 .project-card.featured {
@@ -597,10 +579,23 @@ a:hover {
   box-shadow: none !important;
 }
 
+.project-card:hover,
+.contact-card:hover {
+  transform: translateY(-2px) !important;
+}
+
 .project-card strong a,
 .project-card strong a:hover,
 td strong {
   color: var(--text-primary) !important;
+  text-shadow: none !important;
+}
+
+.project-card strong a:hover {
+  transform: none !important;
+}
+
+.contact-card a:hover {
   text-shadow: none !important;
 }
 
@@ -630,6 +625,7 @@ td strong {
 
 .screenshot-grid img:hover {
   box-shadow: 0 12px 30px var(--shadow-color) !important;
+  transform: translateY(-2px) !important;
 }
 
 .lightbox {
@@ -647,6 +643,26 @@ td strong {
   background: var(--accent) !important;
   color: #ffffff !important;
   box-shadow: none !important;
+  transform: translateY(-1px) !important;
+}
+
+.appstore-badge:hover,
+.diploma-link:hover .diploma-preview,
+.services-list li:hover {
+  transform: translateY(-1px) !important;
+}
+
+.lightbox-close:hover {
+  transform: none !important;
+}
+
+.lightbox.active img {
+  animation: calmZoom 0.18s ease-out !important;
+}
+
+@keyframes calmZoom {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 table {
@@ -731,5 +747,26 @@ footer {
   .services-wrap tbody tr {
     background: var(--surface-strong) !important;
     border: 1px solid var(--border-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  section,
+  .page-section,
+  .project-container,
+  #portfolio,
+  .services-wrap,
+  .contact-section,
+  .project-card {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
