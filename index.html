@@ -205,7 +205,42 @@
 <body>
   <!-- 💡 header.html подгружается через scripts.js -->
 
-  <main>
+  <main class="home-page">
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-eyebrow" id="hero-name">Дмитрий Сейцман</p>
+        <h2 class="hero-title" id="hero-title">iOS-разработчик</h2>
+        <p class="hero-description" id="hero-description">
+          Создаю мобильные приложения на Swift с фокусом на архитектуру, стабильность, визуальную аккуратность и понятный UX.
+        </p>
+        <p class="hero-stack" id="hero-stack">SwiftUI · UIKit · SwiftData · CloudKit</p>
+
+        <div class="hero-actions">
+          <a class="hero-button hero-button-primary" id="hero-portfolio-link" href="portfolio.html">Посмотреть проекты</a>
+          <a class="hero-button hero-button-secondary" id="hero-contact-link" href="contacts.html">Связаться</a>
+        </div>
+      </div>
+
+      <a class="hero-project" id="hero-project-link" href="Snapty.html" aria-label="Открыть проект Snapty">
+        <span class="hero-device" aria-hidden="true">
+          <img
+            id="hero-project-image"
+            src="images/snapty_01_ru.jpg"
+            data-ru-src="images/snapty_01_ru.jpg"
+            data-en-src="images/snapty_01_en.jpg"
+            width="1242"
+            height="2688"
+            alt=""
+            fetchpriority="high"
+          />
+        </span>
+        <span class="hero-project-caption">
+          <strong>Snapty</strong>
+          <span id="hero-project-status">Опубликовано в App Store</span>
+        </span>
+      </a>
+    </section>
+
     <section id="about" class="page-section" itemscope itemtype="https://schema.org/Person">
       <h2 id="about-title" itemprop="name">Обо мне</h2>
 
@@ -258,6 +293,14 @@
   <script>
     const pageLang = {
       ru: {
+        heroName: "Дмитрий Сейцман",
+        heroTitle: "iOS-разработчик",
+        heroDescription: "Создаю мобильные приложения на Swift с фокусом на архитектуру, стабильность, визуальную аккуратность и понятный UX.",
+        heroStack: "SwiftUI · UIKit · SwiftData · CloudKit",
+        heroPortfolio: "Посмотреть проекты",
+        heroContact: "Связаться",
+        heroProjectStatus: "Опубликовано в App Store",
+        heroProjectAria: "Открыть проект Snapty",
         aboutTitle: "Обо мне",
         aboutText: `
           Я iOS-разработчик, создаю мобильные приложения на Swift с фокусом на архитектуру, стабильность, визуальную аккуратность и понятный UX.<br><br>
@@ -273,6 +316,14 @@
         educationNote: "Откроется в новой вкладке."
       },
       en: {
+        heroName: "Dmitrii Seitsman",
+        heroTitle: "iOS Developer",
+        heroDescription: "I build mobile apps with Swift, focusing on architecture, stability, visual polish, and clear user experience.",
+        heroStack: "SwiftUI · UIKit · SwiftData · CloudKit",
+        heroPortfolio: "View projects",
+        heroContact: "Get in touch",
+        heroProjectStatus: "Published on the App Store",
+        heroProjectAria: "Open the Snapty project",
         aboutTitle: "About Me",
         aboutText: `
           I’m an iOS developer building mobile apps with Swift, focusing on architecture, stability, visual polish, and clear user experience.<br><br>
@@ -291,6 +342,19 @@
 
     function applyPageLang(lang) {
       const dict = pageLang[lang];
+
+      document.getElementById("hero-name").textContent = dict.heroName;
+      document.getElementById("hero-title").textContent = dict.heroTitle;
+      document.getElementById("hero-description").textContent = dict.heroDescription;
+      document.getElementById("hero-stack").textContent = dict.heroStack;
+      document.getElementById("hero-portfolio-link").textContent = dict.heroPortfolio;
+      document.getElementById("hero-contact-link").textContent = dict.heroContact;
+      document.getElementById("hero-project-status").textContent = dict.heroProjectStatus;
+
+      const heroProjectLink = document.getElementById("hero-project-link");
+      const heroProjectImage = document.getElementById("hero-project-image");
+      heroProjectLink.setAttribute("aria-label", dict.heroProjectAria);
+      heroProjectImage.src = heroProjectImage.getAttribute(`data-${lang}-src`);
 
       document.getElementById("about-title").innerHTML = dict.aboutTitle;
       document.getElementById("about-text").innerHTML = dict.aboutText;
