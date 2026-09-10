@@ -41,7 +41,7 @@ function applyTheme(theme, persist = false) {
 
   const themeColor = document.querySelector('meta[name="theme-color"]');
   if (themeColor) {
-    themeColor.setAttribute("content", theme === "light" ? "#F6F7F9" : "#0B0E13");
+    themeColor.setAttribute("content", theme === "light" ? "#F6F7F9" : "#0E0E0F");
   }
 
   if (persist) localStorage.setItem(themeStorageKey, theme);
