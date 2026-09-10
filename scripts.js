@@ -12,6 +12,55 @@ const langData = {
 };
 
 let currentLang = localStorage.getItem("lang") || "ru";
+const themeStorageKey = "theme";
+
+function getPreferredTheme() {
+  const savedTheme = localStorage.getItem(themeStorageKey);
+  if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
+function updateThemeControl(theme) {
+  const toggle = document.getElementById("theme-toggle");
+  if (!toggle) return;
+
+  const isDark = theme === "dark";
+  const language = document.documentElement.lang === "en" ? "en" : "ru";
+  const label = language === "en"
+    ? (isDark ? "Switch to light theme" : "Switch to dark theme")
+    : (isDark ? "Включить светлую тему" : "Включить тёмную тему");
+
+  toggle.setAttribute("aria-label", label);
+  toggle.setAttribute("title", label);
+  toggle.setAttribute("aria-pressed", String(!isDark));
+}
+
+function applyTheme(theme, persist = false) {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor) {
+    themeColor.setAttribute("content", theme === "light" ? "#F6F7F9" : "#0B0E13");
+  }
+
+  if (persist) localStorage.setItem(themeStorageKey, theme);
+  updateThemeControl(theme);
+}
+
+function wireThemeButton() {
+  const toggle = document.getElementById("theme-toggle");
+  toggle?.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme, true);
+  });
+}
+
+window.matchMedia("(prefers-color-scheme: light)").addEventListener?.("change", (event) => {
+  if (!localStorage.getItem(themeStorageKey)) {
+    applyTheme(event.matches ? "light" : "dark");
+  }
+});
 
 // ————— helpers —————
 function setActiveNav() {
@@ -51,6 +100,8 @@ function setLanguage(lang) {
     const text = link.getAttribute(`data-${lang}`);
     if (text) link.textContent = text;
   });
+
+  updateThemeControl(document.documentElement.dataset.theme || getPreferredTheme());
 
   // оповестим страницы, чтобы они обновили свой локальный текст
   document.dispatchEvent(new CustomEvent("langchange", { detail: { lang } }));
@@ -130,8 +181,10 @@ async function ensureHeaderLoaded() {
 
 // ————— bootstrap —————
 document.addEventListener("DOMContentLoaded", async () => {
+  applyTheme(document.documentElement.dataset.theme || getPreferredTheme());
   await ensureHeaderLoaded();  // загрузим общий header, если его нет
   wireLangButtons();           // обработчики RU/EN
+  wireThemeButton();           // светлая / тёмная тема
   initMobileMenu();            // бургер
   setActiveNav();              // подсветка текущей страницы
   setLanguage(currentLang);    // применим язык (title, footer, имя, меню)
