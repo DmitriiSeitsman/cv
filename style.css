@@ -1,4 +1,4 @@
-/* === COLOR SYSTEM: CALM iOS ENGINEERING === */
+/* === COLOR SYSTEM: GRAPHITE & CHAMPAGNE === */
 
 :root {
   color-scheme: dark;
@@ -8,21 +8,22 @@
   --text-primary: #f4f7fb;
   --text-secondary: #a1abba;
 
-  --keyword: #78a9ff;
-  --type: #78a9ff;
-  --string: #a9c8ff;
+  --keyword: #d6b878;
+  --type: #d6b878;
+  --string: #e4c98f;
   --comment: #7f8a99;
-  --accent: #78a9ff;
-  --accent-2: #78a9ff;
-  --accent-3: #78a9ff;
-  --brand: #46c474;
-  --mint: #46c474;
+  --accent: #d6b878;
+  --accent-2: #d6b878;
+  --accent-3: #d6b878;
+  --on-accent: #17120a;
+  --brand: var(--accent);
+  --mint: var(--accent);
   --border-soft: #273142;
   --surface: #121722;
   --surface-strong: #171e2a;
-  --surface-accent: #172236;
+  --surface-accent: #211d16;
   --surface-hover: #1b2431;
-  --accent-soft: rgba(120, 169, 255, 0.14);
+  --accent-soft: rgba(214, 184, 120, 0.12);
   --shadow-color: rgba(0, 0, 0, 0.28);
   --header-border: rgba(244, 247, 251, 0.08);
   --footer-bg: #0f131b;
@@ -35,19 +36,20 @@ html[data-theme="light"] {
   --bg-tertiary: #f6f7f9;
   --text-primary: #101318;
   --text-secondary: #5f6b7a;
-  --keyword: #2563eb;
-  --type: #2563eb;
-  --string: #1f5bc9;
+  --keyword: #76552a;
+  --type: #76552a;
+  --string: #8a6631;
   --comment: #6b7280;
-  --accent: #2563eb;
-  --accent-2: #2563eb;
-  --accent-3: #2563eb;
+  --accent: #76552a;
+  --accent-2: #76552a;
+  --accent-3: #76552a;
+  --on-accent: #ffffff;
   --border-soft: #dde2e8;
   --surface: #ffffff;
   --surface-strong: #f1f4f8;
-  --surface-accent: #eaf2ff;
+  --surface-accent: #f6f0e6;
   --surface-hover: #e9edf3;
-  --accent-soft: rgba(37, 99, 235, 0.1);
+  --accent-soft: rgba(118, 85, 42, 0.1);
   --shadow-color: rgba(16, 24, 40, 0.1);
   --header-border: rgba(16, 19, 24, 0.1);
   --footer-bg: #eef1f5;
@@ -61,17 +63,18 @@ html[data-theme="light"] {
     --bg-tertiary: #f6f7f9;
     --text-primary: #101318;
     --text-secondary: #5f6b7a;
-    --keyword: #2563eb;
-    --type: #2563eb;
-    --accent: #2563eb;
-    --accent-2: #2563eb;
-    --accent-3: #2563eb;
+    --keyword: #76552a;
+    --type: #76552a;
+    --accent: #76552a;
+    --accent-2: #76552a;
+    --accent-3: #76552a;
+    --on-accent: #ffffff;
     --border-soft: #dde2e8;
     --surface: #ffffff;
     --surface-strong: #f1f4f8;
-    --surface-accent: #eaf2ff;
+    --surface-accent: #f6f0e6;
     --surface-hover: #e9edf3;
-    --accent-soft: rgba(37, 99, 235, 0.1);
+    --accent-soft: rgba(118, 85, 42, 0.1);
     --shadow-color: rgba(16, 24, 40, 0.1);
     --header-border: rgba(16, 19, 24, 0.1);
     --footer-bg: #eef1f5;
@@ -133,7 +136,7 @@ header h1 {
 }
 
 .main-nav a {
-  color: var(--type);
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.16s ease, opacity 0.16s ease;
@@ -143,8 +146,15 @@ header h1 {
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--accent);
   opacity: 1;
+}
+
+.main-nav a:hover {
+  color: var(--text-primary);
+}
+
+.main-nav a.active {
+  color: var(--accent);
 }
 
 /* === LANG BUTTONS === */
@@ -497,16 +507,25 @@ header.site-header {
   border-bottom-color: var(--header-border) !important;
 }
 
-.main-nav a,
 a {
   color: var(--accent);
 }
 
-.main-nav a:hover,
-.main-nav a.active,
 a:hover {
   color: var(--accent);
   text-shadow: none;
+}
+
+.main-nav a {
+  color: var(--text-secondary);
+}
+
+.main-nav a:hover {
+  color: var(--text-primary);
+}
+
+.main-nav a.active {
+  color: var(--accent);
 }
 
 .project-container,
@@ -632,6 +651,10 @@ td strong {
   background: rgba(2, 6, 15, 0.9) !important;
 }
 
+.lightbox-close {
+  color: var(--accent) !important;
+}
+
 .github-button {
   border-color: var(--accent) !important;
   color: var(--accent) !important;
@@ -641,7 +664,7 @@ td strong {
 
 .github-button:hover {
   background: var(--accent) !important;
-  color: #ffffff !important;
+  color: var(--on-accent) !important;
   box-shadow: none !important;
   transform: translateY(-1px) !important;
 }
@@ -703,7 +726,7 @@ tr:hover {
 
 button:not(.menu-toggle) {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   box-shadow: none;
 }
 
