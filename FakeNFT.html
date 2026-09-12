@@ -11,298 +11,110 @@
   <link rel="canonical" href="https://seitsman.com/FakeNFT.html" />
   <meta property="og:title" content="FakeNFT — iOS Project | Dmitrii Seitsman" />
   <meta property="og:description" content="NFT marketplace iOS project case study." />
-  <meta property="og:image" content="https://seitsman.com/images/preview.png" />
+  <meta property="og:image" content="https://seitsman.com/images/og/FakeNFT.png" />
   <meta property="og:url" content="https://seitsman.com/FakeNFT.html" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="FakeNFT — iOS Project" />
   <meta name="twitter:description" content="NFT marketplace iOS app case." />
-  <meta name="twitter:image" content="https://seitsman.com/images/preview.png" />
+  <meta name="twitter:image" content="https://seitsman.com/images/og/FakeNFT.png" />
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/case-study.css" />
 
-  <style>
-    body {
-      background: #0b1e33;
-      color: #ccc;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    main.project-page {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: calc(100vh - 160px);
-      padding-top: 120px;
-      box-sizing: border-box;
-    }
-
-    .project-container {
-      text-align: center;
-      animation: fadeIn 0.8s ease forwards;
-      opacity: 0;
-      padding: 40px 20px 60px;
-      max-width: 960px;
-      width: 100%;
-      background: rgba(19, 43, 74, 0.8);
-      border-radius: 20px;
-      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .project-title {
-      color: #fff;
-      font-size: 2rem;
-      margin-bottom: 16px;
-      text-shadow:
-        0 0 8px rgba(111,168,255,0.6),
-        0 0 16px rgba(111,168,255,0.4);
-      animation: h2Pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes h2Pulse {
-      0%, 100% { text-shadow: 0 0 8px rgba(111,168,255,0.6), 0 0 16px rgba(111,168,255,0.4); }
-      50% { text-shadow: 0 0 12px rgba(111,168,255,0.9), 0 0 24px rgba(111,168,255,0.6); }
-    }
-
-    .tech-stack {
-      color: #ccc;
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .screenshot-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin: 0 auto 40px;
-      max-width: 880px;
-    }
-
-    .screenshot-grid img {
-      width: 225px;
-      border-radius: 14px;
-      background: rgba(11, 30, 51, 0.8);
-      padding: 8px;
-      box-shadow:
-        0 0 12px rgba(111,168,255,0.25),
-        0 0 18px rgba(111,168,255,0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .screenshot-grid img:hover {
-      transform: scale(1.05);
-      box-shadow:
-        0 0 20px rgba(111,168,255,0.5),
-        0 0 40px rgba(111,168,255,0.3);
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-
-    .lightbox.active { display: flex; }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      animation: zoomIn 0.3s ease;
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: #6FA8FF;
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-      user-select: none;
-    }
-
-    .lightbox-close:hover { transform: scale(1.2); }
-
-    .github-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 24px;
-      border: 1px solid #6FA8FF;
-      border-radius: 8px;
-      color: #6FA8FF;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .github-button:hover {
-      background: #6FA8FF;
-      color: #0b1e33;
-      transform: scale(1.05);
-      box-shadow: 0 0 16px rgba(111,168,255,0.4);
-    }
-
-    @media (max-width: 768px) {
-      main.project-page { padding-top: 100px; }
-      .screenshot-grid img { width: 90%; }
-    }
-  </style>
 </head>
 
-<body>
-  <main class="project-page">
-    <section class="project-container">
-      <h2 class="project-title" id="project-title">FakeNFT</h2>
-
-      <p class="tech-stack" id="tech-stack">
-        FakeNFT — учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.<br>
-        <strong>Стек:</strong> SwiftUI, MVC/MVVM, URLSession, REST API, JSON, асинхронная загрузка изображений, кеширование, обработка ошибок.
-      </p>
-
-      <div class="screenshot-grid">
-        <img src="/images/fakenft_1.png" alt="FakeNFT Screenshot 1" loading="lazy" />
-        <img src="/images/fakenft_2.png" alt="FakeNFT Screenshot 2" loading="lazy" />
-        <img src="/images/fakenft_3.png" alt="FakeNFT Screenshot 3" loading="lazy" />
-        <img src="/images/fakenft_4.png" alt="FakeNFT Screenshot 4" loading="lazy" />
-        <img src="/images/fakenft_5.png" alt="FakeNFT Screenshot 5" loading="lazy" />
-        <img src="/images/fakenft_6.png" alt="FakeNFT Screenshot 6" loading="lazy" />
-        <img src="/images/fakenft_7.png" alt="FakeNFT Screenshot 7" loading="lazy" />
-        <img src="/images/fakenft_8.png" alt="FakeNFT Screenshot 8" loading="lazy" />
-        <img src="/images/fakenft_9.png" alt="FakeNFT Screenshot 9" loading="lazy" />
-      </div>
-
-      <a
-        href="https://github.com/DmitriiSeitsman/FakeNFT"
-        target="_blank"
-        rel="noopener noreferrer"
-        rel="noopener noreferrer"
-        class="github-button"
-        id="github-button"
-      >
-        Посмотреть на GitHub
+<body class="case-page-body">
+  <main class="case-main">
+    <article class="case-study">
+      <a class="case-back" href="/portfolio.html">
+        <svg class="case-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg>
+        <span data-case-copy="back">Все проекты</span>
       </a>
-    </section>
+
+      <header class="case-hero">
+        <div class="case-hero-copy">
+          <p class="case-eyebrow" data-case-copy="eyebrow">iOS-проект</p>
+          <h1 class="case-title">FakeNFT</h1>
+          <p class="case-summary" data-case-copy="summary">Учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.</p>
+          <ul class="case-tech-list" aria-label="Технологии">
+            <li>SwiftUI</li><li>MVC/MVVM</li><li>REST API</li><li>URLSession</li><li>Caching</li>
+          </ul>
+          <div class="case-actions">
+            <a class="case-action case-action-primary" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank" rel="noopener noreferrer" data-case-copy="primaryAction">Посмотреть на GitHub</a>
+          </div>
+        </div>
+        <button class="case-shot case-lead-shot" type="button">
+          <img src="/images/fakenft_2.webp" alt="FakeNFT — каталог NFT" />
+        </button>
+      </header>
+
+      <section class="case-section">
+        <div class="case-section-heading">
+          <p class="case-section-index" data-case-copy="overviewIndex">01 / Контекст</p>
+          <h2 data-case-copy="overviewTitle">О проекте</h2>
+        </div>
+        <div class="case-overview-copy">
+          <p data-case-copy="overview">Каталог коллекций и карточек NFT, лайки, корзина и оформление заказа, с асинхронной загрузкой изображений, кешированием и обработкой ошибок.</p>
+          <dl class="case-facts">
+            <div class="case-fact"><dt data-case-copy="roleLabel">Роль</dt><dd data-case-copy="role">iOS-разработка</dd></div>
+            <div class="case-fact"><dt data-case-copy="platformLabel">Платформа</dt><dd>iOS</dd></div>
+            <div class="case-fact"><dt data-case-copy="foundationLabel">Основа</dt><dd>SwiftUI · MVVM</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="case-section case-gallery-section">
+        <div class="case-gallery-header">
+          <div class="case-section-heading">
+            <p class="case-section-index" data-case-copy="galleryIndex">02 / Интерфейс</p>
+            <h2 data-case-copy="galleryTitle">Галерея</h2>
+          </div>
+          <p class="case-gallery-intro" data-case-copy="galleryIntro">Ключевые экраны и пользовательские сценарии приложения.</p>
+        </div>
+        <div class="case-gallery">
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_1.webp" alt="FakeNFT iOS app screenshot 1" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_3.webp" alt="FakeNFT iOS app screenshot 3" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_4.webp" alt="FakeNFT iOS app screenshot 4" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_5.webp" alt="FakeNFT iOS app screenshot 5" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_6.webp" alt="FakeNFT iOS app screenshot 6" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_7.webp" alt="FakeNFT iOS app screenshot 7" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_8.webp" alt="FakeNFT iOS app screenshot 8" loading="lazy" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img src="/images/fakenft_9.webp" alt="FakeNFT iOS app screenshot 9" loading="lazy" /></button>
+        </div>
+      </section>
+
+      <nav class="case-project-nav" aria-label="Навигация по проектам">
+        <a class="case-nav-link" href="/portfolio.html"><svg class="case-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg><span data-case-copy="back">Все проекты</span></a>
+        <a class="case-nav-link case-nav-next" href="/Snapty.html"><span class="case-next-copy"><span class="case-next-label" data-case-copy="nextLabel">Следующий проект</span><strong class="case-next-name">Snapty</strong></span><svg class="case-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+      </nav>
+    </article>
   </main>
 
-  <footer id="footer">
-    © 2025 Дмитрий Сейцман — сайт создан на чистом энтузиазме и кофе
-  </footer>
-
+  <footer id="footer">© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей.</footer>
   <script src="/scripts.js"></script>
   <script>
-    const pageLang = {
+    window.caseStudyData = {
       ru: {
-        title: "FakeNFT — Дмитрий Сейцман",
-        h2: "FakeNFT",
-        tech:
-          "FakeNFT — учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.<br>" +
-          "<strong>Стек:</strong> SwiftUI, MVC/MVVM, URLSession, REST API, JSON, асинхронная загрузка изображений, кеширование, обработка ошибок.",
-        github: "Посмотреть на GitHub"
+        pageTitle: "FakeNFT — Дмитрий Сейцман",
+        eyebrow: "iOS-проект",
+        summary: "Учебный маркетплейс NFT: каталог коллекций, карточки NFT, лайки, корзина и оформление заказа.",
+        overview: "Каталог коллекций и карточек NFT, лайки, корзина и оформление заказа, с асинхронной загрузкой изображений, кешированием и обработкой ошибок.",
+        role: "iOS-разработка",
+        primaryAction: "Посмотреть на GitHub"
       },
       en: {
-        title: "FakeNFT — Dmitrii Seitsman",
-        h2: "FakeNFT",
-        tech:
-          "FakeNFT — a training NFT marketplace app: collections catalog, NFT details, likes, cart, and checkout flow.<br>" +
-          "<strong>Stack:</strong> SwiftUI, MVC/MVVM, URLSession, REST API, JSON, async image loading, caching, error handling.",
-        github: "View on GitHub"
+        pageTitle: "FakeNFT — Dmitrii Seitsman",
+        eyebrow: "iOS project",
+        summary: "A training NFT marketplace app: collections catalog, NFT details, likes, cart, and checkout flow.",
+        overview: "Collections and NFT catalog, likes, cart and checkout, with async image loading, caching, and error handling.",
+        role: "iOS development",
+        primaryAction: "View on GitHub"
       }
     };
-
-    function normalizeLang(value) {
-      return (value === "ru" || value === "en") ? value : "ru";
-    }
-
-    function applyPageLang(lang) {
-      const safeLang = normalizeLang(lang);
-      document.title = pageLang[safeLang].title;
-      document.documentElement.lang = safeLang;
-
-      const h2 = document.getElementById("project-title");
-      if (h2) h2.innerText = pageLang[safeLang].h2;
-
-      const tech = document.getElementById("tech-stack");
-      if (tech) tech.innerHTML = pageLang[safeLang].tech;
-
-      const btn = document.getElementById("github-button");
-      if (btn) btn.innerText = pageLang[safeLang].github;
-    }
-
-    const lang = normalizeLang(localStorage.getItem("lang") || "ru");
-    applyPageLang(lang);
-
-    document.addEventListener("langchange", (e) => {
-      applyPageLang(normalizeLang(e.detail?.lang));
-    });
-
-    // === Lightbox ===
-    const gridImages = document.querySelectorAll(".screenshot-grid img");
-    if (gridImages.length > 0) {
-      const lightbox = document.createElement("div");
-      lightbox.className = "lightbox";
-
-      const closeBtn = document.createElement("div");
-      closeBtn.className = "lightbox-close";
-      closeBtn.innerHTML = "&times;";
-
-      const lightboxImg = document.createElement("img");
-      lightboxImg.alt = "Screenshot preview";
-
-      lightbox.appendChild(lightboxImg);
-      lightbox.appendChild(closeBtn);
-      document.body.appendChild(lightbox);
-
-      const openLightbox = (img) => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt || "Screenshot preview";
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden";
-      };
-
-      const closeLightbox = () => {
-        lightbox.classList.remove("active");
-        document.body.style.overflow = "";
-        // по желанию можно сбрасывать src, чтобы не держать картинку в памяти:
-        // lightboxImg.src = "";
-      };
-
-      gridImages.forEach((img) => {
-        img.addEventListener("click", () => openLightbox(img));
-      });
-
-      closeBtn.addEventListener("click", closeLightbox);
-
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeLightbox();
-      });
-    }
   </script>
+  <script src="/project-page.js"></script>
 </body>
 </html>

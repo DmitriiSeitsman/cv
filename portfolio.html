@@ -40,186 +40,10 @@
     ]
   }
   </script>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Swift_logo.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <link rel="stylesheet" href="style.css" />
 
-  <style>
-    /* === Контейнер секции === */
-    #portfolio {
-      max-width: 980px;
-      margin: 80px auto;
-      padding: 40px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
-      backdrop-filter: blur(6px);
-      text-align: center;
-      transition: box-shadow 0.6s ease;
-      animation: fadeSlideIn 1s ease-out forwards;
-    }
-
-    #portfolio:hover {
-      box-shadow: 0 0 30px rgba(187,134,252,0.25);
-    }
-
-    /* === Заголовок секции === */
-    #portfolio h2 {
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      text-shadow:
-        0 0 6px rgba(111,168,255,0.4),
-        0 0 12px rgba(111,168,255,0.3);
-      animation: h2Pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes h2Pulse {
-      0%,100% {
-        text-shadow:
-          0 0 6px rgba(111,168,255,0.4),
-          0 0 12px rgba(111,168,255,0.3);
-      }
-      50% {
-        text-shadow:
-          0 0 12px rgba(111,168,255,0.8),
-          0 0 25px rgba(111,168,255,0.6),
-          0 0 40px rgba(111,168,255,0.4);
-      }
-    }
-
-    /* === Подзаголовок === */
-    #portfolio .tagline {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-
-    /* === Карточки проектов === */
-    .project-card {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInCard 0.6s ease forwards;
-      transition:
-        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.25s ease,
-        border-color 0.3s ease;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 22px;
-      margin-bottom: 22px;
-      text-align: left;
-      box-shadow: 0 0 0 rgba(255,255,255,0);
-    }
-
-    .project-card.featured {
-      border-color: rgba(111,168,255,0.7);
-      box-shadow:
-        0 0 0 1px rgba(111,168,255,0.35),
-        0 0 26px rgba(111,168,255,0.2);
-      background: linear-gradient(120deg, rgba(111,168,255,0.12), rgba(255,255,255,0.05));
-    }
-
-    .project-card.featured::before {
-      content: "Featured";
-      display: block;
-      width: fit-content;
-      margin-bottom: 10px;
-      margin-left: auto;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: #d9ebff;
-      background: rgba(111,168,255,0.22);
-      border: 1px solid rgba(111,168,255,0.55);
-    }
-
-    .project-card .site-note {
-      display: block;
-      margin: 0 0 12px;
-      color: var(--text-secondary);
-      font-size: 0.96rem;
-      line-height: 1.45;
-    }
-
-    .project-card .site-note a {
-      color: #cfe1ff;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .project-card:nth-child(1) { animation-delay: 0.1s; }
-    .project-card:nth-child(2) { animation-delay: 0.2s; }
-    .project-card:nth-child(3) { animation-delay: 0.3s; }
-    .project-card:nth-child(4) { animation-delay: 0.4s; }
-    .project-card:nth-child(5) { animation-delay: 0.5s; }
-    .project-card:nth-child(6) { animation-delay: 0.6s; }
-
-    @keyframes fadeInCard {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ✨ Hover эффект */
-    .project-card:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 0 18px rgba(255,255,255,0.35);
-      border-color: rgba(255,255,255,0.35);
-    }
-
-    /* 🎬 Названия проектов — белый с зелёным свечением */
-    .project-card strong a {
-      color: #fff;
-      text-decoration: none;
-      transition: transform 0.2s ease, text-shadow 0.3s ease;
-      text-shadow:
-        0 0 6px rgba(70,196,116,0.5),
-        0 0 12px rgba(70,196,116,0.35);
-    }
-
-    .project-card strong a:hover {
-      transform: scale(1.05);
-      text-shadow:
-        0 0 10px rgba(70,196,116,0.8),
-        0 0 18px rgba(70,196,116,0.55),
-        0 0 26px rgba(70,196,116,0.4);
-    }
-
-    /* 📝 Описание */
-    .project-card .desc {
-      display: block;
-      margin: 10px 0 14px;
-      color: #ddd;
-      line-height: 1.5;
-    }
-
-    /* 🔗 GitHub-ссылка — фиолетовая */
-    .project-card a.github-link {
-      display: inline-block;
-      color: #BB86FC;
-      text-decoration: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .project-card a.github-link:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-
-    /* === Адаптив === */
-    @media (max-width: 768px) {
-      #portfolio {
-        margin: 40px 16px;
-        padding: 30px 20px;
-      }
-
-      .project-card { padding: 18px; }
-
-      #portfolio h2 { font-size: 1.6rem; }
-    }
-  </style>
 </head>
 
 <body>
@@ -252,13 +76,13 @@
           </div>
         </div>
         <a class="project-preview project-preview-featured" href="Snapty.html" aria-label="Открыть проект Snapty">
-          <img class="localized-preview" src="images/snapty_01_ru.jpg" data-ru-src="images/snapty_01_ru.jpg" data-en-src="images/snapty_01_en.jpg" alt="Интерфейс Snapty" loading="eager" />
+          <img class="localized-preview" src="images/snapty_01_ru.webp" data-ru-src="images/snapty_01_ru.webp" data-en-src="images/snapty_01_en.webp" alt="Интерфейс Snapty" loading="eager" />
         </a>
       </article>
 
       <div class="portfolio-grid">
         <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — movie quiz app">
-          <a class="project-preview" href="MovieQuiz.html" aria-label="Открыть проект MovieQuiz"><img src="images/moviequiz_2.png" alt="Интерфейс MovieQuiz" loading="lazy" /></a>
+          <a class="project-preview" href="MovieQuiz.html" aria-label="Открыть проект MovieQuiz"><img src="images/moviequiz_2.webp" alt="Интерфейс MovieQuiz" loading="lazy" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
             <h3><a href="MovieQuiz.html">MovieQuiz</a></h3>
@@ -269,7 +93,7 @@
         </article>
 
         <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
-          <a class="project-preview" href="ImageFeed.html" aria-label="Открыть проект ImageFeed"><img src="images/imagefeed_2.png" alt="Интерфейс ImageFeed" loading="lazy" /></a>
+          <a class="project-preview" href="ImageFeed.html" aria-label="Открыть проект ImageFeed"><img src="images/imagefeed_2.webp" alt="Интерфейс ImageFeed" loading="lazy" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
             <h3><a href="ImageFeed.html">ImageFeed</a></h3>
@@ -279,19 +103,19 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI + Core Data — трекер привычек" data-en-desc="SwiftUI + Core Data — habit tracker app">
-          <a class="project-preview" href="Tracker.html" aria-label="Открыть проект Tracker"><img src="images/tracker_2.png" alt="Интерфейс Tracker" loading="lazy" /></a>
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + Core Data — трекер привычек" data-en-desc="UIKit + Core Data — habit tracker app">
+          <a class="project-preview" href="Tracker.html" aria-label="Открыть проект Tracker"><img src="images/tracker_2.webp" alt="Интерфейс Tracker" loading="lazy" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
             <h3><a href="Tracker.html">Tracker</a></h3>
-            <p class="desc">SwiftUI + Core Data — трекер привычек</p>
-            <ul class="project-tags" aria-label="Technologies"><li>SwiftUI</li><li>Core Data</li></ul>
+            <p class="desc">UIKit + Core Data — трекер привычек</p>
+            <ul class="project-tags" aria-label="Technologies"><li>UIKit</li><li>Core Data</li></ul>
             <div class="project-actions"><a class="project-detail-link" href="Tracker.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/Tracker" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </div>
         </article>
 
         <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
-          <a class="project-preview" href="TravelSchedule.html" aria-label="Открыть проект TravelSchedule"><img src="images/travelschedule_3.png" alt="Интерфейс TravelSchedule" loading="lazy" /></a>
+          <a class="project-preview" href="TravelSchedule.html" aria-label="Открыть проект TravelSchedule"><img src="images/travelschedule_3.webp" alt="Интерфейс TravelSchedule" loading="lazy" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
             <h3><a href="TravelSchedule.html">TravelSchedule</a></h3>
@@ -302,7 +126,7 @@
         </article>
 
         <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
-          <a class="project-preview" href="ShoppingList.html" aria-label="Открыть проект ShoppingList"><img src="images/shoppinglist_2.png" alt="Интерфейс ShoppingList" loading="lazy" /></a>
+          <a class="project-preview" href="ShoppingList.html" aria-label="Открыть проект ShoppingList"><img src="images/shoppinglist_2.webp" alt="Интерфейс ShoppingList" loading="lazy" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
             <h3><a href="ShoppingList.html">ShoppingList</a></h3>
@@ -312,13 +136,13 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа" data-en-desc="UIKit — NFT marketplace: catalog, likes, cart, checkout flow">
-          <a class="project-preview" href="FakeNFT.html" aria-label="Открыть проект FakeNFT"><img src="images/fakenft_2.png" alt="Интерфейс FakeNFT" loading="lazy" /></a>
+        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа" data-en-desc="SwiftUI — NFT marketplace: catalog, likes, cart, checkout flow">
+          <a class="project-preview" href="FakeNFT.html" aria-label="Открыть проект FakeNFT"><img src="images/fakenft_2.webp" alt="Интерфейс FakeNFT" loading="lazy" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
             <h3><a href="FakeNFT.html">FakeNFT</a></h3>
-            <p class="desc">UIKit — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа</p>
-            <ul class="project-tags" aria-label="Technologies"><li>UIKit</li><li>MVVM</li><li>REST API</li></ul>
+            <p class="desc">SwiftUI — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа</p>
+            <ul class="project-tags" aria-label="Technologies"><li>SwiftUI</li><li>MVVM</li><li>REST API</li></ul>
             <div class="project-actions"><a class="project-detail-link" href="FakeNFT.html">Подробнее</a><a class="github-link" href="https://github.com/DmitriiSeitsman/FakeNFT" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </div>
         </article>
@@ -327,9 +151,7 @@
     </section>
   </main>
 
-  <footer id="footer">
-    © 2025 Дмитрий Сейцман — создано на Swift и немного нейромагии :)
-  </footer>
+  <footer id="footer">© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей.</footer>
 
   <script src="scripts.js"></script>
   <script>

@@ -28,6 +28,16 @@
   --shadow-color: rgba(0, 0, 0, 0.32);
   --header-border: rgba(242, 240, 235, 0.08);
   --footer-bg: #111113;
+
+  /* Cards & media wells. Dark goes frameless: flat fill, no borders, screenshots
+     float directly on the card. Light keeps the lighter-inward ladder. */
+  --card-bg: #151517;
+  --card-bg-hover: #1b1b1f;
+  --card-border: transparent;
+  --card-border-hover: transparent;
+  --media-bg: transparent;
+  --media-border: transparent;
+  --preview-bg: transparent;
 }
 
 html[data-theme="light"] {
@@ -55,6 +65,14 @@ html[data-theme="light"] {
   --shadow-color: rgba(16, 24, 40, 0.1);
   --header-border: rgba(16, 19, 24, 0.1);
   --footer-bg: #eef1f5;
+
+  --card-bg: #f1f4f8;
+  --card-bg-hover: #e9edf3;
+  --card-border: #dde2e8;
+  --card-border-hover: rgba(118, 85, 42, 0.38);
+  --media-bg: #f1f4f8;
+  --media-border: #dde2e8;
+  --preview-bg: #ffffff;
 }
 
 @media (prefers-color-scheme: light) {
@@ -81,6 +99,14 @@ html[data-theme="light"] {
     --shadow-color: rgba(16, 24, 40, 0.1);
     --header-border: rgba(16, 19, 24, 0.1);
     --footer-bg: #eef1f5;
+
+    --card-bg: #f1f4f8;
+    --card-bg-hover: #e9edf3;
+    --card-border: #dde2e8;
+    --card-border-hover: rgba(118, 85, 42, 0.38);
+    --media-bg: #f1f4f8;
+    --media-border: #dde2e8;
+    --preview-bg: #ffffff;
   }
 }
 
@@ -537,14 +563,14 @@ main.portfolio-page {
   height: 310px;
   padding: 22px;
   overflow: hidden;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border-soft);
+  background: var(--preview-bg);
+  border-bottom: 1px solid var(--media-border);
   box-sizing: border-box;
 }
 
 .project-preview-featured {
   height: 430px;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--media-border);
   border-radius: 16px;
 }
 
@@ -663,9 +689,17 @@ main.portfolio-page {
   outline-offset: 3px;
 }
 
-/* === SECTIONS (universal) === */
+/* === SECTIONS === */
 
-section,
+/* These sections are flex items of <main> (which is display:flex), so without an
+   explicit width they shrink to their content instead of filling the column. */
+#portfolio,
+.services-wrap,
+.contact-section,
+.page-section {
+  width: 100%;
+}
+
 .page-section {
   background: var(--surface);
   border: 1px solid var(--border-soft);
@@ -681,7 +715,6 @@ section,
   transition: border-color 0.16s ease, box-shadow 0.16s ease;
 }
 
-section:hover,
 .page-section:hover {
   box-shadow: 0 20px 44px var(--shadow-color);
 }
@@ -734,8 +767,8 @@ button:hover {
 /* === PROJECT CARDS === */
 
 .project-card {
-  background: var(--surface-strong);
-  border: 1px solid var(--border-soft);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 16px;
@@ -761,23 +794,6 @@ button:hover {
 
 /* === SERVICES LIST === */
 
-.services-list { list-style: none; padding: 0; margin: 0; }
-
-.services-list li {
-  background: var(--surface);
-  border: 1px solid var(--border-soft);
-  border-radius: 12px;
-  padding: 15px 20px;
-  margin: 10px 0;
-  transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
-}
-
-.services-list li:hover {
-  transform: translateY(-1px);
-  background: var(--surface-hover);
-  border-color: var(--accent);
-}
-
 /* === CONTACTS === */
 
 .contact-section p {
@@ -796,27 +812,6 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(180deg, rgba(8,12,24,0.4), rgba(8,12,24,0.75));
   margin-top: auto;
-}
-
-/* === PROJECT PAGES === */
-
-main.project-page {
-  display: block;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.project-container {
-  background: none;
-  box-shadow: none;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInProject 0.9s ease forwards;
-}
-
-@keyframes fadeInProject {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* === HAMBURGER === */
@@ -932,7 +927,6 @@ body {
 
 header h1,
 h2,
-.project-title,
 .services-wrap h2,
 .contact-section h2,
 #portfolio h2 {
@@ -968,22 +962,7 @@ a:hover {
   color: var(--accent);
 }
 
-.project-container,
-#portfolio,
-.services-wrap,
-.contact-section,
-.info-card {
-  background: var(--surface) !important;
-  border: 1px solid var(--border-soft) !important;
-  border-radius: 18px !important;
-  box-shadow:
-    0 18px 40px var(--shadow-color) !important;
-  backdrop-filter: blur(12px) !important;
-}
-
-section,
 .page-section,
-.project-container,
 #portfolio,
 .services-wrap,
 .contact-section {
@@ -994,19 +973,10 @@ section,
   animation-fill-mode: forwards !important;
 }
 
-.project-container:hover,
-#portfolio:hover,
-.services-wrap:hover,
-.contact-section:hover,
-.info-card:hover {
-  box-shadow: 0 22px 48px var(--shadow-color) !important;
-}
-
 .project-card,
-.contact-card,
-.tech-details {
-  background: var(--surface-strong) !important;
-  border-color: var(--border-soft) !important;
+.contact-card {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
   box-shadow: none !important;
 }
 
@@ -1018,32 +988,15 @@ section,
   animation-fill-mode: forwards !important;
 }
 
-.project-card.featured {
-  background: var(--surface-strong) !important;
-  border-color: var(--accent-border) !important;
-  box-shadow: inset 0 2px 0 var(--accent) !important;
-}
-
-.project-card.featured::before {
-  color: var(--accent) !important;
-  background: var(--accent-soft) !important;
-  border-color: var(--accent) !important;
-}
-
 .project-card:hover,
-.contact-card:hover,
-.tech-details:hover {
-  background: var(--surface-hover) !important;
-  border-color: var(--accent-border) !important;
+.contact-card:hover {
+  background: var(--card-bg-hover) !important;
+  border-color: var(--card-border-hover) !important;
   box-shadow: none !important;
 }
 
 .portfolio-page .project-card:hover {
-  background: var(--surface-strong) !important;
-}
-
-.portfolio-page .project-card.featured:hover {
-  box-shadow: inset 0 2px 0 var(--accent) !important;
+  background: var(--card-bg) !important;
 }
 
 .project-card:hover,
@@ -1070,12 +1023,10 @@ td strong {
   color: var(--text-secondary) !important;
 }
 
-.project-card a.github-link,
-.project-card .site-note a {
+.project-card a.github-link {
   color: var(--accent) !important;
 }
 
-.tech-stack,
 .tagline,
 .note,
 .muted,
@@ -1084,56 +1035,8 @@ td strong {
   color: var(--text-secondary) !important;
 }
 
-.screenshot-grid img {
-  background: var(--surface-strong) !important;
-  border: 1px solid var(--border-soft) !important;
-  box-shadow: 0 8px 24px var(--shadow-color) !important;
-}
-
-.screenshot-grid img:hover {
-  box-shadow: 0 12px 30px var(--shadow-color) !important;
-  transform: translateY(-2px) !important;
-}
-
-.lightbox {
-  background: rgba(2, 6, 15, 0.9) !important;
-}
-
-.lightbox-close {
-  color: var(--accent) !important;
-}
-
-.github-button {
-  border-color: var(--accent) !important;
-  color: var(--accent) !important;
-  border-radius: 10px !important;
-  background: var(--accent-soft) !important;
-}
-
-.github-button:hover {
-  background: var(--accent) !important;
-  color: var(--on-accent) !important;
-  box-shadow: none !important;
+.diploma-link:hover .diploma-preview {
   transform: translateY(-1px) !important;
-}
-
-.appstore-badge:hover,
-.diploma-link:hover .diploma-preview,
-.services-list li:hover {
-  transform: translateY(-1px) !important;
-}
-
-.lightbox-close:hover {
-  transform: none !important;
-}
-
-.lightbox.active img {
-  animation: calmZoom 0.18s ease-out !important;
-}
-
-@keyframes calmZoom {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 table {
@@ -1156,19 +1059,19 @@ tr:hover {
 }
 
 .contact-card {
-  background: var(--surface-strong) !important;
-  border: 1px solid var(--border-soft) !important;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
   border-radius: 14px !important;
 }
 
 .diploma-btn {
-  background: var(--surface-strong) !important;
-  border-color: var(--border-soft) !important;
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
   color: var(--text-primary) !important;
 }
 
 .diploma-preview {
-  border-color: var(--border-soft) !important;
+  border-color: var(--media-border) !important;
   box-shadow: 0 10px 30px var(--shadow-color) !important;
 }
 
