@@ -119,13 +119,15 @@
 }
 
 .case-action-primary {
-  color: var(--on-accent);
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border-color: var(--btn-bg);
 }
 
 .case-action-primary:hover {
-  color: var(--on-accent);
+  color: var(--btn-fg);
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
 }
 
 .case-action-secondary {
