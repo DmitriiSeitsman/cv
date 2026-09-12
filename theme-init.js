@@ -13,6 +13,6 @@
 
   const themeColor = document.querySelector('meta[name="theme-color"]');
   if (themeColor) {
-    themeColor.setAttribute("content", theme === "light" ? "#FCF0DD" : "#0E0E0F");
+    themeColor.setAttribute("content", theme === "light" ? "#EBEEF0" : "#0E0E0F");
   }
 })();
