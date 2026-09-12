@@ -163,6 +163,13 @@ html[data-theme="light"] {
 
 * { -webkit-tap-highlight-color: transparent; }
 
+/* Images carry intrinsic width/height attributes so the browser can reserve
+   their space. Without this, styling only the width would let the height
+   attribute through as a presentational hint and squash the picture. */
+img {
+  height: auto;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg-main);

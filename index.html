@@ -156,6 +156,7 @@
 
     .diploma-preview {
       width: min(560px, 100%);
+      height: auto;
       border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.10);
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
@@ -315,6 +316,8 @@
         educationTitle: "Образование",
         educationText: "Яндекс Практикум — программа подготовки iOS-разработчиков. Диплом подтверждает прохождение обучения и выполнение учебных проектов.",
         diplomaPreview: "diplomas/diploma_ru_preview.jpg",
+        diplomaPreviewW: 960,
+        diplomaPreviewH: 681,
         diplomaPdf: "diplomas/diploma_ru.pdf",
         diplomaBtn: "Открыть диплом (PDF)",
         educationNote: "Откроется в новой вкладке."
@@ -339,6 +342,8 @@
         educationTitle: "Education",
         educationText: "Yandex Practicum — iOS Developer program. The diploma confirms completion of the course and hands-on projects.",
         diplomaPreview: "diplomas/diploma_en_preview.jpg",
+        diplomaPreviewW: 960,
+        diplomaPreviewH: 572,
         diplomaPdf: "diplomas/diploma_en.pdf",
         diplomaBtn: "View diploma (PDF)",
         educationNote: "Opens in a new tab."
@@ -376,6 +381,8 @@
       const note = document.getElementById("education-note");
 
       preview.src = dict.diplomaPreview;
+      preview.width = dict.diplomaPreviewW;
+      preview.height = dict.diplomaPreviewH;
       link.href = dict.diplomaPdf;
       btn.textContent = dict.diplomaBtn;
       note.textContent = dict.educationNote;
