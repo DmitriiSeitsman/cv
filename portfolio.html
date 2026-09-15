@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Портфолио — Дмитрий Сейцман</title>
-  <meta name="description" content="Портфолио iOS-разработчика Dmitrii Seitsman: проекты на Swift, SwiftUI и UIKit, включая Snapty — приложение, опубликованное в App Store." />
-  <meta name="keywords" content="портфолио iOS разработчика, iOS Developer portfolio, Swift Developer, SwiftUI, UIKit, MVVM, Combine, Core Data, SwiftData, App Store, Snapty" />
+  <meta name="description" content="Портфолио iOS- и веб-разработчика Dmitrii Seitsman: приложения на Swift/SwiftUI, включая Snapty (App Store), и веб-проекты на React/TypeScript, включая XOgame." />
+  <meta name="keywords" content="портфолио iOS разработчика, портфолио веб-разработчика, iOS Developer portfolio, Web Developer portfolio, Swift, SwiftUI, UIKit, React, TypeScript, App Store, Snapty, XOgame" />
   <meta name="author" content="Dmitrii Seitsman" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0E0E0F" />
@@ -15,15 +15,15 @@
   <link rel="alternate" href="https://seitsman.com/portfolio.html" hreflang="x-default" />
   <link rel="canonical" href="https://seitsman.com/portfolio.html" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Портфолио — Dmitrii Seitsman | iOS Developer" />
-  <meta property="og:description" content="Проекты iOS-разработки на Swift: Snapty, MovieQuiz, ImageFeed, Tracker, TravelSchedule, ShoppingList и FakeNFT." />
+  <meta property="og:title" content="Портфолио — Dmitrii Seitsman | iOS & Web Developer" />
+  <meta property="og:description" content="Проекты iOS-разработки на Swift (Snapty, MovieQuiz, ImageFeed, Tracker, TravelSchedule, ShoppingList, FakeNFT) и веб-разработки на React/TypeScript (XOgame)." />
   <meta property="og:image" content="https://seitsman.com/images/preview.png" />
   <meta property="og:url" content="https://seitsman.com/portfolio.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Dmitrii Seitsman Portfolio" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Portfolio — Dmitrii Seitsman | iOS Developer" />
-  <meta name="twitter:description" content="iOS developer portfolio with Swift/SwiftUI/UIKit projects including Snapty published in the App Store." />
+  <meta name="twitter:title" content="Portfolio — Dmitrii Seitsman | iOS & Web Developer" />
+  <meta name="twitter:description" content="iOS developer portfolio with Swift/SwiftUI/UIKit projects and web projects built with React and TypeScript." />
   <meta name="twitter:image" content="https://seitsman.com/images/preview.png" />
   <script type="application/ld+json">
   {
@@ -36,13 +36,46 @@
       "iOS Development",
       "Swift",
       "SwiftUI",
-      "UIKit"
+      "UIKit",
+      "Web Development",
+      "React",
+      "TypeScript"
     ]
   }
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .portfolio-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 22px 0 34px;
+    }
+    .portfolio-tab {
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-secondary, rgba(255,255,255,0.75));
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    }
+    .portfolio-tab:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.22);
+    }
+    .portfolio-tab.is-active {
+      background: linear-gradient(135deg, #ff8a5c, #ff5f9e);
+      border-color: transparent;
+      color: #fff;
+    }
+  </style>
 
 </head>
 
@@ -53,11 +86,18 @@
         <p class="portfolio-eyebrow" id="portfolio-eyebrow">Избранные работы</p>
         <h2 id="portfolio-title">Портфолио</h2>
         <p class="tagline" id="portfolio-tagline">
-          Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
+          iOS-приложения на Swift и веб-проекты на React/TypeScript — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.
         </p>
       </header>
 
+      <div class="portfolio-tabs" role="tablist" aria-label="Платформа">
+        <button class="portfolio-tab is-active" type="button" data-platform-filter="all" id="tab-all">Все</button>
+        <button class="portfolio-tab" type="button" data-platform-filter="ios" id="tab-ios">iOS</button>
+        <button class="portfolio-tab" type="button" data-platform-filter="web" id="tab-web">Web</button>
+      </div>
+
       <article class="project-card portfolio-featured"
+        data-platform="ios"
         data-ru-kind="Приложение в App Store"
         data-en-kind="App Store release"
         data-ru-desc="Snapty — планировщик для фотографов и видеографов. Мой первый pet-проект, опубликованный в App Store."
@@ -80,8 +120,32 @@
         </a>
       </article>
 
+      <article class="project-card portfolio-featured"
+        data-platform="web"
+        data-ru-kind="Веб-проект"
+        data-en-kind="Web project"
+        data-ru-desc="XOgame — крестики-нолики онлайн: с ботом, с другом по ссылке или со случайным соперником. Свой фронтенд и свой бэкенд с realtime-синхронизацией."
+        data-en-desc="XOgame — online tic-tac-toe: vs a bot, with a friend by link, or a random opponent. Custom frontend and backend with realtime move sync.">
+        <div class="project-content">
+          <span class="project-kind">Веб-проект</span>
+          <h3><a href="XOgame.html">XOgame</a></h3>
+          <p class="desc">XOgame — крестики-нолики онлайн: с ботом, с другом по ссылке или со случайным соперником. Свой фронтенд и свой бэкенд с realtime-синхронизацией.</p>
+          <ul class="project-tags" aria-label="Technologies">
+            <li>React</li><li>TypeScript</li><li>Vapor</li><li>PostgreSQL</li>
+          </ul>
+          <div class="project-actions">
+            <a class="project-detail-link" href="XOgame.html">Подробнее</a>
+            <a class="project-external-link" href="https://xo-game.online/" target="_blank" rel="noopener noreferrer">xo-game.online ↗</a>
+            <a class="github-link" href="https://github.com/DmitriiSeitsman/xogame" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+        <a class="project-preview project-preview-featured" href="XOgame.html" aria-label="Открыть проект XOgame">
+          <img class="localized-preview" src="images/xogame_01_ru.webp" data-ru-src="images/xogame_01_ru.webp" data-en-src="images/xogame_01_en.webp" alt="Интерфейс XOgame" loading="lazy" width="1600" height="928" />
+        </a>
+      </article>
+
       <div class="portfolio-grid">
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — movie quiz app">
+        <article class="project-card" data-platform="ios" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + MVC — викторина по фильмам" data-en-desc="UIKit + MVC — movie quiz app">
           <a class="project-preview" href="MovieQuiz.html" aria-label="Открыть проект MovieQuiz"><img src="images/moviequiz_2.webp" alt="Интерфейс MovieQuiz" loading="lazy" width="900" height="1948" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
@@ -92,7 +156,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
+        <article class="project-card" data-platform="ios" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="MVP + Kingfisher — фото-лента в стиле Unsplash" data-en-desc="MVP + Kingfisher — photo feed inspired by Unsplash">
           <a class="project-preview" href="ImageFeed.html" aria-label="Открыть проект ImageFeed"><img src="images/imagefeed_2.webp" alt="Интерфейс ImageFeed" loading="lazy" width="900" height="1948" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
@@ -103,7 +167,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + Core Data — трекер привычек" data-en-desc="UIKit + Core Data — habit tracker app">
+        <article class="project-card" data-platform="ios" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="UIKit + Core Data — трекер привычек" data-en-desc="UIKit + Core Data — habit tracker app">
           <a class="project-preview" href="Tracker.html" aria-label="Открыть проект Tracker"><img src="images/tracker_2.webp" alt="Интерфейс Tracker" loading="lazy" width="900" height="1948" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
@@ -114,7 +178,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
+        <article class="project-card" data-platform="ios" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI + Combine + Yandex API — расписания путешествий" data-en-desc="SwiftUI + Combine + Yandex API — travel schedule viewer">
           <a class="project-preview" href="TravelSchedule.html" aria-label="Открыть проект TravelSchedule"><img src="images/travelschedule_3.webp" alt="Интерфейс TravelSchedule" loading="lazy" width="900" height="1948" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
@@ -125,7 +189,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
+        <article class="project-card" data-platform="ios" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftData + MVVM + SwiftUI — список покупок" data-en-desc="SwiftData + MVVM + SwiftUI — shopping list app">
           <a class="project-preview" href="ShoppingList.html" aria-label="Открыть проект ShoppingList"><img src="images/shoppinglist_2.webp" alt="Интерфейс ShoppingList" loading="lazy" width="900" height="1948" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
@@ -136,7 +200,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа" data-en-desc="SwiftUI — NFT marketplace: catalog, likes, cart, checkout flow">
+        <article class="project-card" data-platform="ios" data-ru-kind="iOS-проект" data-en-kind="iOS project" data-ru-desc="SwiftUI — NFT-маркетплейс: каталог, лайки, корзина, оформление заказа" data-en-desc="SwiftUI — NFT marketplace: catalog, likes, cart, checkout flow">
           <a class="project-preview" href="FakeNFT.html" aria-label="Открыть проект FakeNFT"><img src="images/fakenft_2.webp" alt="Интерфейс FakeNFT" loading="lazy" width="900" height="1948" /></a>
           <div class="project-content">
             <span class="project-kind">iOS-проект</span>
@@ -160,17 +224,19 @@
         title: "Портфолио — Дмитрий Сейцман",
         eyebrow: "Избранные работы",
         portfolioTitle: "Портфолио",
-        portfolioTagline: "Мои проекты — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.",
+        portfolioTagline: "iOS-приложения на Swift и веб-проекты на React/TypeScript — от простых учебных до продвинутых pet-apps с архитектурой и backend'ом.",
         detailLink: "Подробнее",
-        technologiesLabel: "Технологии"
+        technologiesLabel: "Технологии",
+        tabs: { all: "Все", ios: "iOS", web: "Web" }
       },
       en: {
         title: "Portfolio — Dmitrii Seitsman",
         eyebrow: "Selected work",
         portfolioTitle: "Portfolio",
-        portfolioTagline: "My iOS projects — from study apps to advanced pet projects with architecture and backend.",
+        portfolioTagline: "iOS apps built with Swift and web projects built with React/TypeScript — from study apps to advanced pet projects with architecture and backend.",
         detailLink: "View case",
-        technologiesLabel: "Technologies"
+        technologiesLabel: "Technologies",
+        tabs: { all: "All", ios: "iOS", web: "Web" }
       }
     };
 
@@ -180,6 +246,10 @@
       document.getElementById("portfolio-eyebrow").textContent = t.eyebrow;
       document.getElementById("portfolio-title").innerHTML = t.portfolioTitle;
       document.getElementById("portfolio-tagline").innerHTML = t.portfolioTagline;
+      document.getElementById("tab-all").textContent = t.tabs.all;
+      document.getElementById("tab-ios").textContent = t.tabs.ios;
+      document.getElementById("tab-web").textContent = t.tabs.web;
+
       document.querySelectorAll(".project-card").forEach((card) => {
         const desc = card.querySelector(".desc");
         const kind = card.querySelector(".project-kind");
@@ -200,8 +270,25 @@
       });
     }
 
+    // Фильтр по платформе (iOS / Web / Все)
+    function applyPlatformFilter(platform) {
+      document.querySelectorAll("[data-platform]").forEach((el) => {
+        const show = platform === "all" || el.getAttribute("data-platform") === platform;
+        el.style.display = show ? "" : "none";
+      });
+    }
+
+    document.querySelectorAll(".portfolio-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".portfolio-tab").forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        applyPlatformFilter(btn.dataset.platformFilter);
+      });
+    });
+
     const initial = localStorage.getItem("lang") || "ru";
     applyPageLang(initial);
+    applyPlatformFilter("all");
     document.addEventListener("langchange", (e) => applyPageLang(e.detail.lang));
   </script>
 </body>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Услуги iOS-разработки — Dmitrii Seitsman</title>
-  <meta name="description" content="Услуги iOS-разработки: Swift, SwiftUI, UIKit, MVVM/MVP, Core Data, SwiftData, REST API и App Store-подготовка. Дмитрий Сейцман — iOS Developer." />
-  <meta name="keywords" content="iOS разработчик, Swift разработчик, разработка iOS приложений, mobile app development, SwiftUI, UIKit, MVVM, Combine, Core Data, SwiftData" />
+  <title>Заказать сайт или iOS-приложение — цены | Dmitrii Seitsman</title>
+  <meta name="description" content="Хотите заказать сайт или сделать iOS-приложение? Разработка сайтов на React/TypeScript и мобильных приложений на Swift с прозрачными ценами. Дмитрий Сейцман — iOS & Web Developer." />
+  <meta name="keywords" content="заказать сайт, сделать сайт, заказать разработку сайта, сколько стоит сайт, стоимость сайта, заказать iOS приложение, iOS разработчик, веб-разработчик, Swift разработчик, React разработчик, разработка iOS приложений, разработка сайтов, SwiftUI, UIKit, React, TypeScript" />
   <meta name="author" content="Dmitrii Seitsman" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0E0E0F" />
@@ -19,8 +19,8 @@
 
   <!-- 🧩 Open Graph -->
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Услуги iOS-разработки — Dmitrii Seitsman" />
-  <meta property="og:description" content="Разработка iOS-приложений на Swift: от экранов до полного цикла продукта и публикации в App Store." />
+  <meta property="og:title" content="Заказать сайт или iOS-приложение — Dmitrii Seitsman" />
+  <meta property="og:description" content="Закажите сайт под ключ на React/TypeScript или iOS-приложение на Swift: от экрана/страницы до полного цикла продукта и публикации." />
   <meta property="og:image" content="https://seitsman.com/images/preview.png" />
   <meta property="og:url" content="https://seitsman.com/services.html" />
   <meta property="og:type" content="website" />
@@ -28,8 +28,8 @@
 
   <!-- 🐦 Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="iOS Development Services — Dmitrii Seitsman" />
-  <meta name="twitter:description" content="Swift iOS development services: architecture, UI implementation, API integration, and App Store release." />
+  <meta name="twitter:title" content="Order a Website or iOS App — Dmitrii Seitsman" />
+  <meta name="twitter:description" content="Order a website built with React/TypeScript or an iOS app built with Swift — architecture, UI implementation, API integration, and release." />
   <meta name="twitter:image" content="https://seitsman.com/images/preview.png" />
 
   <!-- 💡 JSON-LD -->
@@ -55,6 +55,31 @@
       { "@type": "Offer", "name": "Screen with logic", "price": "10000", "priceCurrency": "RUB" },
       { "@type": "Offer", "name": "Screen with networking", "price": "15000", "priceCurrency": "RUB" },
       { "@type": "Offer", "name": "Full app by design", "price": "40000", "priceCurrency": "RUB" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Web Development",
+    "provider": {
+      "@type": "Person",
+      "name": "Dmitrii Seitsman",
+      "url": "https://seitsman.com",
+      "sameAs": [
+        "https://github.com/DmitriiSeitsman",
+        "https://t.me/dseitsman"
+      ]
+    },
+    "inLanguage": ["ru", "en"],
+    "areaServed": "Worldwide",
+    "description": "Закажите сайт или веб-приложение на React и TypeScript — full-cycle web development, включая бэкенд.",
+    "offers": [
+      { "@type": "Offer", "name": "Page layout", "price": "8000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Page with logic", "price": "15000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Page with backend", "price": "30000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Full website by design", "price": "60000", "priceCurrency": "RUB" }
     ]
   }
   </script>
@@ -90,6 +115,38 @@
       line-height: 1.6;
       margin-bottom: 30px;
     }
+
+    .services-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 0 30px;
+    }
+    .services-tab {
+      padding: 9px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-secondary, rgba(255,255,255,0.75));
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    }
+    .services-tab:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.22);
+    }
+    .services-tab.is-active {
+      background: linear-gradient(135deg, #ff8a5c, #ff5f9e);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .services-table-wrap { display: none; }
+    .services-table-wrap.is-active { display: block; }
+    .web-order-note { margin: 0 0 18px; color: var(--text-secondary); font-size: 0.95rem; text-align: center; }
 
     table {
       width: 100%;
@@ -195,46 +252,88 @@
 <body>
   <main>
     <section class="services-wrap">
-      <h2 id="services-title">Разработка iOS-приложений под ключ</h2>
+      <h2 id="services-title">Разработка под ключ</h2>
       <p id="services-subtitle">
-        Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны.<br>
+        Хотите заказать сайт или сделать iOS-приложение? Разрабатываю оба направления — как весь продукт целиком, так и отдельные экраны/страницы.<br>
         Работаю по готовым макетам из Figma или аналогичных инструментов.
       </p>
 
-      <table id="services-table">
-        <thead>
-          <tr>
-            <th id="th-service">Услуга</th>
-            <th id="th-desc">Описание</th>
-            <th id="th-price">Цена (₽ / $)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="service1-name" data-label="Услуга"><strong>Верстка экрана (UI)</strong></td>
-            <td id="service1-desc" data-label="Описание">Разработка интерфейса по макету без бизнес-логики</td>
-            <td id="service1-price" data-label="Цена (₽ / $)">5 000 – 10 000 ₽ / ≈ 60 $</td>
-          </tr>
-          <tr>
-            <td id="service2-name" data-label="Услуга"><strong>Экран с логикой</strong></td>
-            <td id="service2-desc" data-label="Описание">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
-            <td id="service2-price" data-label="Цена (₽ / $)">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
-          </tr>
-          <tr>
-            <td id="service3-name" data-label="Услуга"><strong>Экран с логикой и сетью</strong></td>
-            <td id="service3-desc" data-label="Описание">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
-            <td id="service3-price" data-label="Цена (₽ / $)">от 15 000 ₽ / от 160 $</td>
-          </tr>
-          <tr>
-            <td id="service4-name" data-label="Услуга"><strong>Приложение под ключ по макету</strong></td>
-            <td id="service4-desc" data-label="Описание">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
-            <td id="service4-price" data-label="Цена (₽ / $)">от 40 000 ₽ / от 500 $</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="services-tabs" role="tablist" aria-label="Направление">
+        <button class="services-tab is-active" type="button" data-service-tab="ios" id="stab-ios">iOS</button>
+        <button class="services-tab" type="button" data-service-tab="web" id="stab-web">Web</button>
+      </div>
+
+      <div class="services-table-wrap is-active" id="wrap-ios">
+        <table id="services-table-ios">
+          <thead>
+            <tr>
+              <th id="th-ios-service">Услуга</th>
+              <th id="th-ios-desc">Описание</th>
+              <th id="th-ios-price">Цена (₽ / $)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="ios1-name" data-label="Услуга"><strong>Верстка экрана (UI)</strong></td>
+              <td id="ios1-desc" data-label="Описание">Разработка интерфейса по макету без бизнес-логики</td>
+              <td id="ios1-price" data-label="Цена (₽ / $)">5 000 – 10 000 ₽ / ≈ 60 $</td>
+            </tr>
+            <tr>
+              <td id="ios2-name" data-label="Услуга"><strong>Экран с логикой</strong></td>
+              <td id="ios2-desc" data-label="Описание">Интерфейс + бизнес-логика (навигация, обработка действий)</td>
+              <td id="ios2-price" data-label="Цена (₽ / $)">10 000 – 15 000 ₽ / ≈ 100 – 160 $</td>
+            </tr>
+            <tr>
+              <td id="ios3-name" data-label="Услуга"><strong>Экран с логикой и сетью</strong></td>
+              <td id="ios3-desc" data-label="Описание">Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)</td>
+              <td id="ios3-price" data-label="Цена (₽ / $)">от 15 000 ₽ / от 160 $</td>
+            </tr>
+            <tr>
+              <td id="ios4-name" data-label="Услуга"><strong>Приложение под ключ по макету</strong></td>
+              <td id="ios4-desc" data-label="Описание">Полная разработка по дизайну: верстка, логика, сеть, публикация</td>
+              <td id="ios4-price" data-label="Цена (₽ / $)">от 40 000 ₽ / от 500 $</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="services-table-wrap" id="wrap-web">
+        <p class="web-order-note" id="web-order-note">Закажите сайт под ключ — от простого лендинга до сайта с бэкендом, базой данных и деплоем на домен.</p>
+        <table id="services-table-web">
+          <thead>
+            <tr>
+              <th id="th-web-service">Услуга</th>
+              <th id="th-web-desc">Описание</th>
+              <th id="th-web-price">Цена (₽ / $)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="web1-name" data-label="Услуга"><strong>Вёрстка страницы</strong></td>
+              <td id="web1-desc" data-label="Описание">Адаптивная вёрстка по макету без логики (лендинг, одностраничник)</td>
+              <td id="web1-price" data-label="Цена (₽ / $)">8 000 – 15 000 ₽ / ≈ 90 – 160 $</td>
+            </tr>
+            <tr>
+              <td id="web2-name" data-label="Услуга"><strong>Страница с логикой</strong></td>
+              <td id="web2-desc" data-label="Описание">Вёрстка + интерактив: формы, валидация, состояние на клиенте</td>
+              <td id="web2-price" data-label="Цена (₽ / $)">15 000 – 25 000 ₽ / ≈ 160 – 260 $</td>
+            </tr>
+            <tr>
+              <td id="web3-name" data-label="Услуга"><strong>Страница с бэкендом</strong></td>
+              <td id="web3-desc" data-label="Описание">Добавляется API, база данных, авторизация</td>
+              <td id="web3-price" data-label="Цена (₽ / $)">от 30 000 ₽ / от 300 $</td>
+            </tr>
+            <tr>
+              <td id="web4-name" data-label="Услуга"><strong>Сайт под ключ по макету</strong></td>
+              <td id="web4-desc" data-label="Описание">Полная разработка: фронтенд, бэкенд, деплой на домен</td>
+              <td id="web4-price" data-label="Цена (₽ / $)">от 60 000 ₽ / от 600 $</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <p class="note" id="note">
-        Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>
+        Стоимость зависит от сложности, количества экранов/страниц и наличия бэкенда.<br>
         Сроки и детали обсуждаются индивидуально.
       </p>
     </section>
@@ -248,90 +347,126 @@
     const pageLang = {
       ru: {
         title: "Услуги и цены — Дмитрий Сейцман",
-        servicesTitle: "Разработка iOS-приложений под ключ",
-        servicesSubtitle: "Разрабатываю мобильные приложения для iPhone и iPad — как целиком, так и отдельные экраны. Работаю по готовым макетам (Figma или аналогичные).",
-        headers: ["Услуга", "Описание", "Цена (₽ / $)"],
-        note: "Стоимость зависит от сложности, количества экранов и наличия бэкенда.<br>Сроки и детали обсуждаются индивидуально.",
-        rows: [
+        servicesTitle: "Разработка под ключ",
+        servicesSubtitle: "Хотите заказать сайт или сделать iOS-приложение? Разрабатываю оба направления — как целиком, так и отдельные экраны/страницы. Работаю по готовым макетам (Figma или аналогичные).",
+        tabs: { ios: "iOS", web: "Web" },
+        headersIos: ["Услуга", "Описание", "Цена (₽ / $)"],
+        headersWeb: ["Услуга", "Описание", "Цена (₽ / $)"],
+        note: "Стоимость зависит от сложности, количества экранов/страниц и наличия бэкенда.<br>Сроки и детали обсуждаются индивидуально.",
+        rowsIos: [
           ["Верстка экрана (UI)", "Разработка интерфейса по макету без бизнес-логики", "5 000 – 10 000 ₽ / ≈ 60 $"],
           ["Экран с логикой", "UI + бизнес-логика (навигация, обработка действий)", "10 000 – 15 000 ₽ / ≈ 100 – 160 $"],
           ["Экран с логикой и сетью", "Добавляется работа с API или локальным хранилищем (SwiftData, Core Data)", "от 15 000 ₽ / от 160 $"],
           ["Приложение под ключ по макету", "Полная разработка по дизайну: верстка, логика, сеть, публикация", "от 40 000 ₽ / от 500 $"]
+        ],
+        webOrderNote: "Закажите сайт под ключ — от простого лендинга до сайта с бэкендом, базой данных и деплоем на домен.",
+        rowsWeb: [
+          ["Вёрстка страницы", "Адаптивная вёрстка по макету без логики (лендинг, одностраничник)", "8 000 – 15 000 ₽ / ≈ 90 – 160 $"],
+          ["Страница с логикой", "Вёрстка + интерактив: формы, валидация, состояние на клиенте", "15 000 – 25 000 ₽ / ≈ 160 – 260 $"],
+          ["Страница с бэкендом", "Добавляется API, база данных, авторизация", "от 30 000 ₽ / от 300 $"],
+          ["Сайт под ключ по макету", "Полная разработка: фронтенд, бэкенд, деплой на домен", "от 60 000 ₽ / от 600 $"]
         ]
       },
       en: {
         title: "Services & Pricing — Dmitrii Seitsman",
-        servicesTitle: "iOS App Development",
-        servicesSubtitle: "I build native iPhone and iPad apps — full products or individual screens. Work based on ready designs (Figma or similar).",
-        headers: ["Service", "Description", "Price (₽ / $)"],
-        note: "Pricing depends on complexity, number of screens, and backend requirements.<br>Timeline and scope are discussed individually.",
-        rows: [
+        servicesTitle: "Full-Cycle Development",
+        servicesSubtitle: "Want to order a website or build an iOS app? I do both — full products or individual screens/pages. Work based on ready designs (Figma or similar).",
+        tabs: { ios: "iOS", web: "Web" },
+        headersIos: ["Service", "Description", "Price (₽ / $)"],
+        headersWeb: ["Service", "Description", "Price (₽ / $)"],
+        note: "Pricing depends on complexity, number of screens/pages, and backend requirements.<br>Timeline and scope are discussed individually.",
+        rowsIos: [
           ["Screen layout (UI only)", "Static UI based on design, no business logic", "5,000 – 10,000 ₽ / ≈ 60 $"],
           ["Screen with logic", "UI + business logic (navigation, interactions)", "10,000 – 15,000 ₽ / ≈ 100 – 160 $"],
           ["Screen with logic & networking", "Adds API integration or local storage (SwiftData, Core Data)", "from 15,000 ₽ / from 160 $"],
           ["Full app (by design)", "Full cycle: UI, logic, networking, App Store submission", "from 40,000 ₽ / from 500 $"]
+        ],
+        webOrderNote: "Order a website end to end — from a simple landing page to a site with a backend, database, and domain deploy.",
+        rowsWeb: [
+          ["Page layout", "Responsive layout from a design, no logic (landing, single page)", "8,000 – 15,000 ₽ / ≈ 90 – 160 $"],
+          ["Page with logic", "Layout + client-side interactivity: forms, validation, state", "15,000 – 25,000 ₽ / ≈ 160 – 260 $"],
+          ["Page with backend", "Adds an API, database, and authentication", "from 30,000 ₽ / from 300 $"],
+          ["Full website (by design)", "Full cycle: frontend, backend, deploy to a domain", "from 60,000 ₽ / from 600 $"]
         ]
       }
     };
 
-    // Инициализация после готовности DOM (чтобы ничего не потерять)
     document.addEventListener("DOMContentLoaded", () => {
       const initial = localStorage.getItem("lang") || "ru";
       applyPageLang(initial);
     });
 
-    // Слушаем кастомное событие из хедера (scripts.js должен диспатчить 'langchange')
     document.addEventListener("langchange", (e) => {
       const lang = e.detail?.lang || "ru";
       localStorage.setItem("lang", lang);
       applyPageLang(lang);
     });
 
+    document.querySelectorAll(".services-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.serviceTab;
+        document.querySelectorAll(".services-tab").forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        document.querySelectorAll(".services-table-wrap").forEach((w) => w.classList.remove("is-active"));
+        document.getElementById(`wrap-${target}`).classList.add("is-active");
+      });
+    });
+
     function applyPageLang(lang) {
       const t = pageLang[lang] || pageLang.ru;
 
-      // Заголовки/подписи
       document.title = t.title;
       document.getElementById("services-title").innerHTML = t.servicesTitle;
       document.getElementById("services-subtitle").innerHTML = t.servicesSubtitle;
       document.getElementById("note").innerHTML = t.note;
+      document.getElementById("web-order-note").textContent = t.webOrderNote;
+      document.getElementById("stab-ios").textContent = t.tabs.ios;
+      document.getElementById("stab-web").textContent = t.tabs.web;
 
-      // Заголовок таблицы (desktop)
-      const thIds = ["th-service", "th-desc", "th-price"];
-      thIds.forEach((id, i) => {
+      ["th-ios-service", "th-ios-desc", "th-ios-price"].forEach((id, i) => {
         const th = document.getElementById(id);
-        if (th) th.textContent = t.headers[i];
+        if (th) th.textContent = t.headersIos[i];
+      });
+      ["th-web-service", "th-web-desc", "th-web-price"].forEach((id, i) => {
+        const th = document.getElementById(id);
+        if (th) th.textContent = t.headersWeb[i];
       });
 
-      // Строки таблицы + data-label для мобильной версии
-      const ids = [
-        ["service1-name","service1-desc","service1-price"],
-        ["service2-name","service2-desc","service2-price"],
-        ["service3-name","service3-desc","service3-price"],
-        ["service4-name","service4-desc","service4-price"]
+      const iosIds = [
+        ["ios1-name","ios1-desc","ios1-price"],
+        ["ios2-name","ios2-desc","ios2-price"],
+        ["ios3-name","ios3-desc","ios3-price"],
+        ["ios4-name","ios4-desc","ios4-price"]
       ];
+      iosIds.forEach((row, i) => fillRow(row, t.rowsIos[i], t.headersIos));
 
-      ids.forEach((row, i) => {
-        const [nId, dId, pId] = row;
-        const r = t.rows[i];
+      const webIds = [
+        ["web1-name","web1-desc","web1-price"],
+        ["web2-name","web2-desc","web2-price"],
+        ["web3-name","web3-desc","web3-price"],
+        ["web4-name","web4-desc","web4-price"]
+      ];
+      webIds.forEach((row, i) => fillRow(row, t.rowsWeb[i], t.headersWeb));
+    }
 
-        const nEl = document.getElementById(nId);
-        const dEl = document.getElementById(dId);
-        const pEl = document.getElementById(pId);
+    function fillRow(ids, values, headers) {
+      const [nId, dId, pId] = ids;
+      const nEl = document.getElementById(nId);
+      const dEl = document.getElementById(dId);
+      const pEl = document.getElementById(pId);
 
-        if (nEl) {
-          nEl.innerHTML = "<strong>" + r[0] + "</strong>";
-          nEl.setAttribute("data-label", t.headers[0]);
-        }
-        if (dEl) {
-          dEl.textContent = r[1];
-          dEl.setAttribute("data-label", t.headers[1]);
-        }
-        if (pEl) {
-          pEl.textContent = r[2];
-          pEl.setAttribute("data-label", t.headers[2]);
-        }
-      });
+      if (nEl) {
+        nEl.innerHTML = "<strong>" + values[0] + "</strong>";
+        nEl.setAttribute("data-label", headers[0]);
+      }
+      if (dEl) {
+        dEl.textContent = values[1];
+        dEl.setAttribute("data-label", headers[1]);
+      }
+      if (pEl) {
+        pEl.textContent = values[2];
+        pEl.setAttribute("data-label", headers[2]);
+      }
     }
   </script>
 </body>

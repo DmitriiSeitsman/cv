@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XOgame — Дмитрий Сейцман</title>
+  <meta name="description" content="XOgame — крестики-нолики онлайн: игра с ботом, с другом по ссылке или со случайным соперником. React, TypeScript, Vite на фронтенде и собственный бэкенд на Vapor (Swift) + PostgreSQL с realtime через WebSocket." />
+  <meta name="keywords" content="XOgame, крестики-нолики онлайн, React, TypeScript, Vite, Swift, Vapor, PostgreSQL, WebSocket, веб-разработка, Dmitrii Seitsman" />
+  <meta name="author" content="Dmitrii Seitsman" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0E0E0F" />
+  <script src="/theme-init.js"></script>
+  <link rel="alternate" href="https://seitsman.com/XOgame.html" hreflang="ru" />
+  <link rel="alternate" href="https://seitsman.com/XOgame.html" hreflang="en" />
+  <link rel="alternate" href="https://seitsman.com/XOgame.html" hreflang="x-default" />
+  <link rel="canonical" href="https://seitsman.com/XOgame.html" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="XOgame — Web Project | Dmitrii Seitsman" />
+  <meta property="og:description" content="XOgame is an online tic-tac-toe game: play vs a bot, invite a friend by link, or get matched with a random opponent. React + TypeScript frontend, self-hosted Vapor (Swift) + PostgreSQL backend with WebSocket realtime." />
+  <meta property="og:image" content="https://seitsman.com/images/og/XOgame.png" />
+  <meta property="og:url" content="https://seitsman.com/XOgame.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dmitrii Seitsman Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="XOgame — Web Project Case Study" />
+  <meta name="twitter:description" content="Online tic-tac-toe with bot, friend-invite and random-matchmaking modes. React/TypeScript frontend, Swift/Vapor + PostgreSQL backend, WebSocket realtime." />
+  <meta name="twitter:image" content="https://seitsman.com/images/og/XOgame.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "XOgame",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "url": "https://xo-game.online",
+    "inLanguage": ["ru", "en"],
+    "description": "Онлайн крестики-нолики с игрой против бота, приглашением друга по ссылке и случайным матчмейкингом. React/TypeScript фронтенд, собственный бэкенд на Vapor (Swift) и PostgreSQL с realtime через WebSocket."
+  }
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/case-study.css" />
+
+  <!-- Скриншоты XOgame — веб (широкий формат), а не портретные скрины телефона -->
+  <style>
+    .case-lead-shot { min-height: 320px; }
+    .case-lead-shot img { max-height: 300px; }
+    .case-gallery-shot { min-height: 220px; }
+    .case-gallery-shot img { max-height: 200px; }
+  </style>
+
+</head>
+
+<body class="case-page-body">
+  <main class="case-main">
+    <article class="case-study">
+      <a class="case-back" href="/portfolio.html">
+        <svg class="case-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg>
+        <span data-case-copy="back">Все проекты</span>
+      </a>
+
+      <header class="case-hero">
+        <div class="case-hero-copy">
+          <p class="case-eyebrow" data-case-copy="eyebrow">Веб-проект</p>
+          <h1 class="case-title">XOgame</h1>
+          <p class="case-summary" data-case-copy="summary">Крестики-нолики онлайн: игра с ботом, с другом по ссылке или со случайным соперником. Свой фронтенд и свой бэкенд с realtime-синхронизацией ходов.</p>
+          <ul class="case-tech-list" aria-label="Технологии">
+            <li>React</li><li>TypeScript</li><li>Vite</li><li>Vapor (Swift)</li><li>PostgreSQL</li><li>WebSocket</li>
+          </ul>
+          <div class="case-actions">
+            <a class="case-action case-action-primary" href="https://xo-game.online/" target="_blank" rel="noopener noreferrer" data-case-copy="primaryAction">Играть онлайн ↗</a>
+            <a class="case-action case-action-secondary" href="https://github.com/DmitriiSeitsman/xogame" target="_blank" rel="noopener noreferrer" data-case-copy="secondaryAction">GitHub ↗</a>
+          </div>
+        </div>
+        <button class="case-shot case-lead-shot" type="button">
+          <img class="localized-preview" src="/images/xogame_01_ru.webp" data-ru-src="/images/xogame_01_ru.webp" data-en-src="/images/xogame_01_en.webp" alt="XOgame — выбор режима игры" width="1600" height="928" />
+        </button>
+      </header>
+
+      <section class="case-section">
+        <div class="case-section-heading">
+          <p class="case-section-index" data-case-copy="overviewIndex">01 / Контекст</p>
+          <h2 data-case-copy="overviewTitle">О проекте</h2>
+        </div>
+        <div class="case-overview-copy">
+          <p data-case-copy="overview">XOgame — крестики-нолики в браузере без регистрации: игрок получает анонимный токен и сразу играет. Три режима — против бота (3 уровня сложности), с другом по инвайт-ссылке или коду, и случайный соперник через матчмейкинг с живой очередью. Поле можно выбрать от классического 3×3 до 6×6 с увеличенной длиной выигрышной линии, есть светлая/тёмная тема и обычная и «волшебная» тема значков.</p>
+          <p data-case-copy="techDetails">Фронтенд — React 19 + TypeScript на Vite, роутинг через react-router, игровая логика вынесена в чистые функции и переиспользуется между локальным ботом и генерацией победных комбинаций для любого размера поля. Бэкенд — свой сервис на Vapor (Swift 6) поверх PostgreSQL: вся игровая логика (проверка победителя, генерация инвайт-кодов, матчмейкинг через FOR UPDATE SKIP LOCKED, реванши) живёт в SQL-функциях, а Vapor — тонкий HTTP/WebSocket-слой над ними через SQLKit. Обновления хода передаются обеим сторонам по WebSocket без поллинга. Фронтенд задеплоен на GitHub Pages с собственным доменом и пререндером ключевых маршрутов под SEO, бэкенд — в Docker за Nginx с HTTPS от Let's Encrypt на отдельном сервере.</p>
+          <dl class="case-facts">
+            <div class="case-fact"><dt data-case-copy="roleLabel">Роль</dt><dd data-case-copy="role">Full-stack: фронтенд + бэкенд</dd></div>
+            <div class="case-fact"><dt data-case-copy="platformLabel">Платформа</dt><dd>Web</dd></div>
+            <div class="case-fact"><dt data-case-copy="foundationLabel">Основа</dt><dd>React · Vapor (Swift) · PostgreSQL</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="case-section case-gallery-section">
+        <div class="case-gallery-header">
+          <div class="case-section-heading">
+            <p class="case-section-index" data-case-copy="galleryIndex">02 / Интерфейс</p>
+            <h2 data-case-copy="galleryTitle">Галерея</h2>
+          </div>
+          <p class="case-gallery-intro" data-case-copy="galleryIntro">Режимы игры, темы оформления и живой мультиплеер по ссылке.</p>
+        </div>
+        <div class="case-gallery">
+          <button class="case-shot case-gallery-shot" type="button"><img class="localized-preview" src="/images/xogame_02_ru.webp" data-ru-src="/images/xogame_02_ru.webp" data-en-src="/images/xogame_02_en.webp" alt="XOgame — результат игры против бота" loading="lazy" width="1600" height="928" /></button>
+          <button class="case-shot case-gallery-shot" type="button"><img class="localized-preview" src="/images/xogame_03_ru.webp" data-ru-src="/images/xogame_03_ru.webp" data-en-src="/images/xogame_03_en.webp" alt="XOgame — приглашение друга, ввод имени" loading="lazy" width="1600" height="928" /></button>
+        </div>
+      </section>
+
+      <nav class="case-project-nav" aria-label="Навигация по проектам">
+        <a class="case-nav-link" href="/portfolio.html"><svg class="case-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg><span data-case-copy="back">Все проекты</span></a>
+        <a class="case-nav-link case-nav-next" href="/MovieQuiz.html"><span class="case-next-copy"><span class="case-next-label" data-case-copy="nextLabel">Следующий проект</span><strong class="case-next-name">MovieQuiz</strong></span><svg class="case-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+      </nav>
+    </article>
+  </main>
+
+  <footer id="footer">© 2025 Дмитрий Сейцман. Сайт создан на чистом HTML, JS и немного нейросетей.</footer>
+  <script src="/scripts.js"></script>
+  <script>
+    window.caseStudyData = {
+      ru: {
+        pageTitle: "XOgame — Дмитрий Сейцман",
+        eyebrow: "Веб-проект",
+        summary: "Крестики-нолики онлайн: игра с ботом, с другом по ссылке или со случайным соперником. Свой фронтенд и свой бэкенд с realtime-синхронизацией ходов.",
+        overview: "XOgame — крестики-нолики в браузере без регистрации: игрок получает анонимный токен и сразу играет. Три режима — против бота (3 уровня сложности), с другом по инвайт-ссылке или коду, и случайный соперник через матчмейкинг с живой очередью. Поле можно выбрать от классического 3×3 до 6×6 с увеличенной длиной выигрышной линии, есть светлая/тёмная тема и обычная и «волшебная» тема значков.",
+        techDetails: "Фронтенд — React 19 + TypeScript на Vite, роутинг через react-router, игровая логика вынесена в чистые функции и переиспользуется между локальным ботом и генерацией победных комбинаций для любого размера поля. Бэкенд — свой сервис на Vapor (Swift 6) поверх PostgreSQL: вся игровая логика (проверка победителя, генерация инвайт-кодов, матчмейкинг через FOR UPDATE SKIP LOCKED, реванши) живёт в SQL-функциях, а Vapor — тонкий HTTP/WebSocket-слой над ними через SQLKit. Обновления хода передаются обеим сторонам по WebSocket без поллинга. Фронтенд задеплоен на GitHub Pages с собственным доменом и пререндером ключевых маршрутов под SEO, бэкенд — в Docker за Nginx с HTTPS от Let's Encrypt на отдельном сервере.",
+        role: "Full-stack: фронтенд + бэкенд",
+        primaryAction: "Играть онлайн ↗",
+        secondaryAction: "GitHub ↗"
+      },
+      en: {
+        pageTitle: "XOgame — Dmitrii Seitsman",
+        eyebrow: "Web project",
+        summary: "Online tic-tac-toe: play vs a bot, invite a friend by link, or get matched with a random opponent. Custom frontend and backend with realtime move sync.",
+        overview: "XOgame is a browser tic-tac-toe game with no sign-up: the player gets an anonymous token and starts playing immediately. Three modes are available — vs a bot (3 difficulty levels), with a friend via an invite link or code, and random matchmaking with a live queue. Board size ranges from classic 3x3 up to 6x6 with an extended win length, plus a light/dark theme and a classic or \"magical\" symbol theme.",
+        techDetails: "The frontend is React 19 + TypeScript on Vite, routed with react-router; game logic is written as pure functions shared between the local bot and generic win-detection for any board size. The backend is a self-hosted Vapor (Swift 6) service on PostgreSQL: all game logic (win checks, invite-code generation, matchmaking via FOR UPDATE SKIP LOCKED, rematches) lives in SQL functions, with Vapor as a thin HTTP/WebSocket layer calling them through SQLKit. Move updates are pushed to both players over a WebSocket, no polling. The frontend deploys to GitHub Pages on a custom domain with prerendered routes for SEO; the backend runs in Docker behind Nginx with Let's Encrypt HTTPS on a dedicated server.",
+        role: "Full-stack: frontend + backend",
+        primaryAction: "Play online ↗",
+        secondaryAction: "GitHub ↗"
+      }
+    };
+  </script>
+  <script src="/project-page.js"></script>
+</body>
+</html>
