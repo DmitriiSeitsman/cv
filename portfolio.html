@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Портфолио — Дмитрий Сейцман</title>
-  <meta name="description" content="Портфолио iOS- и веб-разработчика Dmitrii Seitsman: приложения на Swift/SwiftUI, включая Snapty (App Store), и веб-проекты на React/TypeScript, включая XOgame." />
-  <meta name="keywords" content="портфолио iOS разработчика, портфолио веб-разработчика, iOS Developer portfolio, Web Developer portfolio, Swift, SwiftUI, UIKit, React, TypeScript, App Store, Snapty, XOgame" />
+  <meta name="description" content="Портфолио iOS- и веб-разработчика Dmitrii Seitsman: приложения на Swift/SwiftUI, включая Snapty (App Store), и веб-проекты на React/TypeScript и Next.js, включая XOgame и сайт snapty.pro." />
+  <meta name="keywords" content="портфолио iOS разработчика, портфолио веб-разработчика, iOS Developer portfolio, Web Developer portfolio, Swift, SwiftUI, UIKit, React, TypeScript, App Store, Snapty, XOgame, Next.js, разработка сайтов, лендинг" />
   <meta name="author" content="Dmitrii Seitsman" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0E0E0F" />
@@ -16,14 +16,14 @@
   <link rel="canonical" href="https://seitsman.com/portfolio.html" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:title" content="Портфолио — Dmitrii Seitsman | iOS & Web Developer" />
-  <meta property="og:description" content="Проекты iOS-разработки на Swift (Snapty, MovieQuiz, ImageFeed, Tracker, TravelSchedule, ShoppingList, FakeNFT) и веб-разработки на React/TypeScript (XOgame)." />
+  <meta property="og:description" content="Проекты iOS-разработки на Swift (Snapty, MovieQuiz, ImageFeed, Tracker, TravelSchedule, ShoppingList, FakeNFT) и веб-разработки на React/TypeScript и Next.js (XOgame, snapty.pro)." />
   <meta property="og:image" content="https://seitsman.com/images/preview.png" />
   <meta property="og:url" content="https://seitsman.com/portfolio.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Dmitrii Seitsman Portfolio" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Portfolio — Dmitrii Seitsman | iOS & Web Developer" />
-  <meta name="twitter:description" content="iOS developer portfolio with Swift/SwiftUI/UIKit projects and web projects built with React and TypeScript." />
+  <meta name="twitter:description" content="iOS developer portfolio with Swift/SwiftUI/UIKit projects and web projects built with React, TypeScript, and Next.js." />
   <meta name="twitter:image" content="https://seitsman.com/images/preview.png" />
   <script type="application/ld+json">
   {
@@ -39,7 +39,8 @@
       "UIKit",
       "Web Development",
       "React",
-      "TypeScript"
+      "TypeScript",
+      "Next.js"
     ]
   }
   </script>
@@ -141,6 +142,28 @@
         </div>
         <a class="project-preview project-preview-featured" href="XOgame.html" aria-label="Открыть проект XOgame">
           <img class="localized-preview" src="images/xogame_01_ru.webp" data-ru-src="images/xogame_01_ru.webp" data-en-src="images/xogame_01_en.webp" alt="Интерфейс XOgame" loading="lazy" width="1600" height="928" />
+        </a>
+      </article>
+
+      <article class="project-card portfolio-featured"
+        data-platform="web"
+        data-ru-kind="Сайт-лендинг"
+        data-en-kind="Landing website"
+        data-ru-desc="Сайт приложения Snapty: лендинг на Next.js со статическим экспортом, RU/EN-локализацией, светлой и тёмной темой и полноценным SEO — hreflang, sitemap и структурированные данные для поисковиков."
+        data-en-desc="Website for the Snapty app: a Next.js landing page with static export, RU/EN localization, light and dark themes, and full SEO — hreflang, sitemap, and structured data for search engines.">
+        <div class="project-content">
+          <span class="project-kind">Сайт-лендинг</span>
+          <h3><a href="https://snapty.pro/" target="_blank" rel="noopener noreferrer">snapty.pro</a></h3>
+          <p class="desc">Сайт приложения Snapty: лендинг на Next.js со статическим экспортом, RU/EN-локализацией, светлой и тёмной темой и полноценным SEO — hreflang, sitemap и структурированные данные для поисковиков.</p>
+          <ul class="project-tags" aria-label="Technologies">
+            <li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>SEO</li>
+          </ul>
+          <div class="project-actions">
+            <a class="project-external-link" href="https://snapty.pro/" target="_blank" rel="noopener noreferrer">snapty.pro ↗</a>
+          </div>
+        </div>
+        <a class="project-preview project-preview-featured" href="https://snapty.pro/" target="_blank" rel="noopener noreferrer" aria-label="Открыть проект snapty.pro">
+          <img class="localized-preview" src="images/snaptylanding_01_ru.webp" data-ru-src="images/snaptylanding_01_ru.webp" data-en-src="images/snaptylanding_01_en.webp" alt="Интерфейс snapty.pro" loading="lazy" width="1600" height="928" />
         </a>
       </article>
 
@@ -255,7 +278,8 @@
         const kind = card.querySelector(".project-kind");
         desc.textContent = card.getAttribute(`data-${lang}-desc`);
         kind.textContent = card.getAttribute(`data-${lang}-kind`);
-        card.querySelector(".project-detail-link").textContent = t.detailLink;
+        const detailLink = card.querySelector(".project-detail-link");
+        if (detailLink) detailLink.textContent = t.detailLink;
 
         const projectName = card.querySelector("h3").textContent.trim();
         const preview = card.querySelector(".project-preview");
